@@ -8,8 +8,8 @@ const Skills = () => {
       <div>
         <h3>Computer Languages</h3>
         <div>
-          {technologies.map((tech) => (
-            <div>
+          {technologies.map((tech, index) => (
+            <div key={index}>
               {tech.name}
               <Image src={tech.icon} height={25} width={25} alt={tech.name} />
             </div>
