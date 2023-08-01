@@ -5,16 +5,17 @@ import { useState } from "react";
 import Experience from "./Experience";
 
 const Resume = () => {
-  const [currTab, setCurrTab] = useState("edu");
+  const [currTab, setCurrTab] = useState("exp");
   return (
-    <div>
-      <h1>My Resume</h1>
+    <div className="d-flex flex-column hasBgImage py-3" id="resume">
+      <h1 className="text-center text-white">My Resume</h1>
       <ToggleButtonGroup
         onChange={(event, newValue) => {
           setCurrTab(newValue);
         }}
         value={currTab}
         exclusive
+        className="align-self-center"
       >
         <ToggleButton value="exp">Experience</ToggleButton>
         <ToggleButton value="edu">Education</ToggleButton>

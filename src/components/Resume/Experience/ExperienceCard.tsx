@@ -16,7 +16,7 @@ const ExperienceCard = ({ experience }: { experience: ExperienceType }) => {
       }}
       date={experience.date}
       icon={
-        <div className="flex justify-center items-center w-full h-full">
+        <div className="flex justify-center">
           <Image
             src={experience.iconSrc}
             alt={experience.company}
@@ -27,7 +27,7 @@ const ExperienceCard = ({ experience }: { experience: ExperienceType }) => {
       }
     >
       <div>
-        <h3 className="text-jetLight text-[24px] font-bold font-beckman tracking-[2px]">
+        <h3 className="font-bold font-beckman tracking-[2px]">
           {experience.title}
         </h3>
         <p

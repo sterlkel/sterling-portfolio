@@ -1,10 +1,10 @@
 "use client";
-import { Container, Stack } from "@mui/material";
+import { Container } from "@mui/material";
 import Image from "next/image";
-import { Nav, NavDropdown, Navbar } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Cursor, useTypewriter } from "react-simple-typewriter";
 import { About, Contact, Projects, Resume } from "@/components";
+import Banner from "@/components/Banner";
 
 const CustomNavBar = () => {
   return (
@@ -15,65 +15,22 @@ const CustomNavBar = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
         <Nav className="justify-content-end">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#link">Link</Nav.Link>
-          <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">
-              Another action
-            </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">
-              Separated link
-            </NavDropdown.Item>
-          </NavDropdown>
+          <Nav.Link href="#about">About</Nav.Link>
+          <Nav.Link href="#resume">Resume</Nav.Link>
+          <Nav.Link href="#projects">Projects</Nav.Link>
+          <Nav.Link href="#contact">Contact</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
   );
 };
 
-const BannerText = () => {
-  const [text] = useTypewriter({
-    words: [
-      "Professional Coder.",
-      "Entrepreneur.",
-      "Software Engineer.",
-      "Novelist.",
-      "Dreamer.",
-    ],
-    loop: true,
-    typeSpeed: 20,
-    deleteSpeed: 10,
-    delaySpeed: 2000,
-  });
-  return (
-    <div>
-      <h1>Hi, I'm Sterling Kelly</h1>
-      <h2 className="text-4xl font-bold">
-        a{text.charAt(0) === "E" ? "n" : ""} <span>{text}</span>
-        <Cursor cursorBlinking={false} cursorStyle="|" cursorColor="#ff014f" />
-      </h2>
-    </div>
-  );
-};
-
-const CustomBanner = () => {
-  return (
-    <Stack direction={"row"}>
-      <BannerText />
-      <Image src="/bannerImage.png" width={533} height={403} alt="desktop" />
-    </Stack>
-  );
-};
-
 export default function Home() {
   return (
-    <div>
+    <div className="bg-primary bg-gradient">
       <Container>
         <CustomNavBar />
-        <CustomBanner />
+        <Banner />
         <About />
         <Resume />
         <Projects />
