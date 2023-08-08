@@ -18,15 +18,17 @@ const Contact = () => {
     });
   };
   return (
-    <Container className="mt-2 rounded mb-2" id="contact">
-      <div className="bg-secondary">
-        <div>
-          <h3 className="pt-3">Get in Touch</h3>
-          <h1 className="pt-1 mb-5">Contact</h1>
+    <div className="h-screen" id="contact">
+      <Container className="mt-2 rounded mb-2">
+        <div className="bg-secondary my-auto">
+          <div>
+            <h3 className="pt-3">Get in Touch</h3>
+            <h1 className="pt-1 mb-5">Contact</h1>
+          </div>
+          <div className="d-flex flex-column">{renderFields()}</div>
         </div>
-        <div className="d-flex flex-column">{renderFields()}</div>
-      </div>
-    </Container>
+      </Container>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Container, Stack } from "@mui/material";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import Image from "next/image";
 
@@ -31,16 +31,23 @@ const BannerText = () => {
 
 const Banner = () => {
   return (
-    <Stack direction={"row"} className="d-flex justify-content-between my-5">
-      <BannerText />
-      <Image
-        src="/bannerImage.png"
-        width={533}
-        height={403}
-        alt="desktop"
-        className="rounded"
-      />
-    </Stack>
+    <Container id="home">
+      <Stack
+        direction={"row"}
+        className="d-flex justify-content-between h-screen"
+      >
+        <BannerText />
+        <div className="my-auto">
+          <Image
+            src="/bannerImage.png"
+            width={533}
+            height={403}
+            alt="desktop"
+            className="rounded"
+          />
+        </div>
+      </Stack>
+    </Container>
   );
 };
 
