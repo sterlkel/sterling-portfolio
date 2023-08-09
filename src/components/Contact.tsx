@@ -1,4 +1,12 @@
-import { Container, TextField } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Container,
+  Stack,
+  TextField,
+} from "@mui/material";
 
 const Contact = () => {
   const fieldTypes = ["name", "email", "nessage"];
@@ -18,15 +26,23 @@ const Contact = () => {
     });
   };
   return (
-    <div className="h-screen" id="contact">
-      <Container className="mt-2 rounded mb-2">
-        <div className="bg-secondary my-auto">
-          <div>
-            <h3 className="pt-3">Get in Touch</h3>
-            <h1 className="pt-1 mb-5">Contact</h1>
-          </div>
-          <div className="d-flex flex-column">{renderFields()}</div>
-        </div>
+    <div className="h-screen d-flex" id="contact">
+      <Container className="mt-2 justify-content-center d-flex flex-column">
+        <Card className="bg-secondary">
+          <CardHeader
+            className="px-4"
+            title="Get In Touch"
+            subheader="Contact me!"
+          />
+          <CardContent>
+            <Container>
+              <Stack>{renderFields()}</Stack>
+              <Container className="justify-content-end d-flex">
+                <Button variant="contained">Send it!</Button>
+              </Container>
+            </Container>
+          </CardContent>
+        </Card>
       </Container>
     </div>
   );

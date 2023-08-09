@@ -7,9 +7,9 @@ import Experience from "./Experience";
 const Resume = () => {
   const [currTab, setCurrTab] = useState("exp");
   return (
-    <div className="d-flex flex-column hasBgImage h-screen" id="resume">
-      <Container className="my-auto d-flex flex-column">
-        <h1 className="text-center text-white">My Resume</h1>
+    <div className="d-flex flex-column hasBgImage" id="resume">
+      <Container className="d-flex flex-column">
+        <h1 className="text-center text-white pt-5 mt-5">My Resume</h1>
         <ToggleButtonGroup
           onChange={(event, newValue) => {
             setCurrTab(newValue);

@@ -5,10 +5,11 @@ import {
 import Image from "next/image";
 import { experiences } from "@/constants";
 import ExperienceCard from "./ExperienceCard";
+import { Button, Container } from "@mui/material";
 
 const Experience = () => {
   return (
-    <div>
+    <Container className="h-100">
       <VerticalTimeline className="vertical-timeline-custom-line">
         {experiences.map((experience, index) => (
           <ExperienceCard key={index} experience={experience} />
@@ -17,44 +18,28 @@ const Experience = () => {
           contentStyle={{
             background: "#eaeaec",
             color: "#292929",
-            boxShadow:
-              "rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
           }}
           contentArrowStyle={{
             borderRight: "7px solid  #232631",
           }}
-          iconStyle={{ background: "#333333" }}
-          icon={
-            <div className="flex justify-center items-center w-full h-full">
-              <Image src="/resume.png" height={25} width={25} alt="resume" />
-            </div>
-          }
+          icon={<Image src="/resume.png" height={50} width={50} alt="resume" />}
         >
-          <button
-            className="live-demo flex justify-between 
-                sm:text-[18px] text-[14px] text-timberWolf 
-                font-bold font-beckman items-center py-5 pl-3 pr-3 
-                whitespace-nowrap gap-1 sm:w-[148px] sm:h-[58px] 
-                w-[125px] h-[46px] rounded-[10px] bg-jetLight 
-                sm:mt-[22px] mt-[16px] hover:bg-battleGray 
-                hover:text-eerieBlack transition duration-[0.2s] 
-                ease-in-out"
+          <Button
             onClick={() =>
               window.open(
                 "resume link", //paste the link to resume here
                 "_blank"
               )
             }
+            variant="contained"
+            className="text-primary"
           >
             MY RESUME
             <Image src="/download.png" alt="download" height={25} width={25} />
-          </button>
+          </Button>
         </VerticalTimelineElement>
       </VerticalTimeline>
-    </div>
+    </Container>
   );
 };
 

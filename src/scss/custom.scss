@@ -1,1 +1,9 @@
+$primary: #22394e;
+
 @import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../app/globals.css";
+@import "react-vertical-timeline-component/style.min.css";
+
+.blurCorners {
+  box-shadow: inset 0px 0px 40px 40px $blue-800;
+}
