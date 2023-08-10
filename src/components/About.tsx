@@ -4,8 +4,8 @@ import { GitHub } from "@mui/icons-material";
 import LinkedIn from "@mui/icons-material/LinkedIn";
 
 const About = () => {
-  const iconButtons = ["github", "linkedIn"].map((icon) => (
-    <Card>
+  const iconButtons = ["github", "linkedIn"].map((icon, index) => (
+    <Card key={index}>
       <CardContent>
         <IconButton
           href={icon === "github" ? githubUrl : linkedInUrl}
