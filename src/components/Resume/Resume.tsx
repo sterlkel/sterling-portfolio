@@ -4,8 +4,21 @@ import Skills from "./Skills";
 import { useState } from "react";
 import Experience from "./Experience";
 
+const ResumeToggleButton = ({
+  value,
+  children,
+}: React.PropsWithChildren<{ value: string }>) => {
+  return (
+    <ToggleButton value={value} className="text-white border-white">
+      {children}
+    </ToggleButton>
+  );
+};
+
 const Resume = () => {
   const [currTab, setCurrTab] = useState("exp");
+  const tabs = ["exp", "edu"];
+
   return (
     <div className="d-flex flex-column hasBgImage" id="resume">
       <Container className="d-flex flex-column">
@@ -16,9 +29,9 @@ const Resume = () => {
           }}
           value={currTab}
           exclusive
-          className="align-self-center"
+          className="align-self-center text-white my-3"
         >
-          <ToggleButton value="exp">Experience</ToggleButton>
+          <ResumeToggleButton value="exp">Experience</ResumeToggleButton>
           <ToggleButton value="edu">Education</ToggleButton>
           <ToggleButton value="ski">Skills and Interests</ToggleButton>
         </ToggleButtonGroup>

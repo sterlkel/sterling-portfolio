@@ -5,6 +5,8 @@ export const githubUrl = "https://github.com/sterlkel";
 export const linkedInUrl =
   "https://www.linkedin.com/in/sterling-kelly-2970241b0/";
 
+export const swingImgPath = "/swingIcon1.png";
+
 export const experiences: ExperienceType[] = [
   {
     title: "Full Stack Software Engineer",
@@ -21,7 +23,7 @@ export const experiences: ExperienceType[] = [
   {
     title: "Co-Founder & CEO",
     company: "Swing Campaign",
-    iconSrc: "/swingIcon1.png",
+    iconSrc: swingImgPath,
     date: "Mar 2020 - Jan 2022",
     details: [
       `Founded Swing Campaign, where we developed an app that raised awareness around one’s representatives and gave an idea of who best represented the user. `,

@@ -39,3 +39,7 @@ body {
     rgba(234, 234, 236, 0.45) 100%
   );
 }
+
+.bodyText {
+  font-size: 20px;
+}

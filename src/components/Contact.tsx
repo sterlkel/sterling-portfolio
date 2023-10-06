@@ -25,6 +25,7 @@ const Contact = () => {
       );
     });
   };
+
   return (
     <div className="h-screen d-flex" id="contact">
       <Container className="mt-2 justify-content-center d-flex flex-column">

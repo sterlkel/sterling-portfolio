@@ -24,15 +24,15 @@ const About = () => {
     </Card>
   ));
   return (
-    <div className="bg-secondary d-flex h-screen blurCorners" id="about">
+    <div className="bg-secondary d-flex h-screen" id="about">
       <Container className="d-flex">
-        <Stack className="my-auto justify-content-center px-5" spacing={4}>
-          <Stack>
+        <Stack className="justify-content-center px-5" spacing={4}>
+          <Stack className="mb-5">
             <h1 className="mb-3 text-white">About</h1>
-            <p className="text-white">{aboutText}</p>
+            <p className="text-white bodyText">{aboutText}</p>
           </Stack>
           <Container>
-            <h2 className="mb-4 text-white text-center">Find me on:</h2>
+            <h3 className="mb-4 text-white">Find me on:</h3>
             <Stack direction={"row"} spacing={2} justifyContent="center">
               {iconButtons}
             </Stack>
