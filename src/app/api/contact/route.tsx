@@ -17,7 +17,8 @@ export async function POST(request: NextRequest) {
     .then(() => {
       console.log("Email sent");
     })
-    .catch((error) => {
+    // still need to determine what the error type is
+    .catch((error: any) => {
       console.error(error);
       return new NextResponse("Email Sending Failed", { status: 500 });
     });
