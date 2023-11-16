@@ -43,16 +43,12 @@ const ContactForm = () => {
       };
       return (
         <Controller
+          key={index}
           name={type}
           control={control}
           rules={getRules()}
           render={({ field }) => (
-            <ContactField
-              {...field}
-              type={type}
-              error={getError()}
-              key={index}
-            />
+            <ContactField {...field} type={type} error={getError()} />
           )}
         />
       );
