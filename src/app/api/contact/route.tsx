@@ -4,10 +4,10 @@ const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 export async function POST(request: NextRequest) {
   const json: ContactFormData = await request.json();
-
+  const myEmail = process.env.EMAIL;
   const msg = {
-    to: "sterlkel@gmail.com", // Change to your recipient
-    from: "sterlkel@gmail.com", // Change to your verified sender
+    to: myEmail, // Change to your recipient
+    from: myEmail, // Change to your verified sender
     replyTo: json.email,
     subject: `PW Contact From ${json.name}`,
     text: json.message,
