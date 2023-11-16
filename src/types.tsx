@@ -11,3 +11,11 @@ export type EducationType = {
   gradYear: string;
   degree: string;
 };
+
+export type ContactFormData = {
+  name: string;
+  email: string;
+  message: string;
+};
+
+export type ContactFieldTypes = "message" | "email" | "name";

@@ -1,17 +1,18 @@
+import { ContactFormData } from "@/types";
 import { NextRequest, NextResponse } from "next/server";
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 export async function POST(request: NextRequest) {
-  request.json().then((json) => console.log(json));
+  const json: ContactFormData = await request.json();
 
   const msg = {
     to: "sterlkel@gmail.com", // Change to your recipient
     from: "sterlkel@gmail.com", // Change to your verified sender
-    replyTo: "swk49@cornell.edu",
-    subject: "Sending with SendGrid is Fun",
-    text: "and easy to do anywhere, even with Node.js",
-    html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+    replyTo: json.email,
+    subject: `PW Contact From ${json.name}`,
+    text: json.message,
   };
+
   sgMail
     .send(msg)
     .then(() => {
