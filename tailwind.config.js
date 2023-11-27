@@ -10,6 +10,7 @@ module.exports = {
       },
       fontFamily: {
         mont: ["var(--font-mont)"],
+        mulish: ["var(--font-mulish)"],
       },
     },
   },
