@@ -17,7 +17,7 @@ const BannerText = () => {
     delaySpeed: 2000,
   });
   return (
-    <div className="d-flex justify-content-center flex-column mb-4">
+    <div className="d-flex justify-content-center flex-column mb-4 font-mont">
       <h1>
         Hi, I'm <span className="text-teal-300 font-bold">Sterling Kelly</span>
       </h1>
