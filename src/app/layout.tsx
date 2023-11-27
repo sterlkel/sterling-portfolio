@@ -1,9 +1,14 @@
 import CustomNavBar from "@/components/ui/CustomNavBar";
+// this is what sets the styling for the whole website
 import "../scss/custom.scss";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const mont = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mont",
+});
 
 export const metadata: Metadata = {
   title: "Sterling Kelly Portfolio",
@@ -16,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={`${mont.variable}`}>
+      <body>
         <div className="bg-blue-800 bg-gradient">
           <div>
             <CustomNavBar />
