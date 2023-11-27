@@ -1,3 +1,5 @@
+"use client";
+
 import { Container } from "@mui/material";
 import Image from "next/image";
 import { Nav, Navbar } from "react-bootstrap";

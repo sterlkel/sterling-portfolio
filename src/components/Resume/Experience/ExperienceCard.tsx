@@ -1,3 +1,5 @@
+"use client";
+
 import { ExperienceType } from "@/types";
 import { VerticalTimelineElement } from "react-vertical-timeline-component";
 import Image from "next/image";

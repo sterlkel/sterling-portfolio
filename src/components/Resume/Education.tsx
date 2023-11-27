@@ -1,3 +1,5 @@
+"use client";
+
 import { educationData } from "@/constants";
 import { EducationType } from "@/types";
 import {

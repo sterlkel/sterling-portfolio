@@ -1,3 +1,5 @@
+"use client";
+
 import { Container, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import Education from "./Education";
 import Skills from "./Skills";

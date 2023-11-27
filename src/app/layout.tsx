@@ -1,3 +1,4 @@
+import CustomNavBar from "@/components/ui/CustomNavBar";
 import "../scss/custom.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -18,7 +19,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="bg-blue-800 bg-gradient">
-          <div>{children}</div>
+          <div>
+            <CustomNavBar />
+            {children}
+          </div>
         </div>
       </body>
     </html>

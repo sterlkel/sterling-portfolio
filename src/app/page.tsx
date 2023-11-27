@@ -1,12 +1,7 @@
-"use client";
-import { About, Contact, Projects, Resume } from "@/components";
-import Banner from "@/components/Banner";
-import CustomNavBar from "@/components/ui/CustomNavBar";
-
+import { About, Banner, Contact, Projects, Resume } from "@/components";
 export default function Home() {
   return (
     <>
-      <CustomNavBar />
       <Banner />
       <About />
       <Resume />

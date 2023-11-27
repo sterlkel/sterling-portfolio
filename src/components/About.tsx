@@ -1,3 +1,4 @@
+"use client";
 import { aboutText, githubUrl, linkedInUrl } from "@/constants";
 import { Card, CardContent, Container, IconButton, Stack } from "@mui/material";
 import { GitHub } from "@mui/icons-material";
