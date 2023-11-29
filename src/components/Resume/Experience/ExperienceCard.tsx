@@ -36,7 +36,7 @@ const ExperienceCard = ({ experience }: { experience: ExperienceType }) => {
         />
       }
       iconStyle={{ height: "45px", width: "45px" }}
-      dateClassName="text-white"
+      dateClassName="text-white font-mulish"
     >
       <div ref={wrapperRef}>
         <Card className="bg-gray-300">
@@ -52,7 +52,7 @@ const ExperienceCard = ({ experience }: { experience: ExperienceType }) => {
                 {experience.details.map((detail, index) => (
                   <CarouselItem key={index}>
                     <Container className="px-5 pb-5">
-                      <p>{detail}</p>
+                      <p className="font-mulish">{detail}</p>
                     </Container>
                   </CarouselItem>
                 ))}

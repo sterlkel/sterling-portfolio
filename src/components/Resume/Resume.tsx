@@ -24,8 +24,11 @@ const Resume = () => {
   return (
     <div className="d-flex flex-column hasBgImage" id="resume">
       <Container className="d-flex flex-column">
-        <h1 className="text-center text-white pt-5 mt-5">My Resume</h1>
+        <h1 className="text-center text-white pt-5 mt-5 font-mont">
+          My Resume
+        </h1>
         <ToggleButtonGroup
+          // TODO: need a way to update this font family
           onChange={(event, newValue) => {
             setCurrTab(newValue);
           }}

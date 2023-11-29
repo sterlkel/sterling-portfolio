@@ -1,12 +1,18 @@
+"use client";
+
 import { About, Banner, Contact, Projects, Resume } from "@/components";
+import { muiTheme } from "@/themes";
+import { ThemeProvider } from "@mui/material";
 export default function Home() {
   return (
     <>
-      <Banner />
-      <About />
-      <Resume />
-      <Projects />
-      <Contact />
+      <ThemeProvider theme={muiTheme}>
+        <Banner />
+        <About />
+        <Resume />
+        <Projects />
+        <Contact />
+      </ThemeProvider>
     </>
   );
 }

@@ -34,7 +34,7 @@ const Experience = () => {
               )
             }
             variant="contained"
-            className="text-primary"
+            className="text-primary font-mulish"
           >
             MY RESUME
             <Image src="/download.png" alt="download" height={25} width={25} />
