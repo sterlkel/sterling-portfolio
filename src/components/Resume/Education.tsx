@@ -11,9 +11,9 @@ const EducationCard = ({ education }: { education: EducationType }) => {
   return (
     <VerticalTimelineElement>
       <div>
-        <h5>{education.school}</h5>
-        <h3>{education.degree}</h3>
-        <h4>Class of {education.gradYear}</h4>
+        <h5 className="font-mulish">{education.school}</h5>
+        <h3 className="font-mulish">{education.degree}</h3>
+        <h4 className="font-mulish">Class of {education.gradYear}</h4>
       </div>
     </VerticalTimelineElement>
   );

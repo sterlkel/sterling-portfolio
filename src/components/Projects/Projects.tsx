@@ -25,7 +25,7 @@ const Projects = () => {
           alignItems={"center"}
           justifyContent={"center"}
         >
-          <h1 className="text-white text-center">My Projects</h1>
+          <h1 className="text-white text-center font-mont">My Projects</h1>
         </Stack>
         <Stack direction={"row"} justifyContent="space-around" className="mt-4">
           <ProjectCard isSwing />

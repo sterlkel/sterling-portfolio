@@ -19,7 +19,10 @@ const ProjectCard = ({ isSwing }: { isSwing: boolean }) => {
 
   return (
     <Card className="d-flex justify-content-center flex-column w-25 bg-secondary">
-      <CardHeader title={currData["title"]} className="text-primary" />
+      <CardHeader
+        title={currData["title"]}
+        className="text-primary font-mont"
+      />
       <CardMedia
         image={currData["image"]}
         component={"img"}
