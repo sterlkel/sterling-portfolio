@@ -29,7 +29,7 @@ const ProjectCard = ({ isSwing }: { isSwing: boolean }) => {
         className={`w-50 py-${isSwing ? "5" : "3"} align-self-center`}
       />
       <CardContent>
-        <p className="text-white">{currData["body"]}</p>
+        <p className="text-white font-mulish">{currData["body"]}</p>
       </CardContent>
     </Card>
   );
