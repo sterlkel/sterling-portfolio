@@ -14,7 +14,7 @@ const Banner = () => {
           <BannerText />
           <div className="my-auto">
             <Image
-              src="/bannerImage.png"
+              src="/Sterling.jpg"
               width={433}
               height={323}
               alt="desktop"
