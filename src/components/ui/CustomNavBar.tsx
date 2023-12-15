@@ -16,7 +16,7 @@ const CustomNavBar = () => {
     );
   });
   return (
-    <Navbar fixed="top" className={`bg-blue-800 bg-gradient`}>
+    <Navbar fixed="top" className={`bg-primary bg-gradient`}>
       <Container className="d-flex">
         <Navbar.Brand href="#home">
           <Image src="/stingray.png" height={48} width={48} alt="stingray" />

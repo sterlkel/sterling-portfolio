@@ -21,7 +21,7 @@ const EducationCard = ({ education }: { education: EducationType }) => {
 
 const Education = () => {
   return (
-    <VerticalTimeline>
+    <VerticalTimeline className="h-screen">
       {educationData.map((item, index) => (
         <EducationCard education={item} key={index} />
       ))}
