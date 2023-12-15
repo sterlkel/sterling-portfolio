@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${mont.variable}`}>
       <body>
-        <div className="bg-blue-800 bg-gradient">
+        <div>
           <div>
             <CustomNavBar />
             {children}

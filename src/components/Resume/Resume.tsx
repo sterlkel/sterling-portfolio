@@ -22,7 +22,7 @@ const Resume = () => {
   const tabs = ["exp", "edu"];
 
   return (
-    <div className="d-flex flex-column hasBgImage" id="resume">
+    <div className="d-flex flex-column bg-primary" id="resume">
       <Container className="d-flex flex-column">
         <h1 className="text-center text-white pt-5 mt-5">My Resume</h1>
         <ToggleButtonGroup
