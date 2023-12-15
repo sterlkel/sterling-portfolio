@@ -25,7 +25,7 @@ const About = () => {
     </Card>
   ));
   return (
-    <div className="bg-secondary d-flex h-screen" id="about">
+    <div className="bg-secondary d-flex h-screen hasBgImage" id="about">
       <Container className="d-flex">
         <Stack className="justify-content-center px-5" spacing={4}>
           <Stack className="mb-5">

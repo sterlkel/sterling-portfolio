@@ -1,13 +1,4 @@
-import { swingImgPath } from "@/constants";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  Container,
-  Grid,
-  Stack,
-} from "@mui/material";
+import { Container, Grid, Stack } from "@mui/material";
 import ProjectCard from "./ProjectCard";
 
 const Projects = () => {
@@ -15,7 +6,7 @@ const Projects = () => {
     <Grid
       container
       id="projects"
-      className="h-screen"
+      className="h-screen bg-secondary"
       justifyContent={"center"}
       direction={"column"}
     >
