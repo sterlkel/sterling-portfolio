@@ -30,7 +30,7 @@ const About = () => {
         <Stack className="justify-content-center px-5" spacing={4}>
           <Stack className="mb-5">
             <h1 className="mb-3 text-white">About</h1>
-            <p className="text-white bodyText">{aboutText}</p>
+            <p className="text-white lead">{aboutText}</p>
           </Stack>
           <Container>
             <h3 className="mb-4 text-white">Find me on:</h3>

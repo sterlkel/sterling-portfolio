@@ -39,7 +39,3 @@ body {
     rgba(234, 234, 236, 0.45) 100%
   );
 }
-/* should change how this is done */
-.bodyText {
-  font-size: 20px;
-}
