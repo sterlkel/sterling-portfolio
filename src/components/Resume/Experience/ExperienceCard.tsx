@@ -36,7 +36,7 @@ const ExperienceCard = ({ experience }: { experience: ExperienceType }) => {
         />
       }
       iconStyle={{ height: "45px", width: "45px" }}
-      dateClassName="text-white"
+      dateClassName="text-white font-mulish"
     >
       <div ref={wrapperRef}>
         <Card className="bg-gray-300">

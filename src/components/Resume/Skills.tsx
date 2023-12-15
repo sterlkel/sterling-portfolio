@@ -10,7 +10,7 @@ const Skills = () => {
         <h3 className="text-white">Computer Languages</h3>
         <div className="d-flex flex-row bg-secondary justify-content-between px-4 rounded">
           {technologies.map((tech, index) => (
-            <div key={index} className="mx-2 mt-2 mb-4 text-white">
+            <div key={index} className="mx-2 mt-2 mb-4 font-mulish text-white">
               {tech.name}
               <Image
                 src={tech.icon}

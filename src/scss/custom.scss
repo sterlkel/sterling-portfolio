@@ -8,3 +8,12 @@ $secondary: #0c2d48;
 .blurCorners {
   box-shadow: inset 0px 0px 40px 40px $blue-800;
 }
+
+h1,
+h3 {
+  font-family: var(--font-mont);
+}
+
+p {
+  font-family: var(--font-mulish);
+}
