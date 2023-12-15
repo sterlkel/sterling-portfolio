@@ -52,7 +52,7 @@ const ExperienceCard = ({ experience }: { experience: ExperienceType }) => {
                 {experience.details.map((detail, index) => (
                   <CarouselItem key={index}>
                     <Container className="px-5 pb-5">
-                      <p className="font-mulish">{detail}</p>
+                      <p>{detail}</p>
                     </Container>
                   </CarouselItem>
                 ))}
