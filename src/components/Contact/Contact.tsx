@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, Container } from "@mui/material";
 import ContactForm from "./ContactForm";
 import { useEffect, useState } from "react";
 import { getEmailSent } from "@/app/actions";
+import { MarkEmailRead } from "@mui/icons-material";
 
 const Contact = () => {
   const [emailSent, setEmailSent] = useState(false);
@@ -21,8 +22,11 @@ const Contact = () => {
             {!emailSent ? (
               <ContactForm />
             ) : (
-              <div className="justify-content-center">
-                <h1>Email Sent</h1>
+              <div className="justify-content-center w-100">
+                <h1 className="text-center">
+                  Email Sent
+                  <MarkEmailRead className="ml-5" />
+                </h1>
               </div>
             )}
           </CardContent>
