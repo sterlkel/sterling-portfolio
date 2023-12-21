@@ -13,6 +13,7 @@ const ResumeCardTimelineElement = () => {
         borderRight: "7px solid  #232631",
       }}
       icon={<Image src="/resume.png" height={75} width={75} alt="resume" />}
+      iconStyle={{ background: "#0c2d48" }}
     >
       <Button
         onClick={() =>
