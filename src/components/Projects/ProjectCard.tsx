@@ -1,4 +1,5 @@
 import { swingImgPath } from "@/constants";
+import { Launch } from "@mui/icons-material";
 import { Card, CardContent, CardHeader, CardMedia } from "@mui/material";
 import Link from "next/link";
 
@@ -26,7 +27,7 @@ const ProjectCard = ({
 
   return (
     <Link
-      className="d-flex justify-content-center flex-column w-25"
+      className="d-flex justify-content-center flex-column w-25 hover:scale-105"
       href={linkUrl}
     >
       <Card className="bg-primary d-flex justify-content-center flex-column">
@@ -40,7 +41,10 @@ const ProjectCard = ({
           className={`w-50 py-${isSwing ? "5" : "3"} align-self-center`}
         />
         <CardContent>
-          <p className="text-white">{currData["body"]}</p>
+          <p className="text-white">
+            {currData["body"]}
+            <Launch className="ml-1" />
+          </p>
         </CardContent>
       </Card>
     </Link>
