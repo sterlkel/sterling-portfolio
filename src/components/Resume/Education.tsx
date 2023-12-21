@@ -9,7 +9,7 @@ import {
 
 const EducationCard = ({ education }: { education: EducationType }) => {
   return (
-    <VerticalTimelineElement>
+    <VerticalTimelineElement iconStyle={{ background: "#0c2d48" }}>
       <div>
         <h5 className="font-mulish">{education.school}</h5>
         <h3 className="font-mulish">{education.degree}</h3>
