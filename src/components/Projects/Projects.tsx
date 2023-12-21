@@ -19,8 +19,14 @@ const Projects = () => {
           <h1 className="text-white text-center">My Projects</h1>
         </Stack>
         <Stack direction={"row"} justifyContent="space-around" className="mt-4">
-          <ProjectCard isSwing />
-          <ProjectCard isSwing={false} />
+          <ProjectCard
+            isSwing
+            linkUrl="https://www.amazon.com/Jato-Lee-Chronicles-Book-One/dp/1602648085"
+          />
+          <ProjectCard
+            isSwing={false}
+            linkUrl="https://www.instagram.com/swingcampaign/"
+          />
         </Stack>
       </Container>
     </Grid>
