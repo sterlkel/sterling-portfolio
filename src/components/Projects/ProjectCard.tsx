@@ -1,7 +1,14 @@
 import { swingImgPath } from "@/constants";
 import { Card, CardContent, CardHeader, CardMedia } from "@mui/material";
+import Link from "next/link";
 
-const ProjectCard = ({ isSwing }: { isSwing: boolean }) => {
+const ProjectCard = ({
+  isSwing,
+  linkUrl,
+}: {
+  isSwing: boolean;
+  linkUrl: string;
+}) => {
   const unknownImg = "/unknown.png";
   const swingData = {
     image: swingImgPath,
@@ -18,17 +25,25 @@ const ProjectCard = ({ isSwing }: { isSwing: boolean }) => {
   const currData = isSwing ? swingData : unknownData;
 
   return (
-    <Card className="d-flex justify-content-center flex-column w-25 bg-primary">
-      <CardHeader title={currData["title"]} className="text-white font-mont" />
-      <CardMedia
-        image={currData["image"]}
-        component={"img"}
-        className={`w-50 py-${isSwing ? "5" : "3"} align-self-center`}
-      />
-      <CardContent>
-        <p className="text-white">{currData["body"]}</p>
-      </CardContent>
-    </Card>
+    <Link
+      className="d-flex justify-content-center flex-column w-25"
+      href={linkUrl}
+    >
+      <Card className="bg-primary d-flex justify-content-center flex-column">
+        <CardHeader
+          title={currData["title"]}
+          className="text-white font-mont text-center"
+        />
+        <CardMedia
+          image={currData["image"]}
+          component={"img"}
+          className={`w-50 py-${isSwing ? "5" : "3"} align-self-center`}
+        />
+        <CardContent>
+          <p className="text-white">{currData["body"]}</p>
+        </CardContent>
+      </Card>
+    </Link>
   );
 };
 
