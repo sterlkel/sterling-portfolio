@@ -1,12 +1,10 @@
+import AboutCard from "@/components/AboutCard";
 import { Container } from "@mui/material";
-import AboutCard from "./AboutCard";
 
-const About = () => {
+export default function Page() {
   return (
     <Container>
       <AboutCard />
     </Container>
   );
-};
-
-export default About;
+}

@@ -8,9 +8,6 @@ export default function Home() {
     <>
       <ThemeProvider theme={muiTheme}>
         <Banner />
-        <About />
-        <Resume />
-        <Projects />
         <Contact />
       </ThemeProvider>
     </>
