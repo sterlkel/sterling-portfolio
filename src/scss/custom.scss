@@ -1,9 +1,19 @@
-$primary: #22394e;
-
+$primary: #145da0;
+$secondary: #0c2d48;
+// this page is supposed to customize the bootstrap
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import "../app/globals.css";
 @import "react-vertical-timeline-component/style.min.css";
 
 .blurCorners {
   box-shadow: inset 0px 0px 40px 40px $blue-800;
+}
+
+h1,
+h3 {
+  font-family: var(--font-mont);
+}
+
+p {
+  font-family: var(--font-mulish);
 }

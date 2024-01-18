@@ -1,3 +1,5 @@
+"use client";
+
 import { educationData } from "@/constants";
 import { EducationType } from "@/types";
 import {
@@ -7,11 +9,11 @@ import {
 
 const EducationCard = ({ education }: { education: EducationType }) => {
   return (
-    <VerticalTimelineElement>
+    <VerticalTimelineElement iconStyle={{ background: "#0c2d48" }}>
       <div>
-        <h5>{education.school}</h5>
-        <h3>{education.degree}</h3>
-        <h4>Class of {education.gradYear}</h4>
+        <h5 className="font-mulish">{education.school}</h5>
+        <h3 className="font-mulish">{education.degree}</h3>
+        <h4 className="font-mulish">Class of {education.gradYear}</h4>
       </div>
     </VerticalTimelineElement>
   );
@@ -19,7 +21,7 @@ const EducationCard = ({ education }: { education: EducationType }) => {
 
 const Education = () => {
   return (
-    <VerticalTimeline>
+    <VerticalTimeline className="h-screen">
       {educationData.map((item, index) => (
         <EducationCard education={item} key={index} />
       ))}
