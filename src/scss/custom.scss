@@ -17,3 +17,9 @@ h3 {
 p {
   font-family: var(--font-mulish);
 }
+
+.resumeCard {
+  .MuiCardHeader-subheader {
+    color: $primary;
+  }
+}
