@@ -11,3 +11,5 @@ export type EducationType = {
   gradYear: string;
   degree: string;
 };
+
+export type ResumeRouteTypes = "exp" | "edu" | "skills";

@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en" className={`${mont.variable} ${mulish.variable}`}>
       <body>
         <div>
-          <div>
+          <div className="bg-primary">
             <CustomNavBar />
             {children}
           </div>

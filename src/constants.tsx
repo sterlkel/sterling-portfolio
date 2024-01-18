@@ -7,7 +7,7 @@ export const linkedInUrl =
 
 export const swingImgPath = "/swingIcon1.png";
 
-export const experiences: ExperienceType[] = [
+export const newerExperiences: ExperienceType[] = [
   {
     title: "Full Stack Software Engineer",
     company: "Bonterra",
@@ -15,7 +15,7 @@ export const experiences: ExperienceType[] = [
     date: "Sep 2021 - Present",
     details: [
       "Utilized C#, React, and SQL to develop new features for the Mobile Messaging and Process Automation applications of the NGP VAN Action Platform CRM and API as part of an Agile Development Team.",
-      `Orchestrated front end refactoring projects to streamline the structure and flow of stateful information for both applications through the implementation of newer suggested patterns within Redux including slices and selectors.`,
+      `Orchestrated refactoring projects to streamline the flow of stateful information for both applications through the implementation of suggested patterns within Redux including slices and selectors.`,
       `Produced automated tests using the Selenium framework that simulate a normal user workflow to ensure that the Mobile Messaging application behaves as expected.`,
       `Collaborated to plan and release an integration with a new payment system on an expedited timeline, while developing the onboarding segment of the work.`,
     ],
@@ -31,6 +31,9 @@ export const experiences: ExperienceType[] = [
       `Held user interviews to gauge feedback on the app and coordinated meetings for the Marketing, Political Outreach, and Dev Teams.`,
     ],
   },
+];
+
+export const olderExperiences: ExperienceType[] = [
   {
     title: "Research Analyst",
     company: "Cornell Communicative and Collaborative Technologies Lab",
@@ -54,6 +57,8 @@ export const experiences: ExperienceType[] = [
     ],
   },
 ];
+
+export const experiences = newerExperiences.concat(olderExperiences);
 
 export const technologies = [
   {

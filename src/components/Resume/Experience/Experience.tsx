@@ -1,20 +1,29 @@
 "use client";
 
-import { VerticalTimeline } from "react-vertical-timeline-component";
-import { experiences } from "@/constants";
-import ExperienceCard from "./ExperienceCard";
 import { Container } from "@mui/material";
-import ResumeCardTimelineElement from "./ResumeCardTimelineElement";
+import { useState } from "react";
+import ExperienceExpandCollapse from "./ExperienceExpandCollapse";
+import ExperienceTimeline from "./ExperienceTimeline";
 
+// need some kind of animation to slide down the timeline when see more or see less is clicked
 const Experience = () => {
+  const [isFirstPart, setIsFirstPart] = useState(true);
   return (
-    <Container className="h-100">
-      <VerticalTimeline className="vertical-timeline-custom-line">
-        {experiences.map((experience, index) => (
-          <ExperienceCard key={index} experience={experience} />
-        ))}
-        <ResumeCardTimelineElement />
-      </VerticalTimeline>
+    <Container className="bg-primary">
+      {!isFirstPart && (
+        <ExperienceExpandCollapse
+          isFirstPart={isFirstPart}
+          setIsFirstPart={setIsFirstPart}
+        />
+      )}
+      {/* need to center the timeline in the screen */}
+      <ExperienceTimeline isFirstPart={isFirstPart} />
+      {isFirstPart && (
+        <ExperienceExpandCollapse
+          isFirstPart={isFirstPart}
+          setIsFirstPart={setIsFirstPart}
+        />
+      )}
     </Container>
   );
 };

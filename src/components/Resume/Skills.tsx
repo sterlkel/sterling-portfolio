@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Skills = () => {
   return (
-    <div className="h-screen">
+    <div>
       <h1 className="text-white">Skills and Interests</h1>
       <div>
         <h3 className="text-white">Computer Languages</h3>
