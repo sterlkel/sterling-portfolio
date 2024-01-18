@@ -1,4 +1,4 @@
-import Container from "../ui/Container";
+import { Container } from "@/components/ui";
 import EducationTimeline from "./EducationTimeline";
 
 const Education = () => {

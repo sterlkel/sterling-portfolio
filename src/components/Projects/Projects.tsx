@@ -1,3 +1,4 @@
+"use client";
 import { Container, Grid, Stack } from "@mui/material";
 import ProjectCard from "./ProjectCard";
 

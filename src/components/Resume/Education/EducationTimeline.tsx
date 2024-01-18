@@ -2,24 +2,8 @@
 
 import { educationData } from "@/constants";
 import { EducationType } from "@/types";
-import { Card, CardHeader } from "@mui/material";
-import BaseTimelineItem from "../ui/BaseTimelineItem";
-import { BaseTimeline } from "../ui";
-
-type EducationCardProps = Pick<EducationType, "degree" | "school">;
-// enlarge on hover
-// link to each school website on click
-const EducationCard = ({ degree, school }: EducationCardProps) => {
-  return (
-    <Card>
-      <CardHeader
-        title={school}
-        subheader={degree}
-        className="font-mulish text-start"
-      />
-    </Card>
-  );
-};
+import EducationCard from "./EducationCard";
+import { BaseTimeline, BaseTimelineItem } from "@/components/ui";
 
 type EducationTimelineItemProps = {
   education: EducationType;

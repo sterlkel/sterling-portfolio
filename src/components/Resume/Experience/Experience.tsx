@@ -5,6 +5,7 @@ import { useState } from "react";
 import ExperienceExpandCollapse from "./ExperienceExpandCollapse";
 import ExperienceTimeline from "./ExperienceTimeline";
 
+// need some kind of animation to slide down the timeline when see more or see less is clicked
 const Experience = () => {
   const [isFirstPart, setIsFirstPart] = useState(true);
   return (

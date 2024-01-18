@@ -28,8 +28,12 @@ const ExperienceCard = ({ title, company, details }: ExperienceCardProps) => {
   });
   return (
     <div ref={wrapperRef}>
-      <Card className="bg-gray-300">
-        <CardHeader title={title} subheader={company} className="text-start" />
+      <Card className="bg-secondary">
+        <CardHeader
+          title={title}
+          subheader={company}
+          className="text-start text-primary resumeCard"
+        />
         <CardActions className="justify-content-end">
           <IconButton onClick={() => setIsExpanded(!isExpanded)}>
             {isExpanded ? <ExpandLess /> : <ExpandMore />}

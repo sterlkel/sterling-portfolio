@@ -7,7 +7,7 @@ import LinkedIn from "@mui/icons-material/LinkedIn";
 
 const AboutIconCards = () => {
   return ["github", "linkedIn"].map((icon, index) => (
-    <Card key={index}>
+    <Card key={index} className="hover:scale-110">
       <CardContent>
         <IconButton
           href={icon === "github" ? githubUrl : linkedInUrl}
