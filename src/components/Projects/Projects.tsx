@@ -4,11 +4,8 @@ import ProjectCard from "./ProjectCard";
 import { projectData } from "@/constants";
 
 const Projects = () => {
-  const renderProjectCards = () => {
-    return projectData.map((data) => {
-      return <ProjectCard data={data} key={data.title} />;
-    });
-  };
+  const renderProjectCards = () =>
+    projectData.map((data) => <ProjectCard data={data} key={data.title} />);
   return (
     <Grid
       container
