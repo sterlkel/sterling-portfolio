@@ -1,3 +1,4 @@
+"use client";
 import { Button, Container, Stack } from "@mui/material";
 import {
   Controller,
