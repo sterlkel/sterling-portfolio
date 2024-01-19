@@ -20,3 +20,10 @@ export type ContactFormData = {
 
 export type ContactFieldTypes = "message" | "email" | "name";
 export type ResumeRouteTypes = "exp" | "edu" | "skills";
+
+export type ProjectDataType = {
+  image: string;
+  title: string;
+  body: string;
+  url: string;
+};

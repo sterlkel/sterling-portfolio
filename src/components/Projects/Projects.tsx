@@ -1,8 +1,14 @@
 "use client";
 import { Container, Grid, Stack } from "@mui/material";
 import ProjectCard from "./ProjectCard";
+import { projectData } from "@/constants";
 
 const Projects = () => {
+  const renderProjectCards = () => {
+    return projectData.map((data) => {
+      return <ProjectCard data={data} key={data.title} />;
+    });
+  };
   return (
     <Grid
       container
@@ -20,14 +26,7 @@ const Projects = () => {
           <h1 className="text-white text-center">My Projects</h1>
         </Stack>
         <Stack direction={"row"} justifyContent="space-around" className="mt-4">
-          <ProjectCard
-            isSwing
-            linkUrl="https://www.amazon.com/Jato-Lee-Chronicles-Book-One/dp/1602648085"
-          />
-          <ProjectCard
-            isSwing={false}
-            linkUrl="https://www.instagram.com/swingcampaign/"
-          />
+          {renderProjectCards()}
         </Stack>
       </Container>
     </Grid>

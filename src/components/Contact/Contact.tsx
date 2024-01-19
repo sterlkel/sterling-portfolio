@@ -15,7 +15,7 @@ const Contact = () => {
       <Container className="mt-2 justify-content-center d-flex flex-column">
         <Card className="bg-secondary px-5 py-3">
           <CardHeader
-            className="px-4 text-white"
+            className="px-4 text-primary"
             title="Get In Touch"
             subheader="Contact me!"
           />

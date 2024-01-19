@@ -23,3 +23,23 @@ p {
     color: $primary;
   }
 }
+
+#contact {
+  .MuiCardHeader-subheader {
+    color: $primary;
+  }
+}
+
+.contactField {
+  label {
+    color: white;
+  }
+  input,
+  textArea {
+    color: white;
+  }
+}
+
+.messageInput {
+  color: white;
+}
