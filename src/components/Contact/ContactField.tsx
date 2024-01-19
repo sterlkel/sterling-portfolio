@@ -26,7 +26,7 @@ const ContactField = ({ type, onChange, error }: ContactFieldProps) => {
       id={`${type}-input`}
       label={label}
       placeholder={placeholder}
-      className="my-3"
+      className="my-3 contactField text-white"
       error={!!error}
       helperText={error ? getHelperText() : undefined}
       onChange={onChange}

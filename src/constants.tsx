@@ -1,4 +1,4 @@
-import { EducationType, ExperienceType } from "./types";
+import { EducationType, ExperienceType, ProjectDataType } from "./types";
 
 export const githubUrl = "https://github.com/sterlkel";
 
@@ -6,6 +6,8 @@ export const linkedInUrl =
   "https://www.linkedin.com/in/sterling-kelly-2970241b0/";
 
 export const swingImgPath = "/swingIcon1.png";
+
+export const unknownImgPath = "/unknown.png";
 
 export const newerExperiences: ExperienceType[] = [
   {
@@ -105,3 +107,19 @@ for entrepreneurship. He has extensive experience with a variety of
 popular coding frameworks and languages, such as React, Django, and
 C#. After his time leading Swing Campaign, he is focused on improving
 both his technical and soft skills as he eyes his future ventures.`;
+
+const swingData: ProjectDataType = {
+  image: swingImgPath,
+  title: "Swing Campaign",
+  body: "A platform that was designed to raise political awareness",
+  url: "https://www.instagram.com/swingcampaign/",
+};
+
+const unknownData: ProjectDataType = {
+  image: unknownImgPath,
+  title: "The Unknown",
+  body: `Sterling's only published fantasy novel! Check it out on Amazon!`,
+  url: "https://www.amazon.com/Jato-Lee-Chronicles-Book-One/dp/1602648085",
+};
+
+export const projectData = [swingData, unknownData];
