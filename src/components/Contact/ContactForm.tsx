@@ -10,6 +10,7 @@ import {
 } from "react-hook-form";
 import ContactField from "./ContactField";
 import { ContactFieldTypes } from "@/types";
+import { createCookie } from "@/app/actions";
 
 const ContactForm = () => {
   const {
@@ -64,7 +65,9 @@ const ContactForm = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    });
+    })
+      .then(() => createCookie())
+      .catch((err) => console.error(err));
   };
 
   return (
