@@ -1,3 +1,4 @@
+"use client";
 import { Card, CardContent, CardHeader, Container } from "@mui/material";
 import ContactForm from "./ContactForm";
 import { useEffect, useState } from "react";

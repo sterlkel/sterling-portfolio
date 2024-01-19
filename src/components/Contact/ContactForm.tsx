@@ -65,7 +65,9 @@ const ContactForm = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    }).then(() => createCookie());
+    })
+      .then(() => createCookie())
+      .catch((err) => console.error(err));
   };
 
   return (
