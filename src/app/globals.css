@@ -30,7 +30,7 @@ body {
 .hasBgImage {
   background: url("https://uploads-ssl.webflow.com/62e3ee10882dc50bcae8d07a/631a5d4631d4c55a475f3e34_noise-50.png");
 }
-
+/* should review and see if this can be done differently */
 .vertical-timeline.vertical-timeline-custom-line::before {
   background: rgb(9, 9, 9);
   background: linear-gradient(
@@ -38,8 +38,4 @@ body {
     rgba(66, 66, 66, 0.8) 40%,
     rgba(234, 234, 236, 0.45) 100%
   );
-}
-
-.bodyText {
-  font-size: 20px;
 }

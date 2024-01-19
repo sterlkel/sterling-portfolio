@@ -1,44 +1,29 @@
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import Image from "next/image";
-import { experiences } from "@/constants";
-import ExperienceCard from "./ExperienceCard";
-import { Button, Container } from "@mui/material";
+"use client";
 
+import { Container } from "@mui/material";
+import { useState } from "react";
+import ExperienceExpandCollapse from "./ExperienceExpandCollapse";
+import ExperienceTimeline from "./ExperienceTimeline";
+
+// need some kind of animation to slide down the timeline when see more or see less is clicked
 const Experience = () => {
+  const [isFirstPart, setIsFirstPart] = useState(true);
   return (
-    <Container className="h-100">
-      <VerticalTimeline className="vertical-timeline-custom-line">
-        {experiences.map((experience, index) => (
-          <ExperienceCard key={index} experience={experience} />
-        ))}
-        <VerticalTimelineElement
-          contentStyle={{
-            background: "#eaeaec",
-            color: "#292929",
-          }}
-          contentArrowStyle={{
-            borderRight: "7px solid  #232631",
-          }}
-          icon={<Image src="/resume.png" height={50} width={50} alt="resume" />}
-        >
-          <Button
-            onClick={() =>
-              window.open(
-                "resume link", //paste the link to resume here
-                "_blank"
-              )
-            }
-            variant="contained"
-            className="text-primary"
-          >
-            MY RESUME
-            <Image src="/download.png" alt="download" height={25} width={25} />
-          </Button>
-        </VerticalTimelineElement>
-      </VerticalTimeline>
+    <Container className="bg-primary">
+      {!isFirstPart && (
+        <ExperienceExpandCollapse
+          isFirstPart={isFirstPart}
+          setIsFirstPart={setIsFirstPart}
+        />
+      )}
+      {/* need to center the timeline in the screen */}
+      <ExperienceTimeline isFirstPart={isFirstPart} />
+      {isFirstPart && (
+        <ExperienceExpandCollapse
+          isFirstPart={isFirstPart}
+          setIsFirstPart={setIsFirstPart}
+        />
+      )}
     </Container>
   );
 };

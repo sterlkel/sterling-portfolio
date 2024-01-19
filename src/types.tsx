@@ -19,3 +19,4 @@ export type ContactFormData = {
 };
 
 export type ContactFieldTypes = "message" | "email" | "name";
+export type ResumeRouteTypes = "exp" | "edu" | "skills";

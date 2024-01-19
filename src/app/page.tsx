@@ -1,19 +1,17 @@
 "use client";
-import { About, Contact, Projects, Resume } from "@/components";
-import Banner from "@/components/Banner";
-import CustomNavBar from "@/components/ui/CustomNavBar";
 
+// TODO: Change the usage of the mui theme, should look into doing indivudal customizations, or customizations based on
+// my own components, because the use of the theme restricts all components to be client components
+import { Banner, Contact } from "@/components";
+import { muiTheme } from "@/themes";
+import { ThemeProvider } from "@mui/material";
 export default function Home() {
   return (
-    <div className="bg-blue-800 bg-gradient">
-      <div>
-        <CustomNavBar />
+    <>
+      <ThemeProvider theme={muiTheme}>
         <Banner />
-        <About />
-        <Resume />
-        <Projects />
         <Contact />
-      </div>
-    </div>
+      </ThemeProvider>
+    </>
   );
 }
