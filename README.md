@@ -6,6 +6,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 This project was deployed using Vercel, and uses both Tailwind and bootstrap for styling.
 
+MaterialUI is also used for many UI components.
+
 Give it a look! Any recommendations are welcomed!
 
 ## Getting Started
