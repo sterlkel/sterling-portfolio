@@ -45,7 +45,7 @@ const ExperienceCard = ({ title, company, details }: ExperienceCardProps) => {
               {details.map((detail, index) => (
                 <CarouselItem key={index}>
                   <Container className="px-5 pb-4">
-                    <p className="ml-3 text-start">{detail}</p>
+                    <p className="ml-3 text-start text-white">{detail}</p>
                   </Container>
                 </CarouselItem>
               ))}
