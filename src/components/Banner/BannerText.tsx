@@ -17,7 +17,7 @@ const BannerText = () => {
   return (
     <div className="d-flex justify-content-center flex-column mb-4 font-mont pr-5 mr-5">
       <h1 className="text-white">
-        I'm <span className="text-primary font-bold">Sterling Kelly,</span>
+        I'm <span className="text-primary font-bold">Sterling Kelly</span>,
       </h1>
       <h2 className="text-4xl font-bold text-white">
         a{text.charAt(0) === "E" ? "n" : ""} <span>{text}</span>
