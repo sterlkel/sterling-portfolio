@@ -14,7 +14,7 @@ const AboutIconCards = () => {
           target="_blank"
           rel="noopener noreferrer"
           color="primary"
-          size="large"
+          size="small"
         >
           {icon === "github" ? (
             <GitHub fontSize="large" />
@@ -37,12 +37,10 @@ const AboutCard = () => {
               <h1 className="mb-3 text-white">About</h1>
               <p className="text-white lead">{aboutText}</p>
             </Stack>
-            <Container>
               <h3 className="mb-4 text-white">Find me on:</h3>
               <Stack direction={"row"} spacing={2} justifyContent="center">
                 <AboutIconCards />
               </Stack>
-            </Container>
           </Stack>
         </Container>
       </CardContent>
