@@ -1,6 +1,6 @@
 import BaseTimelineItem from "./BaseTimelineItem";
-import CustomNavBar from "./CustomNavBar";
+import MainNavBar from "./MainNavBar";
 import Container from "./Container";
 import BaseTimeline from "./BaseTimeline";
 
-export { BaseTimelineItem, CustomNavBar, Container, BaseTimeline };
+export { BaseTimelineItem, MainNavBar, Container, BaseTimeline };

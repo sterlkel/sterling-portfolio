@@ -8,8 +8,7 @@ import _ from "lodash";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-// rename this file
-const CustomNavBar = () => {
+const MainNavBar = () => {
   const tabs = ["resume", "projects", "contact"];
   const pathname = usePathname();
   const renderLinks = tabs.map((tab) => {
@@ -35,7 +34,7 @@ const CustomNavBar = () => {
     );
   });
   return (
-    <Navbar fixed="top" className={`bg-primary bg-gradient`}>
+    <Navbar id="mainNavBar" fixed="top" className={`bg-primary bg-gradient ${pathname == "/" ? 'shouldFade' : ''}`}>
       <Container className="d-flex">
         <Navbar.Brand href="/">
           <Image
@@ -55,4 +54,4 @@ const CustomNavBar = () => {
   );
 };
 
-export default CustomNavBar;
+export default MainNavBar;

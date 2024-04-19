@@ -32,13 +32,8 @@ const ExperienceCard = ({ title, company, details }: ExperienceCardProps) => {
         <CardHeader
           title={title}
           subheader={company}
-          className="text-start text-primary resumeCard"
+          className="text-start text-white resumeCard"
         />
-        <CardActions className="justify-content-end">
-          <IconButton onClick={() => setIsExpanded(!isExpanded)}>
-            {isExpanded ? <ExpandLess /> : <ExpandMore />}
-          </IconButton>
-        </CardActions>
         <Collapse in={isExpanded} timeout={"auto"} unmountOnExit>
           <CardContent>
             <Carousel interval={5000}>
@@ -52,6 +47,11 @@ const ExperienceCard = ({ title, company, details }: ExperienceCardProps) => {
             </Carousel>
           </CardContent>
         </Collapse>
+        <CardActions className="justify-content-end">
+          <IconButton onClick={() => setIsExpanded(!isExpanded)}>
+            {isExpanded ? <ExpandLess /> : <ExpandMore />}
+          </IconButton>
+        </CardActions>
       </Card>
     </div>
   );

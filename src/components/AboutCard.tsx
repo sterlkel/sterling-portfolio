@@ -29,7 +29,7 @@ const AboutIconCards = () => {
 
 const AboutCard = () => {
   return (
-    <Card className="bg-secondary hasBgImage mt-5">
+    <Card className="bg-secondary hasBgImage mt-3 shouldFade">
       <CardContent>
         <Container className="d-flex py-5">
           <Stack className="justify-content-center px-5" spacing={4}>

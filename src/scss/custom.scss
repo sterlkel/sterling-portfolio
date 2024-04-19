@@ -43,3 +43,25 @@ p {
 .messageInput {
   color: white;
 }
+
+.shouldFade, #bannerCard {
+  animation: fade-in 2s;
+
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+
+#resumeToggleButton {
+  color: white
+}
+
+#resumeToggleButton:hover {
+  color: $secondary
+}

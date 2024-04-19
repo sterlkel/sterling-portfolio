@@ -1,4 +1,4 @@
-import CustomNavBar from "@/components/ui/CustomNavBar";
+import MainNavBar from "@/components/ui/MainNavBar";
 // this is what sets the styling for the whole website
 import "../scss/custom.scss";
 import type { Metadata } from "next";
@@ -31,7 +31,7 @@ export default function RootLayout({
       <body>
         <div>
           <div className="bg-primary">
-            <CustomNavBar />
+            <MainNavBar />
             {children}
           </div>
         </div>

@@ -4,7 +4,7 @@ import BannerText from "./BannerText";
 
 const BannerCard = () => {
   return (
-    <Card className="bg-secondary mx-auto my-auto py-4 px-5 w-5/6" raised>
+    <Card id="bannerCard" className="bg-secondary mx-auto my-auto py-4 px-5 w-5/6" raised>
       <CardContent className="">
         <Stack
           direction={"row"}

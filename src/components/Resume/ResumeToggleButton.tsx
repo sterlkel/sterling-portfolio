@@ -29,10 +29,11 @@ const ResumeToggleButton = ({ item }: ResumeToggleButtonProps) => {
   };
   return (
     <ToggleButton
+      id="resumeToggleButton"
       value={item}
       key={item}
       onClick={() => router.push(`${isHomePage ? "resume/" : ""}${item}`)}
-      className="text-white border-white"
+      className="border-white"
     >
       {renderButtonString(item)}
     </ToggleButton>
