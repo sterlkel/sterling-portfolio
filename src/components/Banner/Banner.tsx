@@ -4,7 +4,7 @@ import BannerText from "./BannerText";
 
 const BannerCard = () => {
   return (
-    <Card className="bg-secondary mx-auto my-auto py-4 px-5" raised>
+    <Card className="bg-secondary mx-auto my-auto py-4 px-5 w-5/6" raised>
       <CardContent className="">
         <Stack
           direction={"row"}
@@ -14,8 +14,8 @@ const BannerCard = () => {
           <div className="my-auto ml-5">
             <Image
               src="/Sterling.jpg"
-              width={433}
-              height={323}
+              width={350}
+              height={283}
               alt="desktop"
               className="rounded my-auto ml-5"
             />
