@@ -32,7 +32,7 @@ const ExperienceTimeline = ({ isFirstPart }: ExperienceTimelineProps) => {
     currExperiences.map((experience, index) => (
       <ExperienceTimelineItem experience={experience} key={index} />
     ));
-  return <BaseTimeline>{renderExperiences()}</BaseTimeline>;
+  return <BaseTimeline id="experienceTimeline" className="justify-content-evenly resumeTimeline">{renderExperiences()}</BaseTimeline>;
 };
 
 export default ExperienceTimeline;

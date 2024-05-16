@@ -1,9 +1,11 @@
 import { Timeline } from "@mui/lab";
 type BaseTimelineProps = {
+  id?: string;
+  className?: string;
   children: React.ReactNode;
 };
-const BaseTimeline = ({ children }: BaseTimelineProps) => {
-  return <Timeline position="alternate">{children}</Timeline>;
+const BaseTimeline = ({ id, className, children }: BaseTimelineProps) => {
+  return <Timeline position="alternate" id={id} className={className}>{children}</Timeline>;
 };
 
 export default BaseTimeline;
