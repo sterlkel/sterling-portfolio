@@ -6,7 +6,7 @@ import Image from "next/image";
 const ResumeDownloadButton = () => (
   <Button
     variant="contained"
-    className="text-white font-mulish bg-secondary w-100 hover:scale-105"
+    className="text-white font-mulish bg-secondary w-100 hover:scale-105 mb-3"
     download
     href="/resume.pdf"
   >

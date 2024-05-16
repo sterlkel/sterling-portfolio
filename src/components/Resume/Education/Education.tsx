@@ -4,7 +4,7 @@ import EducationTimeline from "./EducationTimeline";
 // Education Page
 const Education = () => {
   return (
-    <Container className="h-screen">
+    <Container className="h-100">
       <EducationTimeline />
     </Container>
   );

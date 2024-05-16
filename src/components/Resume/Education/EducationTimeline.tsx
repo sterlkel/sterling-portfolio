@@ -21,7 +21,7 @@ const EducationTimelineItem = ({ education }: EducationTimelineItemProps) => {
 
 const EducationTimeline = () => {
   return (
-    <BaseTimeline>
+    <BaseTimeline id="educationTimeline" className="justify-content-evenly resumeTimeline">
       {educationData.map((item, index) => (
         <EducationTimelineItem education={item} key={index} />
       ))}

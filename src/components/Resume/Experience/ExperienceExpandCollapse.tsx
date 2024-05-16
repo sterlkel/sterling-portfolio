@@ -10,13 +10,11 @@ const ExperienceExpandCollapse = ({
   isFirstPart: boolean;
   setIsFirstPart: (value: boolean) => void;
 }) => {
-  const marginVerticalValue = 2;
   return (
     <Stack
       direction={"row"}
       spacing={2}
       justifyContent="center"
-      className={`m${isFirstPart ? "t" : "b"}-${marginVerticalValue}`}
     >
       <Button
         onClick={() => {
@@ -25,7 +23,7 @@ const ExperienceExpandCollapse = ({
         variant="contained"
         className="text-white font-mulish bg-secondary"
       >
-        <h5 className="mr-3">{`See ${isFirstPart ? "More" : "Less"}`}</h5>
+        <h5 className="mr-3">{`See ${isFirstPart ? "Older" : "Newer"}`}</h5>
         <ExpandCircleDown
           fontSize="large"
           className={`${isFirstPart ? "" : "rotate-180"}`}

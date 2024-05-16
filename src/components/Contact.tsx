@@ -27,7 +27,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="h-screen d-flex bg-primary hasBgImage" id="contact">
+    <div className="h-screen d-flex bg-primary hasBgImage blurCorners" id="contact">
       <Container className="mt-2 justify-content-center d-flex flex-column">
         <Card className="bg-secondary">
           <CardHeader
