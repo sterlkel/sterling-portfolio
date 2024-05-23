@@ -1,4 +1,5 @@
 import MainNavBar from "@/components/ui/MainNavBar";
+import {GoogleAnalytics} from "@next/third-parties/google"
 // this is what sets the styling for the whole website
 import "../scss/custom.scss";
 import type { Metadata } from "next";
@@ -36,6 +37,7 @@ export default function RootLayout({
           </div>
         </div>
       </body>
+      <GoogleAnalytics gaId="G-LEQ53DHTQB"/>
     </html>
   );
 }
