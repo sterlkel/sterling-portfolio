@@ -16,7 +16,7 @@ const ProjectCard = ({ data }: ProjectCardProps) => {
       className="d-flex justify-content-center flex-column w-25 hover:scale-105"
       href={url}
     >
-      <Card className="bg-primary d-flex justify-content-center flex-column">
+      <Card className="bg-primary d-flex justify-content-center flex-column shouldFade">
         <CardHeader
           title={title}
           className="text-white font-mont text-center"
