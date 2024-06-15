@@ -62,14 +62,27 @@ export const olderExperiences: ExperienceType[] = [
 
 export const experiences = newerExperiences.concat(olderExperiences);
 
-export const technologies = [
+type TechnologyType = {
+  name: string;
+  icon: string;
+}
+
+export const technologies: TechnologyType[] = [
   {
-    name: "HTML 5",
-    icon: "/html.png",
+    name: "React JS",
+    icon: "/reactjs.png",
   },
   {
-    name: "CSS 3",
-    icon: "/css.png",
+    name: "C#",
+    icon: "/csharp.png"
+  },
+  {
+    name: "Python",
+    icon: "/python.svg"
+  },
+  {
+    name:"Django",
+    icon:"/django_short.png"
   },
   {
     name: "JavaScript",
@@ -80,13 +93,33 @@ export const technologies = [
     icon: "/typescript.png",
   },
   {
-    name: "React JS",
-    icon: "/reactjs.png",
+    name: "HTML",
+    icon: "/html.png",
+  },
+  {
+    name: "CSS",
+    icon: "/css.png",
+  },
+  {
+    name: "SQL Server",
+    icon: "/sqlserver.svg"
   },
   {
     name: "Redux Toolkit",
     icon: "/redux.png",
   },
+  {
+    name: "Bootstrap",
+    icon: "/bootstrap.svg"
+  },
+  // {
+  //   name: "TailwindCSS",
+  //   icon: "/tailwind.png"
+  // },
+  {
+    name: "Java",
+    icon: "/java.svg"
+  }
 ];
 
 export const educationData: EducationType[] = [

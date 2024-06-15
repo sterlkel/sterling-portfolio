@@ -1,8 +1,15 @@
 import { technologies } from "@/constants";
 import { Container } from "@mui/material";
 import Image from "next/image";
-
+/**
+ * Skills and interests page
+ * Shows what Computer skills Sterling has and what other interests he may have
+ * 
+ * @component
+ */
 const Skills = () => {
+  // hides the technologies that aren't displayed well currently
+  const activeTechnologies = technologies.filter((tech) => !["SQL Server"].includes(tech.name))
   return (
     <>
       <h1 className="text-white">Skills and Interests</h1>
@@ -10,7 +17,7 @@ const Skills = () => {
         <div>
           <h3 className="text-white">Computer Languages</h3>
           <div className="d-flex flex-row bg-secondary justify-content-between px-4 rounded">
-            {technologies.map((tech, index) => (
+            {activeTechnologies.map((tech, index) => (
               <div key={index} className="mx-2 mt-2 mb-4 font-mulish text-white">
                 {tech.name}
                 <Image
