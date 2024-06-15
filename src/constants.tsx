@@ -77,20 +77,20 @@ export const technologies: TechnologyType[] = [
     icon: "/csharp.png"
   },
   {
-    name: "Python",
-    icon: "/python.svg"
-  },
-  {
-    name:"Django",
-    icon:"/django_short.png"
-  },
-  {
     name: "JavaScript",
     icon: "/javascript.png",
   },
   {
     name: "TypeScript",
     icon: "/typescript.png",
+  },
+  {
+    name: "Python",
+    icon: "/python.svg"
+  },
+  {
+    name:"Django",
+    icon:"/django_short.png"
   },
   {
     name: "HTML",
