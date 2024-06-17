@@ -32,9 +32,11 @@ p {
 
 .contactField {
   label {
+    color: $primary;
+  }
+  input {
     color: white;
   }
-  input,
   textArea {
     color: white;
   }

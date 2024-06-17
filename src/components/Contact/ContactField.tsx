@@ -12,6 +12,7 @@ type ContactFieldProps = {
 const ContactField = ({ type, onChange, error }: ContactFieldProps) => {
   const capitalized = type.charAt(0).toUpperCase() + type.slice(1);
   const label = `Your ${capitalized}`;
+  const id = `${type}-input`
   const placeholder = `What's your ${type}?`;
   const getHelperText = () => {
     if (error!.type == "required") {
@@ -23,10 +24,10 @@ const ContactField = ({ type, onChange, error }: ContactFieldProps) => {
   };
   return (
     <TextField
-      id={`${type}-input`}
+      id={id}
       label={label}
       placeholder={placeholder}
-      className="my-3 contactField text-white"
+      className="my-3 contactField"
       error={!!error}
       helperText={error ? getHelperText() : undefined}
       onChange={onChange}
