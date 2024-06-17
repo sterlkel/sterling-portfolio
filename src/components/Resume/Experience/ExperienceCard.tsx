@@ -10,10 +10,10 @@ import {
   CardActions,
   Container,
 } from "@mui/material";
-import { ExpandMore, ExpandLess } from "@mui/icons-material";
 import { useRef, useState } from "react";
 import { Carousel, CarouselItem } from "react-bootstrap";
 import useOutsideAlerter from "@/hooks";
+import CollapseButton from "@/components/ui/CollapseButton";
 
 type ExperienceCardProps = Pick<
   ExperienceType,
@@ -48,9 +48,7 @@ const ExperienceCard = ({ title, company, details }: ExperienceCardProps) => {
           </CardContent>
         </Collapse>
         <CardActions className="justify-content-end">
-          <IconButton onClick={() => setIsExpanded(!isExpanded)}>
-            {isExpanded ? <ExpandLess /> : <ExpandMore />}
-          </IconButton>
+          <CollapseButton isExpanded={isExpanded} toggleIsExpanded={() => setIsExpanded(!isExpanded)} />
         </CardActions>
       </Card>
     </div>
