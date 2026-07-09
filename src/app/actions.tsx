@@ -6,11 +6,13 @@ const emailSentDateCookieKey = "emailSentDate";
 
 export async function createCookie() {
   const date = new Date();
-  cookies().set(emailSentDateCookieKey, date.toString());
+  const cookieStore = await cookies();
+  cookieStore.set(emailSentDateCookieKey, date.toString());
 }
 
 export async function getEmailSent() {
-  const emailSentCookie = cookies().get(emailSentDateCookieKey);
+  const cookieStore = await cookies();
+  const emailSentCookie = cookieStore.get(emailSentDateCookieKey);
   if (emailSentCookie) {
     const today = new Date();
     const emailSentDate = new Date(emailSentCookie.value);

@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind removed during styling cleanup */
 
 :root {
   --foreground-rgb: 0, 0, 0;
