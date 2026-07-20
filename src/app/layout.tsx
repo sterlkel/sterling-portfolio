@@ -1,15 +1,12 @@
 import MainNavBar from "@/components/ui/MainNavBar";
-import {GoogleAnalytics} from "@next/third-parties/google"
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from "@mantine/core";
+import type { Metadata } from "next";
+import { Mulish } from "next/font/google";
+import { mantineTheme, montserrat } from "@/theme";
+import "@mantine/core/styles.css";
 // this is what sets the styling for the whole website
 import "../scss/custom.scss";
-import type { Metadata } from "next";
-import { Montserrat, Mulish } from "next/font/google";
-
-const mont = Montserrat({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-mont",
-});
 
 const mulish = Mulish({
   subsets: ["latin"],
@@ -28,16 +25,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${mont.variable} ${mulish.variable}`}>
+    <html
+      lang="en"
+      {...mantineHtmlProps}
+      className={`${montserrat.variable} ${mulish.variable}`}
+    >
+      <head>
+        <ColorSchemeScript defaultColorScheme="auto" />
+      </head>
       <body>
-        <div>
-          <div className="bg-primary">
-            <MainNavBar />
-            {children}
+        <MantineProvider theme={mantineTheme} defaultColorScheme="auto">
+          <div>
+            <div className="bg-primary">
+              <MainNavBar />
+              {children}
+            </div>
           </div>
-        </div>
+        </MantineProvider>
+        <GoogleAnalytics gaId="G-LEQ53DHTQB" />
       </body>
-      <GoogleAnalytics gaId="G-LEQ53DHTQB"/>
     </html>
   );
 }
