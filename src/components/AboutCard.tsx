@@ -2,8 +2,7 @@
 
 import { aboutText, githubUrl, linkedInUrl } from "@/constants";
 import { Card, CardContent, Container, IconButton, Stack } from "@mui/material";
-import { GitHub } from "@mui/icons-material";
-import LinkedIn from "@mui/icons-material/LinkedIn";
+import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
 
 const AboutIconCards = () => {
   return ["github", "linkedIn"].map((icon, index) => (
@@ -17,9 +16,9 @@ const AboutIconCards = () => {
           size="small"
         >
           {icon === "github" ? (
-            <GitHub fontSize="large" />
+            <IconBrandGithub size={35} />
           ) : (
-            <LinkedIn fontSize="large" />
+            <IconBrandLinkedin size={35} />
           )}
         </IconButton>
       </CardContent>
