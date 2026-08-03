@@ -1,5 +1,5 @@
 import { ProjectDataType } from "@/types";
-import { Launch } from "@mui/icons-material";
+import { IconExternalLink } from "@tabler/icons-react";
 import { Card, CardContent, CardHeader, CardMedia } from "@mui/material";
 import Link from "next/link";
 import { Tilt } from "react-tilt";
@@ -43,7 +43,7 @@ const ProjectCard = ({ data }: ProjectCardProps) => {
           <CardContent>
             <p className="text-white">
               {body}
-              <Launch className="ml-1" />
+              <IconExternalLink className="ml-1 inline" size={18} />
             </p>
           </CardContent>
         </Card>
