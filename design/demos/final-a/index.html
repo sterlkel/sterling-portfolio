@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" data-demo="final-a" data-default-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sterling Kelly · Final A · Portrait</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Fraunces:opsz,wght@9..144,400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="../shared/final.css">
+<link rel="stylesheet" href="style.css">
+<script src="../shared/theme.js"></script>
+</head>
+<body class="bouncy">
+<header id="nav"></header>
+
+<section class="hero fade" id="top">
+  <canvas class="flow" id="flow"></canvas>
+  <div class="inner">
+    <div class="copy">
+      <div class="wave-hand" id="wave">👋</div>
+      <h1 class="rise" id="name">Hi, I'm Sterling.</h1>
+      <p class="sub">I'm a software engineer who builds <span class="hl">small, useful tools</span> and writes about them. One-time founder, published novelist.</p>
+      <div class="cta"><a class="btn" href="blog.html">Read the blog</a><a class="btn ghost" href="work.html">See my work</a></div>
+    </div>
+    <a class="face" id="face" href="about.html"><img id="photo" alt="Sterling Kelly"></a>
+  </div>
+  <div class="hint">click anywhere · hold still for a moment</div>
+</section>
+
+<main class="wrap">
+  <section class="two">
+    <div>
+      <div class="col-head"><h2>Latest writing</h2><a href="blog.html">all posts →</a></div>
+      <div id="latest"></div>
+    </div>
+    <div>
+      <div class="col-head"><h2>Selected work</h2><a href="work.html">all work →</a></div>
+      <div id="sel"></div>
+    </div>
+  </section>
+  <div class="home-else" id="els"></div>
+</main>
+
+<footer id="foot"></footer>
+
+<script src="../shared/data.js"></script>
+<script src="../shared/flow.js"></script>
+<script src="../shared/components.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+UI.nav($('nav'), { links: [['Writing', 'blog.html'], ['Work', 'work.html'], ['Index', 'everything.html'], ['About', 'about.html'], ['Resume', 'resume.html'], ['Contact', 'contact.html']] });
+UI.splitWords($('name'));
+$('photo').src = SK.person.photo;
+new FlowField($('flow'), { signature: true, sigX: .5, sigY: .86, sigSize: .32, shockwave: true, clickTarget: $('top') });
+UI.tilt($('face'), { max: 12 });
+$('wave').onclick = e => { e.target.style.animation = 'none'; void e.target.offsetWidth; e.target.style.animation = 'wave .9s ease-in-out 2'; };
+UI.writing($('latest'), { limit: 3, excerpts: true });
+UI.workRows($('sel'), { limit: 3 });
+UI.elsewhereLine($('els'), [['index', 'everything.html'], ['about', 'about.html'], ['résumé', 'resume.html'], ['contact', 'contact.html'], ['card', 'card.html']]);
+UI.modeToggle();
+UI.footer($('foot'));
+UI.reveal();
+</script>
+</body>
+</html>

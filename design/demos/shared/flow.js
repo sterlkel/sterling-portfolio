@@ -13,7 +13,7 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   window.FlowField = function (canvas, o = {}) {
-    const opt = Object.assign({ density: 1100, shockwave: true, signature: false, initials: 'SK', links: false, interactive: true, clickTarget: null, sigX: .7 }, o);
+    const opt = Object.assign({ density: 1100, shockwave: true, signature: false, initials: 'SK', links: false, interactive: true, clickTarget: null, sigX: .7, sigY: .52, sigSize: 1 }, o);
     const x = canvas.getContext('2d'), dpr = Math.min(devicePixelRatio || 1, 2);
     let W = 0, H = 0, pts = [], ripples = [], mask = null, col = {}, sig = 0, visible = true;
     const mouse = { x: -9999, y: -9999 }; let lastMove = performance.now();
@@ -28,9 +28,9 @@
     function spawn(p) { p.x = Math.random() * W; p.y = Math.random() * H; p.life = 80 + Math.random() * 220; p.kick = 0; return p; }
     function buildMask() {
       const m = document.createElement('canvas'); m.width = W; m.height = H; const mx = m.getContext('2d');
-      const size = Math.min(W * .4, H * .62);
+      const size = Math.min(W * .4, H * .62) * opt.sigSize;
       mx.font = `800 ${size}px Inter, system-ui, sans-serif`; mx.textAlign = 'center'; mx.textBaseline = 'middle';
-      mx.fillText(opt.initials, W * opt.sigX, H * .52);
+      mx.fillText(opt.initials, W * opt.sigX, H * opt.sigY);
       mask = mx.getImageData(0, 0, W, H).data;
     }
     const inMask = (px, py) => mask && px >= 0 && py >= 0 && px < W && py < H && mask[((py | 0) * W + (px | 0)) * 4 + 3] > 128;

@@ -30,18 +30,24 @@
   .notes h3 { color:var(--fg); }
   .round { padding:0 max(20px,5vw); font:400 13px var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:20px 0 0; }
   .demos.r2 .demo { border-color:color-mix(in srgb, var(--accent) 40%, var(--line)); }
+  .demos.final .demo { border-width:2px; border-color:var(--accent); }
   @media (max-width:760px){ .demo{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
 <button class="theme-btn tb" data-theme-toggle aria-label="Toggle theme"></button>
-<section class="g-hero"><canvas id="flow"></canvas><div><span class="eyebrow">sterling-portfolio · redesign</span><h1>Ten directions.</h1><p>Round 2 (top) is built around Notebook + Plain Text: multi-page, short homepages, the résumé shown as the actual PDF. Round 1 is kept below for reference. Every demo has Abyss (dark) and Ink (light) themes; its toggle is remembered per demo.</p></div></section>
+<section class="g-hero"><canvas id="flow"></canvas><div><span class="eyebrow">sterling-portfolio · redesign</span><h1>The final mock.</h1><p>Two options built on Margin, with Hello's interactivity, a bigger face up front, a coming-soon writing view and an Index page. Rounds 1 and 2 are kept below for reference. Every demo has Abyss (dark) and Ink (light) themes; its toggle is remembered per demo.</p></div></section>
 
+<h2 class="round">Final mock</h2>
+<section class="demos r2 final" id="demosF"></section>
+<h2 class="round">Round 2</h2>
 <section class="demos r2" id="demos2"></section>
 <h2 class="round">Round 1</h2>
 <section class="demos" id="demos"></section>
 
 <section class="notes">
+  <h3>Coming-soon writing</h3>
+  <p>On the final mocks, a pill in the bottom-left corner switches the writing sections between <b>coming soon</b> (drafts on the desk) and <b>full blog</b>, so you can see both states.</p>
   <h3>Placeholders</h3>
   <p>Dashed outlines mark things to fill in: current role, title and start date; Bonterra end date; Cobu dates; <i>The Unknown</i>'s publication year; location. The email (<code>hello@sterlingkelly.dev</code>) and booking link (<code>cal.com/sterlingkelly</code>) are stand-ins. Blog posts are invented examples from real projects.</p>
   <h3>Shared everywhere</h3>
@@ -85,6 +91,16 @@ document.getElementById('demos2').innerHTML = demos2.map((d, i) => `
   <article class="demo"><span class="n">${String(i + 6).padStart(2, '0')}</span>
     <div><span class="focus">${d.focus}</span><h2>${d.name}</h2><p>${d.d}</p><ul>${d.tags.map(t => `<li>${t}</li>`).join('')}</ul></div>
     <div class="pages">${pagesR2.map(([l, h], j) => `<a class="${j ? '' : 'main'}" href="${d.id}/${h}">${j ? '' : '→ '}${l}</a>`).join('')}</div></article>`).join('');
+
+const pagesF = [['Homepage', 'index.html'], ['Writing', 'blog.html'], ['Index', 'everything.html'], ['Post', 'post.html'], ['Work', 'work.html'], ['About', 'about.html'], ['Résumé (PDF)', 'resume.html'], ['Contact', 'contact.html'], ['Card', 'card.html']];
+const demosF = [
+  { id: 'final-a', name: 'Portrait', focus: 'Final A · Hello energy, your face up front', d: "Hello's full-screen interactive flow field (shockwave, a small SK signature that inks in when you hold still, waving hand, rising headline, bouncy buttons) with a large tilting portrait beside the headline. Below: Margin's latest writing | selected work, then the one-line Elsewhere. Dark by default.", tags: ['full flow hero', 'big tilt portrait', 'writing | work', 'coming-soon writing', 'Index page', 'one-line elsewhere', 'keycaps', 'PDF résumé'] },
+  { id: 'final-b', name: 'Margin+', focus: 'Final B · Margin, turned up', d: "Margin's calm page, but the portrait is big and playful (tilts, springs when clicked, offset ink shadow), the headline rises in with a highlighter sweep, and a taller interactive ink strip carries the shockwave and SK signature. Same writing | work and one-line Elsewhere. Light by default.", tags: ['big tilt portrait', 'interactive ink strip', 'writing | work', 'coming-soon writing', 'Index page', 'one-line elsewhere', 'keycaps', 'PDF résumé'] },
+];
+document.getElementById('demosF').innerHTML = demosF.map((d, i) => `
+  <article class="demo"><span class="n">${'AB'[i]}</span>
+    <div><span class="focus">${d.focus}</span><h2>${d.name}</h2><p>${d.d}</p><ul>${d.tags.map(t => `<li>${t}</li>`).join('')}</ul></div>
+    <div class="pages">${pagesF.map(([l, h], j) => `<a class="${j ? '' : 'main'}" href="${d.id}/${h}">${j ? '' : '→ '}${l}</a>`).join('')}</div></article>`).join('');
 </script>
 </body>
 </html>

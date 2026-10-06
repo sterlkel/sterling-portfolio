@@ -398,5 +398,60 @@
     new FlowField($('.sb-flow', el), { density: 700, shockwave: true, clickTarget: el });
   };
 
+  // =================== Final mock ===================
+
+  // Writing can be shown as "coming soon" while the first posts are drafted.
+  // Demo-only switch: ?writing=soon|full, remembered in localStorage.
+  UI.writingMode = () => {
+    const q = param('writing');
+    if (q) { try { localStorage.setItem('sk-writing', q); } catch (e) {} return q; }
+    try { return localStorage.getItem('sk-writing') || 'soon'; } catch (e) { return 'soon'; }
+  };
+  const drafts = [
+    [posts[0].t, 'editing', 82], [posts[1].t, 'drafting', 55], [posts[2].t, 'outlining', 20],
+  ];
+  UI.writingSoon = (el, { big = false } = {}) => {
+    el.className = 'wsoon' + (big ? ' big' : '');
+    el.innerHTML = `<p class="ws-lede">First posts are on the way<span class="ws-cursor"></span></p>
+      <p class="ws-sub">I'm writing the first few now. Here's what's on the desk:</p>
+      <div class="ws-list">${drafts.map(([t, s, pct]) => `<div class="ws-item rv"><b>${t}</b><span class="ws-meta"><span class="ws-status ws-${s}">${s}</span><span class="ws-bar"><i style="--p:${pct}%"></i></span></span></div>`).join('')}</div>
+      <p class="ws-sub">Meanwhile, <a href="work.html">see what I've built →</a></p>`;
+  };
+  // Renders full list or coming-soon depending on the mode.
+  UI.writing = (el, opts = {}) => UI.writingMode() === 'soon' ? UI.writingSoon(el, opts) : (opts.plain ? UI.plainList(el, opts) : UI.writingList(el, opts));
+  UI.modeToggle = () => {
+    const m = UI.writingMode(), b = document.createElement('button');
+    b.className = 'mode-toggle';
+    b.innerHTML = `<span>demo · writing:</span><b class="${m === 'soon' ? 'on' : ''}">coming soon</b><b class="${m === 'full' ? 'on' : ''}">full blog</b>`;
+    b.onclick = () => { try { localStorage.setItem('sk-writing', m === 'soon' ? 'full' : 'soon'); } catch (e) {} location.href = location.pathname; };
+    document.body.append(b);
+  };
+
+  // 3D tilt + glare that follows the cursor, springs back on leave.
+  UI.tilt = (el, { max = 10 } = {}) => {
+    el.classList.add('tilt'); el.insertAdjacentHTML('beforeend', '<span class="glare"></span>');
+    let rx = 0, ry = 0, tx = 0, ty = 0, vx = 0, vy = 0;
+    el.addEventListener('mousemove', e => { const r = el.getBoundingClientRect(), px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+      tx = -py * max; ty = px * max; el.style.setProperty('--gx', (px + .5) * 100 + '%'); el.style.setProperty('--gy', (py + .5) * 100 + '%'); el.classList.add('hov'); });
+    el.addEventListener('mouseleave', () => { tx = ty = 0; el.classList.remove('hov'); });
+    el.addEventListener('click', () => { vx += 14; vy -= 10; });
+    (function spring() { vx = (vx + (tx - rx) * .12) * .8; vy = (vy + (ty - ry) * .12) * .8; rx += vx; ry += vy;
+      el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`; requestAnimationFrame(spring); })();
+  };
+
+  // Index Card's one-line "Elsewhere".
+  UI.elsewhereLine = (el, links = [['about', 'about.html'], ['résumé', 'resume.html'], ['contact', 'contact.html'], ['card', 'card.html']]) => {
+    el.className = 'else-line';
+    el.innerHTML = `Elsewhere: ${links.map(([l, h]) => `<a href="${h}">${l}</a>`).join(', ')}.`;
+  };
+
+  // Index Card's writing | work lists as a page of their own.
+  UI.everything = el => {
+    el.className = 'everything';
+    el.innerHTML = `<div><div class="ev-h">${UI.chapter('', 'Writing')}</div><div id="ev-w"></div></div>
+      <div><div class="ev-h">${UI.chapter('', 'Work')}</div><div class="plist">${projects.map(p => `<a href="${projHref(p.key)}"><span>${p.title}</span><small>${p.type}</small></a>`).join('')}</div></div>`;
+    UI.writing($('#ev-w', el), { plain: true });
+  };
+
   window.UI = UI;
 })();

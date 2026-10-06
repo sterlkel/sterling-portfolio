@@ -45,3 +45,12 @@ Favorites: **Notebook (4)** and **Plain Text (5)**; the rest felt busy.
 - Work layout must not sprawl; drawn lines didn't cleanly separate the hero from the content.
 
 Round 2 demos (all multi-page, short homepages, PDF résumé, simple contact): **Hello**, **Margin**, **Index Card**, **Paper**, **Sidebar**.
+
+## Round 2 feedback → final mock
+- **Margin** is the base. Keep the face up front, and make it bigger.
+- Bring back Hello's interactivity: flow hero with shockwave and signature, waving hand, rising headline, bouncy buttons.
+- Needs a **coming-soon writing state** while the first posts are drafted.
+- Index Card's writing | work lists as their own **Index** page, plus its one-line Elsewhere.
+- Drop Paper and Sidebar. FundingDesk is *not* the current role (placeholders stay).
+
+Final options: **Final A · Portrait** (full interactive hero with a large tilting portrait, Margin below) and **Final B · Margin+** (Margin with a big playful portrait and a taller interactive ink strip).
