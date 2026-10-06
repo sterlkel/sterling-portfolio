@@ -13,14 +13,15 @@
 </head>
 <body class="bouncy">
 <header id="nav"></header>
-<main class="wrap pg"><p class="eyebrow pg-eyebrow">// contact</p><h1 class="section-title pg-title">Say hello.</h1><div id="el"></div></main>
+<main class="wrap pg"><p class="eyebrow pg-eyebrow">// contact</p><h1 class="section-title pg-title">Email is best.<br>A call works too.</h1><div id="el" style="margin-bottom:24px"></div></main>
 <footer id="foot"></footer>
+<script>window.SK_ROUTES = { writing: 'everything.html#writing', work: 'everything.html#work' };</script>
 <script src="../shared/data.js"></script>
 <script src="../shared/flow.js"></script>
 <script src="../shared/components.js"></script>
 <script>
-UI.nav(document.getElementById('nav'), { links: [["Writing", "blog.html"], ["Work", "work.html"], ["Index", "everything.html"], ["About", "about.html"], ["Resume", "resume.html"], ["Contact", "contact.html"]], current: "Contact" });
-UI.contactSimple(document.getElementById('el'));
+UI.nav(document.getElementById('nav'), { links: [["Index", "everything.html"], ["About", "about.html"], ["Resume", "resume.html"], ["Contact", "contact.html"]], current: "Contact" });
+UI.contactCards(document.getElementById('el'));
 UI.footer(document.getElementById('foot'));
 UI.reveal();
 </script>

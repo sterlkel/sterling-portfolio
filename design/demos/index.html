@@ -94,13 +94,13 @@ document.getElementById('demos2').innerHTML = demos2.map((d, i) => `
 
 const pagesF = [['Homepage', 'index.html'], ['Writing', 'blog.html'], ['Index', 'everything.html'], ['Post', 'post.html'], ['Work', 'work.html'], ['About', 'about.html'], ['Résumé (PDF)', 'resume.html'], ['Contact', 'contact.html'], ['Card', 'card.html']];
 const demosF = [
-  { id: 'final-a', name: 'Portrait', focus: 'Final A · Hello energy, your face up front', d: "Hello's full-screen interactive flow field (shockwave, a small SK signature that inks in when you hold still, waving hand, rising headline, bouncy buttons) with a large tilting portrait beside the headline. Below: Margin's latest writing | selected work, then the one-line Elsewhere. Dark by default.", tags: ['full flow hero', 'big tilt portrait', 'writing | work', 'coming-soon writing', 'Index page', 'one-line elsewhere', 'keycaps', 'PDF résumé'] },
+  { id: 'final-a', name: 'Portrait', pages: [['Homepage', 'index.html'], ['Index (writing & work)', 'everything.html'], ['Post', 'post.html'], ['Case study', 'project.html?p=cli'], ['About', 'about.html'], ['Résumé (PDF)', 'resume.html'], ['Contact', 'contact.html'], ['Card', 'card.html']], focus: 'Final A · chosen direction', d: "Hello's full-screen interactive flow field (shockwave, a small SK signature that inks in when you hold still, waving hand, rising headline, bouncy buttons) with a large tilting portrait beside the headline. Below: Margin's latest writing | selected work, then the one-line Elsewhere. Writing and work live on a single Index page; contact uses Notebook's email + channel cards. Dark by default.", tags: ['full flow hero', 'big tilt portrait', 'writing | work', 'coming-soon writing', 'Index page', 'one-line elsewhere', 'keycaps', 'PDF résumé'] },
   { id: 'final-b', name: 'Margin+', focus: 'Final B · Margin, turned up', d: "Margin's calm page, but the portrait is big and playful (tilts, springs when clicked, offset ink shadow), the headline rises in with a highlighter sweep, and a taller interactive ink strip carries the shockwave and SK signature. Same writing | work and one-line Elsewhere. Light by default.", tags: ['big tilt portrait', 'interactive ink strip', 'writing | work', 'coming-soon writing', 'Index page', 'one-line elsewhere', 'keycaps', 'PDF résumé'] },
 ];
 document.getElementById('demosF').innerHTML = demosF.map((d, i) => `
   <article class="demo"><span class="n">${'AB'[i]}</span>
     <div><span class="focus">${d.focus}</span><h2>${d.name}</h2><p>${d.d}</p><ul>${d.tags.map(t => `<li>${t}</li>`).join('')}</ul></div>
-    <div class="pages">${pagesF.map(([l, h], j) => `<a class="${j ? '' : 'main'}" href="${d.id}/${h}">${j ? '' : '→ '}${l}</a>`).join('')}</div></article>`).join('');
+    <div class="pages">${(d.pages || pagesF).map(([l, h], j) => `<a class="${j ? '' : 'main'}" href="${d.id}/${h}">${j ? '' : '→ '}${l}</a>`).join('')}</div></article>`).join('');
 </script>
 </body>
 </html>

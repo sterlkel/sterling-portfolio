@@ -54,3 +54,9 @@ Round 2 demos (all multi-page, short homepages, PDF résumé, simple contact): *
 - Drop Paper and Sidebar. FundingDesk is *not* the current role (placeholders stay).
 
 Final options: **Final A · Portrait** (full interactive hero with a large tilting portrait, Margin below) and **Final B · Margin+** (Margin with a big playful portrait and a taller interactive ink strip).
+
+## Decision
+**Final A · Portrait** (`design/demos/final-a/`) is the chosen direction.
+- Nav: **Index, About, Resume, Contact**. Separate Writing and Work pages are dropped; the **Index** page (writing | work lists) holds both, and every "all posts / all work" link points there.
+- Contact uses Notebook's version: large copyable email + channel cards with a highlighted booking card.
+- Everything else as in Final A: tilting portrait hero with flow field, coming-soon writing state, literary posts, case-study pages, About with experience list + keycaps, embedded PDF résumé, business card.

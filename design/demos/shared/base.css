@@ -484,3 +484,4 @@ article.post a { color:var(--accent); }
 .bouncy .btn:active { transform:scale(.94); transition-duration:.1s; }
 .wave-hand { font-size:52px; display:inline-block; transform-origin:70% 70%; animation:wave 2.2s ease-in-out 1s infinite; cursor:pointer; }
 @keyframes wave { 0%,60%,100% { transform:rotate(0); } 10%,30% { transform:rotate(14deg); } 20%,40% { transform:rotate(-8deg); } }
+.everything > div { scroll-margin-top:96px; }

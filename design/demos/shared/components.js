@@ -5,6 +5,8 @@
   const fmt = (d, o = { month: 'short', day: 'numeric', year: 'numeric' }) => new Date(d + 'T12:00').toLocaleDateString('en-US', o);
   const param = k => new URLSearchParams(location.search).get(k);
   const postHref = s => `post.html?slug=${s}`, projHref = k => `project.html?p=${k}`;
+  // Pages can remap where "all writing" / "all work" live by setting window.SK_ROUTES before this script.
+  const R = Object.assign({ writing: 'blog.html', work: null }, window.SK_ROUTES || {});
   const io = (el, fn, threshold = .25) => new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { fn(e.target); o.unobserve(e.target); } }), { threshold }).observe(el);
 
   const UI = {};
@@ -93,7 +95,7 @@
     const next = projects[(projects.indexOf(p) + 1) % projects.length];
     document.title = p.title + ' — ' + person.name;
     el.innerHTML = `
-      <div class="cs-hero"><a class="eyebrow" href="${document.querySelector('a[href="work.html"]') ? 'work.html' : 'index.html#work'}">← Work</a><h1>${p.title}</h1><p>${p.pitch}</p></div>
+      <div class="cs-hero"><a class="eyebrow" href="${R.work || (document.querySelector('a[href="work.html"]') ? 'work.html' : 'index.html#work')}">← Work</a><h1>${p.title}</h1><p>${p.pitch}</p></div>
       ${UI.cover(p.key)}
       <div class="cs-meta"><div><b>Role</b>${cs ? cs.role : 'Solo'}</div><div><b>Timeline</b>${cs ? cs.timeline : p.year}</div><div><b>Stack</b>${p.stack.join(', ')}</div><div><b>Type</b>${p.type}</div></div>
       ${cs ? cs.sections.map(([h, b]) => `<div class="cs-body rv"><h2>${h}</h2><p>${b}</p></div>`).join('') + `<div class="cs-stats">${cs.stats.map(([n, l]) => `<div class="rv"><b>${n}</b>${l}</div>`).join('')}</div>`
@@ -186,7 +188,7 @@
     const body = p.body || `<p>${p.x}</p><h2 id="draft">Draft</h2><p>This post is a placeholder in the demo. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>`;
     el.className = 'post-wrap' + (literary ? ' literary' : '');
     el.innerHTML = `${literary ? '' : '<nav class="toc"><b>On this page</b></nav>'}<article class="post"><div class="meta"><span class="tag ${p.c === 'life' ? 'life' : ''}">${p.c}</span><span>${fmt(p.d)}</span><span>·</span><span>${p.m} min read</span></div><h1>${p.t}</h1>${body}
-      <div class="post-end"><a href="blog.html">← All writing</a><span>Thanks for reading.</span></div></article>${literary ? '' : '<aside class="side"></aside>'}`;
+      <div class="post-end"><a href="${R.writing}">← All writing</a><span>Thanks for reading.</span></div></article>${literary ? '' : '<aside class="side"></aside>'}`;
     const art = $('article', el), notes = [];
     $$('.fn', art).forEach((f, i) => { notes.push(f.dataset.note); f.outerHTML = `<sup>${i + 1}</sup>`; });
     if (literary) { $$('sup', art).forEach((s, i) => s.closest('p').insertAdjacentHTML('afterend', `<span class="inline-note"><sup>${i + 1}</sup> ${notes[i]}</span>`)); }
@@ -231,7 +233,7 @@
         <a class="channel book rv" href="${person.booking}"><b>Book 20 minutes</b><span>Pick a time that works. No prep needed.</span><span class="arr">open calendar →</span></a>
         <a class="channel rv" href="${person.linkedin}"><b>LinkedIn</b><span>Professional history and recommendations.</span><span class="arr">connect →</span></a>
         <a class="channel rv" href="${person.github}"><b>GitHub</b><span>Code, dotfiles and side projects.</span><span class="arr">browse →</span></a>
-        <a class="channel rv" href="blog.html"><b>Writing</b><span>Notes on building things.</span><span class="arr">read →</span></a>
+        <a class="channel rv" href="${R.writing}"><b>Writing</b><span>Notes on building things.</span><span class="arr">read →</span></a>
       </div>`;
     const b = $('.contact-big', el);
     b.onclick = () => { navigator.clipboard && navigator.clipboard.writeText(person.email).catch(() => {}); b.classList.add('copied'); $('.copy', b).textContent = 'copied!'; setTimeout(() => { b.classList.remove('copied'); $('.copy', b).textContent = 'copy'; }, 1600); };
@@ -415,7 +417,7 @@
     el.innerHTML = `<p class="ws-lede">First posts are on the way<span class="ws-cursor"></span></p>
       <p class="ws-sub">I'm writing the first few now. Here's what's on the desk:</p>
       <div class="ws-list">${drafts.map(([t, s, pct]) => `<div class="ws-item rv"><b>${t}</b><span class="ws-meta"><span class="ws-status ws-${s}">${s}</span><span class="ws-bar"><i style="--p:${pct}%"></i></span></span></div>`).join('')}</div>
-      <p class="ws-sub">Meanwhile, <a href="work.html">see what I've built →</a></p>`;
+      <p class="ws-sub">Meanwhile, <a href="${R.work || 'work.html'}">see what I've built →</a></p>`;
   };
   // Renders full list or coming-soon depending on the mode.
   UI.writing = (el, opts = {}) => UI.writingMode() === 'soon' ? UI.writingSoon(el, opts) : (opts.plain ? UI.plainList(el, opts) : UI.writingList(el, opts));
@@ -448,9 +450,10 @@
   // Index Card's writing | work lists as a page of their own.
   UI.everything = el => {
     el.className = 'everything';
-    el.innerHTML = `<div><div class="ev-h">${UI.chapter('', 'Writing')}</div><div id="ev-w"></div></div>
-      <div><div class="ev-h">${UI.chapter('', 'Work')}</div><div class="plist">${projects.map(p => `<a href="${projHref(p.key)}"><span>${p.title}</span><small>${p.type}</small></a>`).join('')}</div></div>`;
+    el.innerHTML = `<div id="writing"><div class="ev-h">${UI.chapter('', 'Writing')}</div><div id="ev-w"></div></div>
+      <div id="work"><div class="ev-h">${UI.chapter('', 'Work')}</div><div class="plist">${projects.map(p => `<a href="${projHref(p.key)}"><span>${p.title}</span><small>${p.type}</small></a>`).join('')}</div></div>`;
     UI.writing($('#ev-w', el), { plain: true });
+    if (location.hash) { const t = document.querySelector(location.hash); if (t) setTimeout(() => t.scrollIntoView({ behavior: 'smooth' }), 100); }
   };
 
   window.UI = UI;

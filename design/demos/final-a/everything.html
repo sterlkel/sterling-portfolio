@@ -13,13 +13,14 @@
 </head>
 <body class="bouncy">
 <header id="nav"></header>
-<main class="wrap pg"><p class="eyebrow pg-eyebrow">// index</p><h1 class="section-title pg-title">Everything, on one page.</h1><p class="pg-sub">Every post and every project, nothing else.</p><div id="el"></div><div id="els" style="margin-top:56px"></div></main>
+<main class="wrap pg"><p class="eyebrow pg-eyebrow">// index</p><h1 class="section-title pg-title">Writing &amp; work.</h1><p class="pg-sub">Every post and every project, on one page.</p><div id="el"></div><div id="els" style="margin-top:56px"></div></main>
 <footer id="foot"></footer>
+<script>window.SK_ROUTES = { writing: 'everything.html#writing', work: 'everything.html#work' };</script>
 <script src="../shared/data.js"></script>
 <script src="../shared/flow.js"></script>
 <script src="../shared/components.js"></script>
 <script>
-UI.nav(document.getElementById('nav'), { links: [["Writing", "blog.html"], ["Work", "work.html"], ["Index", "everything.html"], ["About", "about.html"], ["Resume", "resume.html"], ["Contact", "contact.html"]], current: "Index" });
+UI.nav(document.getElementById('nav'), { links: [["Index", "everything.html"], ["About", "about.html"], ["Resume", "resume.html"], ["Contact", "contact.html"]], current: "Index" });
 UI.everything(document.getElementById('el'));
 UI.elsewhereLine(document.getElementById('els'));
 UI.modeToggle();
