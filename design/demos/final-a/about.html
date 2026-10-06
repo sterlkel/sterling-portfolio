@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" data-demo="final-a" data-default-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About · Final A · Portrait</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Fraunces:opsz,wght@9..144,400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="../shared/final.css">
+<link rel="stylesheet" href="style.css">
+<script src="../shared/theme.js"></script>
+</head>
+<body class="bouncy">
+<header id="nav"></header>
+<main class="wrap pg"><div id="about"></div><h2 class="sub-h">Experience</h2><div id="tl" class="narrow-col"></div><h2 class="sub-h">Tools I reach for</h2><div id="skills"></div></main>
+<footer id="foot"></footer>
+<script>window.SK_ROUTES = { writing: 'everything.html#writing', work: 'everything.html#work' };</script>
+<script src="../shared/data.js"></script>
+<script src="../shared/flow.js"></script>
+<script src="../shared/components.js"></script>
+<script>
+UI.nav(document.getElementById('nav'), { links: [["Index", "everything.html"], ["About", "about.html"], ["Resume", "resume.html"], ["Contact", "contact.html"]], current: "About" });
+UI.about(document.getElementById('about'));
+UI.tilt(document.querySelector('.portrait'));
+UI.mini(document.getElementById('tl'));
+UI.keycaps(document.getElementById('skills'));
+UI.footer(document.getElementById('foot'));
+UI.reveal();
+</script>
+</body>
+</html>

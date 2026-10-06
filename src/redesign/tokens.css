@@ -1,0 +1,15 @@
+/* Design tokens from the Portrait mock. Light = Ink on paper, dark = Abyss.
+   Dark applies when <html data-theme="dark">. */
+:root {
+  --bg: #f4f1ea; --bg2: #ebe5d8; --fg: #1d1d22; --muted: #6b6860; --line: #d9d3c5; --card: #ece7dc;
+  --accent: #c8283c; --hi: #2f4fa8; --on-accent: #fff;
+  --flow-bg: 244, 241, 234; --flow-line: 30, 30, 36; --flow-hi: 200, 40, 60;
+  --spring: cubic-bezier(.3, 1.6, .5, 1); --ease: cubic-bezier(.2, .7, .2, 1);
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #060a18; --bg2: #0b1226; --fg: #dff7f3; --muted: #7393a3; --line: #1b2a40; --card: #0c1428;
+  --accent: #7ef0dc; --hi: #be78ff; --on-accent: #04121a;
+  --flow-bg: 6, 10, 24; --flow-line: 80, 200, 190; --flow-hi: 190, 120, 255;
+  color-scheme: dark;
+}
