@@ -1,0 +1,33 @@
+/* Index Card — Plain Text's calm, plus one bold name and two buttons. Newsreader body, Inter for the name. */
+:root { --sans:Newsreader, Georgia, serif; }
+body { font-size:19px; }
+.nav { position:static; background:none; backdrop-filter:none; max-width:1000px; margin:0 auto; padding:32px 24px 0; }
+.nav .brand { font:400 19px var(--serif); } .nav .brand i { display:none; }
+.nav .links { font-size:17px; gap:18px; } .nav .links a.on::after { height:1px; bottom:-3px; }
+.theme-btn { width:30px; height:30px; font-size:13px; }
+.section-title { font:400 clamp(34px,5vw,48px)/1.12 var(--serif); letter-spacing:-.01em; }
+.resume h1, .rpdf-bar h1, .cs-hero h1, .contact-big { font-family:var(--serif); font-weight:400; }
+.contact-big { font-size:clamp(26px,4vw,40px); }
+.pg, .page-narrow { max-width:1000px; }
+.about { grid-template-columns:200px 1fr; } .portrait { border-radius:6px; }
+.about .bio p:first-child::first-letter { float:none; font-size:inherit; padding:0; color:inherit; }
+
+.ic { max-width:1000px; margin:0 auto; padding:0 24px; }
+.me { padding:80px 0 12px; }
+.me h1 { font:800 clamp(54px,9vw,112px)/.95 Inter, sans-serif; letter-spacing:-.045em; margin:0 0 22px; }
+.me h1 .w { display:inline-block; opacity:0; transform:translateY(.4em); animation:rise .9s var(--ease) forwards; }
+.me p { font-size:22px; line-height:1.55; color:color-mix(in srgb, var(--fg) 80%, var(--bg)); margin:0; max-width:44ch; }
+.cta { display:flex; gap:12px; margin-top:28px; flex-wrap:wrap; }
+.btn { font-family:Inter, sans-serif; }
+canvas.dv-flow { height:80px; margin-top:44px; border-radius:6px; opacity:.75; }
+
+.cols { display:grid; grid-template-columns:1.4fr 1fr; gap:56px; }
+.dv-chapter { padding-top:40px; gap:14px; } .dv-chapter .n { display:none; }
+.plain-list { margin-top:18px; } .plain-list .post { font-size:19px; }
+.plist { margin-top:18px; }
+.plist a { display:flex; justify-content:space-between; gap:12px; padding:6px 0; font-size:19px; }
+.plist small { font:400 12px var(--mono); color:var(--muted); padding-top:6px; text-transform:uppercase; letter-spacing:.08em; }
+.plist a:hover span { text-decoration:underline; text-decoration-color:var(--accent); text-underline-offset:4px; }
+.else { color:var(--muted); margin:56px 0 80px; font-size:17px; } .else a { color:var(--fg); text-decoration:underline; text-decoration-color:var(--accent); text-underline-offset:3px; }
+.foot { max-width:1000px; margin:0 auto; border:0; font-size:15px; }
+@media (max-width:760px){ .cols{grid-template-columns:1fr; gap:0} .about{grid-template-columns:1fr} }

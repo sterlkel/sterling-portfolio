@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" data-demo="field-notes" data-default-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sterling Kelly · Field Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="style.css">
+<script src="../shared/theme.js"></script>
+</head>
+<body>
+<header id="nav"></header>
+
+<section class="hero short" id="top">
+  <canvas class="flow" id="flow"></canvas>
+  <div class="inner">
+    <div class="eyebrow">field notes from</div>
+    <h1>Sterling Kelly, <em>engineer &amp; writer.</em></h1>
+    <p class="sub">I build software for a living and write about what I learn, plus the occasional thing that has nothing to do with code.</p>
+  </div>
+</section>
+
+<main class="wrap">
+  <div id="c1"></div>
+  <section class="now">
+    <div class="col">
+      <div class="col-head"><h2>Latest writing</h2><a href="blog.html">all posts →</a></div>
+      <div id="latest"></div>
+    </div>
+    <div class="col">
+      <div class="col-head"><h2>Selected work</h2><a href="#work">more ↓</a></div>
+      <div id="sel"></div>
+    </div>
+  </section>
+
+  <div id="c2"></div>
+  <section id="about"><div id="aboutEl"></div></section>
+
+  <div id="c3"></div>
+  <section id="experience"><div id="spine" style="margin-top:40px"></div></section>
+
+  <div id="c4"></div>
+  <section id="work"><div id="workEl" style="margin-top:40px"></div></section>
+
+  <div id="c5"></div>
+  <section id="skills"><p class="lede">Bigger bubble, more hours.</p><div id="bubbles"></div></section>
+
+  <div id="c6"></div>
+  <section id="contact" style="padding-bottom:120px"><h2 class="section-title">Write to me, <em>or grab a time.</em></h2><div id="contactEl"></div></section>
+</main>
+
+<footer id="foot"></footer>
+
+<script src="../shared/data.js"></script>
+<script src="../shared/flow.js"></script>
+<script src="../shared/components.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+UI.nav($('nav'), { links: [['Writing', 'blog.html'], ['Work', '#work'], ['About', '#about'], ['Resume', 'resume.html'], ['Contact', '#contact']] });
+new FlowField($('flow'), { signature: true, sigX: .78, shockwave: true, clickTarget: $('top') });
+[['c1', '01', 'Now'], ['c2', '02', 'About'], ['c3', '03', 'Experience'], ['c4', '04', 'Work'], ['c5', '05', 'Tools'], ['c6', '06', 'Contact']].forEach(([id, n, l]) => $(id).innerHTML = UI.chapter(n, l));
+
+const fmt = d => new Date(d + 'T12:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+$('latest').innerHTML = SK.posts.slice(0, 4).map(p => `<a class="lp rv" href="post.html?slug=${p.slug}"><span class="d">${fmt(p.d)}${p.c === 'life' ? ' · <i>life</i>' : ''}</span><b>${p.t}</b><span class="x">${p.x}</span></a>`).join('');
+$('sel').innerHTML = SK.projects.slice(0, 3).map(p => `<a class="sp rv" href="project.html?p=${p.key}"><div class="thumb">${UI.cover(p.key)}</div><div><b>${p.title}</b><span>${p.pitch}</span></div></a>`).join('');
+
+UI.about($('aboutEl'), { heading: 'Hello, <em>I\'m Sterling.</em>' });
+UI.spine($('spine'));
+UI.workTwoUp($('workEl'));
+UI.bubbles($('bubbles'));
+UI.contactCards($('contactEl'));
+UI.initDividers();
+UI.footer($('foot'));
+UI.reveal();
+</script>
+</body>
+</html>

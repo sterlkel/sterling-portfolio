@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" data-demo="index-card" data-default-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sterling Kelly · Index Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="style.css">
+<script src="../shared/theme.js"></script>
+</head>
+<body>
+<header id="nav"></header>
+
+<main class="ic">
+  <section class="me">
+    <h1 id="name">Sterling Kelly.</h1>
+    <p>Software engineer. I write here about the tools I build and, now and then, about life. Previously co-founder of Swing Campaign; once, a novelist.</p>
+    <div class="cta"><a class="btn" href="blog.html">Read the blog</a><a class="btn ghost" href="work.html">See my work</a></div>
+  </section>
+
+  <div id="strip"></div>
+
+  <section class="cols">
+    <div><div id="c1"></div><div id="list"></div></div>
+    <div><div id="c2"></div><div class="plist" id="plist"></div></div>
+  </section>
+
+  <p class="else">Elsewhere: <a href="about.html">about</a>, <a href="resume.html">résumé</a>, <a href="contact.html">contact</a>, <a href="card.html">card</a>.</p>
+</main>
+
+<footer id="foot"></footer>
+
+<script src="../shared/data.js"></script>
+<script src="../shared/flow.js"></script>
+<script src="../shared/components.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+UI.nav($('nav'), { links: [['Writing', 'blog.html'], ['Work', 'work.html'], ['About', 'about.html'], ['Resume', 'resume.html'], ['Contact', 'contact.html']] });
+UI.splitWords($('name'));
+$('strip').innerHTML = UI.flowStrip();
+$('c1').innerHTML = UI.chapter('', 'Writing');
+$('c2').innerHTML = UI.chapter('', 'Work');
+UI.plainList($('list'), { limit: 5 });
+$('plist').innerHTML = SK.projects.map(p => `<a href="project.html?p=${p.key}"><span>${p.title}</span><small>${p.type}</small></a>`).join('');
+UI.initDividers();
+UI.footer($('foot'));
+UI.reveal();
+</script>
+</body>
+</html>

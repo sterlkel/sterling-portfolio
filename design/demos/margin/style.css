@@ -1,0 +1,21 @@
+/* Margin — Notebook's look, intro-first, no thumbnails required. Fraunces display. */
+:root { --display:Fraunces, Georgia, serif; }
+.nav .brand { font-family:var(--display); font-weight:700; font-size:20px; }
+.section-title { font-weight:700; letter-spacing:-.02em; }
+.wlist .wl b { font-family:var(--display); font-weight:600; font-size:22px; }
+
+.intro { display:grid; grid-template-columns:auto 1fr; gap:28px; align-items:center; padding-top:56px; padding-bottom:28px; }
+.intro .ava { width:96px; height:96px; border-radius:50%; object-fit:cover; border:2px solid var(--fg); transition:transform .6s var(--spring); }
+.intro .ava:hover { transform:rotate(-8deg) scale(1.08); }
+.intro h1 { font:600 clamp(28px,4.2vw,50px)/1.12 var(--display); letter-spacing:-.02em; margin:0 0 10px; max-width:26ch; }
+.intro .ul { background:linear-gradient(transparent 62%, color-mix(in srgb, var(--accent) 30%, transparent) 62%); }
+.intro p { color:var(--muted); margin:0; font-size:17px; } .intro p a { color:var(--accent); }
+@media (max-width:600px){ .intro{grid-template-columns:1fr} }
+
+.two { display:grid; grid-template-columns:1.15fr 1fr; gap:56px; padding-top:48px; }
+.col-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom:2px solid var(--fg); padding-bottom:10px; }
+.col-head h2 { font:600 26px var(--display); margin:0; }
+.col-head a { font:400 13px var(--mono); color:var(--muted); } .col-head a:hover { color:var(--accent); }
+.two .wrows .wr:first-child { border-top:0; }
+.two .wrows .wr { grid-template-columns:110px 1fr; } .two .wrows .tag { display:none; }
+@media (max-width:860px){ .two{grid-template-columns:1fr} }

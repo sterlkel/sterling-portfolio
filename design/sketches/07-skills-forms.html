@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sketch 07 — Skills, beyond pills</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#060a18; --fg:#dff7f3; --muted:#6f8fa0; --line:#1d2b3f; --accent:#7ef0dc; --hi:#be78ff; --card:#0c1428; }
+  :root[data-theme=light] { --bg:#f4f1ea; --fg:#1d1d22; --muted:#6b6860; --line:#d9d3c5; --accent:#c8283c; --hi:#c8283c; --card:#ece7dc; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font-family:Inter,system-ui,sans-serif; transition:background .3s,color .3s; overflow-x:hidden; }
+  .bar { position:sticky; top:0; z-index:50; display:flex; gap:8px; align-items:center; padding:12px 20px; background:color-mix(in srgb,var(--bg) 85%,transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); flex-wrap:wrap; }
+  .bar a, .bar button { font:500 13px Inter,sans-serif; color:var(--muted); text-decoration:none; padding:6px 12px; border-radius:999px; border:1px solid var(--line); background:none; cursor:pointer; }
+  .bar button { margin-left:auto; }
+  section.demo { padding:96px 8vw 120px; border-bottom:1px solid var(--line); }
+  .label { font:400 13px "JetBrains Mono",monospace; color:var(--accent); letter-spacing:.08em; }
+  h2 { font-size:clamp(28px,4vw,44px); margin:.2em 0 .1em; letter-spacing:-.02em; }
+  .desc { color:var(--muted); max-width:62ch; margin-bottom:48px; line-height:1.55; }
+
+  /* A — stickers on a laptop lid */
+  .lid { position:relative; max-width:880px; aspect-ratio:16/10; margin:0 auto; border-radius:28px; background:linear-gradient(145deg,#c9ccd2,#9da1a8); box-shadow:inset 0 2px 0 #fff6, 0 30px 60px #0006; overflow:hidden; }
+  :root[data-theme=light] .lid { background:linear-gradient(145deg,#d8dade,#b5b8be); }
+  .lid::before { content:""; position:absolute; left:50%; top:50%; width:46px; height:56px; transform:translate(-50%,-50%); background:#ffffff55; border-radius:40% 40% 46% 46%; }
+  .sticker { position:absolute; display:grid; place-items:center; text-align:center; font-weight:800; cursor:grab; user-select:none; filter:drop-shadow(0 3px 2px #0005); transform:scale(0) rotate(var(--r)); transition:filter .2s; }
+  .sticker:hover { filter:drop-shadow(0 12px 10px #0005); }
+  .sticker:active { cursor:grabbing; }
+  .sticker .face { padding:12px 16px; border:5px solid #fff; color:#111; line-height:1.05; display:flex; align-items:center; gap:8px; }
+  .sticker .face img { width:30px; height:30px; object-fit:contain; }
+  .s-circle .face { border-radius:50%; aspect-ratio:1; justify-content:center; flex-direction:column; padding:14px; }
+  .s-hex .face { clip-path:polygon(25% 4%,75% 4%,100% 50%,75% 96%,25% 96%,0 50%); padding:18px 30px; border:0; outline:none; }
+  .s-hex { filter:drop-shadow(0 0 0 #fff) drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff) drop-shadow(0 4px 3px #0005); }
+  .s-rect .face { border-radius:10px; }
+  .s-star .face { clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); width:130px; height:124px; justify-content:center; padding-top:30px; border:0; font-size:13px; }
+  .s-star { filter:drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff) drop-shadow(0 4px 3px #0005); }
+  .lid.in .sticker { animation:slap .55s cubic-bezier(.2,1.6,.4,1) forwards; }
+  @keyframes slap { 0%{transform:scale(2.4) rotate(calc(var(--r) - 25deg));opacity:0} 60%{opacity:1} 100%{transform:scale(1) rotate(var(--r));opacity:1} }
+  .sticker.peel { animation:wiggle .5s cubic-bezier(.3,1.6,.5,1) !important; transform:scale(1) rotate(var(--r)); }
+  @keyframes wiggle { 0%{transform:scale(1) rotate(var(--r))} 30%{transform:scale(1.15) rotate(calc(var(--r) + 10deg))} 60%{transform:scale(.95) rotate(calc(var(--r) - 6deg))} 100%{transform:scale(1) rotate(var(--r))} }
+
+  /* B — keycaps */
+  .kb { display:flex; flex-direction:column; gap:10px; align-items:center; padding:28px; border-radius:22px; background:color-mix(in srgb,var(--fg) 5%,var(--bg)); border:1px solid var(--line); max-width:980px; margin:0 auto; }
+  .kb .r { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+  .key { --c:var(--card); position:relative; min-width:84px; height:76px; padding:10px 14px 18px; border-radius:12px; background:var(--c); border:1px solid var(--line);
+         box-shadow:0 8px 0 color-mix(in srgb,var(--c) 60%,#000), 0 10px 14px #0006; display:flex; flex-direction:column; justify-content:space-between; font:700 14px "JetBrains Mono",monospace; cursor:pointer; user-select:none;
+         transition:transform .08s, box-shadow .08s; }
+  .key small { font-weight:400; font-size:10px; color:var(--muted); letter-spacing:.06em; }
+  .key.wide { min-width:180px; } .key.acc { --c:var(--accent); color:#06121a; } .key.acc small { color:#06121a99; } .key.hi { --c:var(--hi); color:#fff; } .key.hi small { color:#fff9; }
+  .key.down { transform:translateY(7px); box-shadow:0 1px 0 color-mix(in srgb,var(--c) 60%,#000), 0 2px 4px #0006; }
+  .key.boing { animation:keyup .4s cubic-bezier(.3,2,.5,1); }
+  @keyframes keyup { 0%{transform:translateY(7px)} 100%{transform:none} }
+  .kbhint { text-align:center; color:var(--muted); font:400 13px "JetBrains Mono"; margin-top:18px; }
+  .typed { text-align:center; font:700 22px "JetBrains Mono"; min-height:32px; color:var(--accent); margin-top:6px; }
+
+  /* C — bubbles */
+  #bubbles { position:relative; height:520px; border-radius:22px; border:1px solid var(--line); overflow:hidden; }
+  .bub { position:absolute; left:0; top:0; border-radius:50%; display:grid; place-items:center; text-align:center; font-weight:700; cursor:pointer; user-select:none; will-change:transform;
+         background:radial-gradient(circle at 32% 28%, #ffffffaa 0 6%, transparent 7%), radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--c) 25%,transparent), color-mix(in srgb,var(--c) 55%,transparent));
+         border:1.5px solid color-mix(in srgb,var(--c) 70%,transparent); color:var(--fg); }
+  .bub span { font-size:var(--fs); line-height:1.1; padding:6px; }
+  .bub.popping { animation:pop .35s ease-out forwards; }
+  @keyframes pop { 0%{scale:1;opacity:1} 50%{scale:1.35;opacity:.6} 100%{scale:1.6;opacity:0} }
+  .bub.regrow { animation:regrow .8s cubic-bezier(.3,1.7,.5,1); }
+  @keyframes regrow { 0%{scale:0;opacity:0} 100%{scale:1;opacity:1} }
+
+  /* D — kinetic type */
+  .ktype { display:flex; flex-wrap:wrap; gap:.05em .35em; font-size:clamp(40px,7.5vw,104px); line-height:1; letter-spacing:-.03em; }
+  .ktype .w { display:inline-flex; cursor:default; color:color-mix(in srgb,var(--fg) 25%,var(--bg)); transition:color .3s; }
+  .ktype .w:nth-child(3n+1) { color:color-mix(in srgb,var(--fg) 55%,var(--bg)); }
+  .ktype .w .l { display:inline-block; font-weight:300; font-variation-settings:"wght" 300; transition:font-variation-settings .35s cubic-bezier(.3,1.6,.5,1); }
+  .ktype .w:hover { color:var(--accent); }
+  .ktype .w:hover .l { font-variation-settings:"wght" 900; animation:letterhop .55s cubic-bezier(.3,1.8,.5,1) both; }
+  @keyframes letterhop { 0%{transform:translateY(0)} 40%{transform:translateY(-.22em) scaleY(1.1)} 100%{transform:none} }
+  .ktype .sep { color:var(--accent); font-weight:300; }
+
+  /* E — goo */
+  #goo { position:relative; height:480px; border-radius:22px; border:1px solid var(--line); overflow:hidden; }
+  #goo .blobs { position:absolute; inset:0; filter:url(#gooey); }
+  #goo .blob { position:absolute; left:0; top:0; border-radius:50%; background:var(--accent); will-change:transform; }
+  #goo .blob.alt { background:var(--hi); }
+  #goo .labels { position:absolute; inset:0; pointer-events:none; }
+  #goo .lab { position:absolute; left:0; top:0; font:700 14px Inter; color:#06121a; transform:translate(-50%,-50%); white-space:nowrap; will-change:transform; }
+  :root[data-theme=light] #goo .lab { color:#fff; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><filter id="gooey"><feGaussianBlur in="SourceGraphic" stdDeviation="12"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9"/></filter></svg>
+<nav class="bar">
+  <a href="#a">A · Stickers</a><a href="#b">B · Keycaps</a><a href="#c">C · Bubbles</a><a href="#d">D · Kinetic type</a><a href="#e">E · Goo</a>
+  <button id="theme">☀︎ Ink / ☾ Abyss</button>
+</nav>
+
+<section class="demo" id="a">
+  <div class="label">A · die-cut stickers</div>
+  <h2>Stickers on the lid</h2>
+  <p class="desc">Skills as mismatched die-cut stickers — circles, hexes, stars, labels — that slap onto a laptop lid one by one. Drag them around; click to make one wiggle. Very personal, very fun.</p>
+  <div class="lid" id="lid"></div>
+</section>
+
+<section class="demo" id="b">
+  <div class="label">B · mechanical keyboard</div>
+  <h2>Keycaps</h2>
+  <p class="desc">Each skill is a chunky keycap with real key travel and a springy return. Hover presses it; your actual keyboard presses the key that starts with that letter.</p>
+  <div class="kb" id="kb"></div>
+  <div class="typed" id="typed"></div>
+  <div class="kbhint">try typing on your keyboard</div>
+</section>
+
+<section class="demo" id="c">
+  <div class="label">C · bubbles sized by experience</div>
+  <h2>Bubbles</h2>
+  <p class="desc">Bubble size = how much I use it. They drift, jostle each other and wobble. Push them with your cursor; click to pop one and watch it re-inflate.</p>
+  <div id="bubbles"></div>
+</section>
+
+<section class="demo" id="d">
+  <div class="label">D · type is the shape</div>
+  <h2>Kinetic type</h2>
+  <p class="desc">No containers at all — skills as one big run of text. Hover a word and its weight surges from thin to black while each letter hops in sequence. Editorial and bouncy at once.</p>
+  <div class="ktype" id="kt"></div>
+</section>
+
+<section class="demo" id="e">
+  <div class="label">E · ties back to the alien hero</div>
+  <h2>Goo</h2>
+  <p class="desc">Skills as liquid blobs that orbit and merge into each other like a lava lamp. Your cursor is a blob too — drag it through and they fuse to it.</p>
+  <div id="goo"><div class="blobs"></div><div class="labels"></div></div>
+</section>
+
+<script>
+const root = document.documentElement;
+document.getElementById('theme').onclick = () => root.dataset.theme = root.dataset.theme === 'light' ? '' : 'light';
+const P = '../../public/';
+const skills = [
+  { n:'React', f:'reactjs.png', w:5, c:'#61dafb' }, { n:'TypeScript', f:'typescript.png', w:5, c:'#3178c6' }, { n:'C#', f:'csharp.png', w:4, c:'#9b4f96' },
+  { n:'Python', f:'python.svg', w:4, c:'#ffd43b' }, { n:'SQL', f:'sqlserver.svg', w:4, c:'#e8e8e8' }, { n:'Django', f:'django_short.png', w:3, c:'#44b78b' },
+  { n:'Redux', f:'redux.png', w:3, c:'#b089f5' }, { n:'Next.js', f:'next.svg', w:3, c:'#ffffff' }, { n:'Nix', w:2, c:'#7eb7e2' }, { n:'Swift', w:2, c:'#f05138' },
+  { n:'JavaScript', f:'javascript.png', w:4, c:'#f7df1e' }, { n:'Java', f:'java.svg', w:2, c:'#f89820' }, { n:'Docker', w:2, c:'#2496ed' }, { n:'Git', w:3, c:'#f05033' },
+];
+
+// A stickers
+const lid = document.getElementById('lid');
+const shapes = ['s-circle', 's-rect', 's-hex', 's-star'];
+const spots = [[8,10],[30,8],[56,12],[78,8],[12,42],[66,36],[84,44],[6,72],[28,66],[48,70],[70,70],[38,34],[88,76],[54,46]];
+lid.innerHTML = skills.map((s, i) => { const sh = shapes[i % 4], [x, y] = spots[i]; const r = (Math.random() - .5) * 30;
+  return `<div class="sticker ${sh}" style="left:${x}%;top:${y}%;--r:${r}deg;animation-delay:${i * 110}ms"><div class="face" style="background:${s.c}">${s.f && sh !== 's-star' ? `<img src="${P + s.f}" alt="">` : ''}${s.n}</div></div>`; }).join('');
+new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { lid.classList.add('in'); o.disconnect(); } }), { threshold:.35 }).observe(lid);
+let drag = null, moved = false;
+lid.addEventListener('pointerdown', e => { const s = e.target.closest('.sticker'); if (!s) return; const r = lid.getBoundingClientRect(), b = s.getBoundingClientRect();
+  drag = { s, ox:e.clientX - b.left, oy:e.clientY - b.top, r }; moved = false; s.style.zIndex = 10 + Date.now() % 1000; s.setPointerCapture(e.pointerId); });
+lid.addEventListener('pointermove', e => { if (!drag) return; moved = true; const { s, ox, oy, r } = drag;
+  s.style.left = ((e.clientX - r.left - ox) / r.width * 100) + '%'; s.style.top = ((e.clientY - r.top - oy) / r.height * 100) + '%'; });
+lid.addEventListener('pointerup', () => { if (drag && !moved) { const s = drag.s; s.classList.remove('peel'); void s.offsetWidth; s.classList.add('peel'); } drag = null; });
+
+// B keycaps
+const kb = document.getElementById('kb'), typed = document.getElementById('typed');
+const rowsK = [skills.slice(0, 5), skills.slice(5, 10), skills.slice(10)];
+kb.innerHTML = rowsK.map((r, ri) => `<div class="r">${r.map((s, i) => `<div class="key ${s.w >= 5 ? 'wide acc' : (i + ri) % 5 === 3 ? 'hi' : ''}" data-l="${s.n[0].toLowerCase()}" data-n="${s.n}"><small>${'★'.repeat(Math.min(5, s.w))}</small>${s.n}</div>`).join('')}</div>`).join('');
+const press = k => { k.classList.add('down'); }, release = k => { k.classList.remove('down'); k.classList.remove('boing'); void k.offsetWidth; k.classList.add('boing'); };
+kb.querySelectorAll('.key').forEach(k => { k.onmouseenter = () => press(k); k.onmouseleave = () => release(k); });
+addEventListener('keydown', e => { if (e.repeat) return; const ks = kb.querySelectorAll(`.key[data-l="${e.key.toLowerCase()}"]`); if (!ks.length) return; ks.forEach(press); typed.textContent = [...ks].map(k => k.dataset.n).join(' · '); });
+addEventListener('keyup', e => kb.querySelectorAll(`.key[data-l="${e.key.toLowerCase()}"]`).forEach(release));
+
+// C bubbles
+const bubEl = document.getElementById('bubbles'); let bubs = [], bm = { x:-999, y:-999 };
+function makeBubbles() {
+  const W = bubEl.clientWidth, H = bubEl.clientHeight, unit = Math.min(W, H) / 11;
+  bubEl.innerHTML = skills.map(s => `<div class="bub" style="--c:${s.c};--fs:${10 + s.w * 2.6}px"><span>${s.n}</span></div>`).join('');
+  bubs = [...bubEl.children].map((el, i) => { const r = unit * (.6 + skills[i].w * .32); el.style.width = el.style.height = r * 2 + 'px';
+    return { el, r, x:r + Math.random() * (W - 2 * r), y:H + r + Math.random() * 200, vx:0, vy:-2 - Math.random() * 3, ph:Math.random() * 6, W, H }; });
+}
+bubEl.addEventListener('mousemove', e => { const r = bubEl.getBoundingClientRect(); bm.x = e.clientX - r.left; bm.y = e.clientY - r.top; });
+bubEl.addEventListener('mouseleave', () => bm.x = bm.y = -999);
+bubEl.addEventListener('click', e => { const el = e.target.closest('.bub'); if (!el) return; const b = bubs.find(b => b.el === el);
+  el.classList.add('popping'); setTimeout(() => { b.x = b.r + Math.random() * (b.W - 2 * b.r); b.y = b.H - b.r; b.vy = -6; el.classList.remove('popping'); el.classList.add('regrow'); setTimeout(() => el.classList.remove('regrow'), 800); }, 350); });
+let bt = 0;
+function stepBubbles() {
+  bt += .016;
+  for (const b of bubs) {
+    b.vx += Math.sin(bt * .7 + b.ph) * .03; b.vy += Math.cos(bt * .5 + b.ph) * .03 + (b.H / 2 - b.y) * .0004;
+    const dx = b.x - bm.x, dy = b.y - bm.y, d = Math.hypot(dx, dy);
+    if (d < b.r + 70) { const f = (1 - d / (b.r + 70)) * 1.6; b.vx += dx / d * f; b.vy += dy / d * f; }
+  }
+  for (let i = 0; i < bubs.length; i++) for (let j = i + 1; j < bubs.length; j++) {
+    const a = bubs[i], b = bubs[j], dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy) || 1, min = a.r + b.r + 4;
+    if (d < min) { const push = (min - d) * .08, nx = dx / d, ny = dy / d; a.vx -= nx * push; a.vy -= ny * push; b.vx += nx * push; b.vy += ny * push; }
+  }
+  for (const b of bubs) {
+    b.vx *= .94; b.vy *= .94; b.x += b.vx; b.y += b.vy;
+    if (b.x < b.r) { b.x = b.r; b.vx *= -.6; } if (b.x > b.W - b.r) { b.x = b.W - b.r; b.vx *= -.6; }
+    if (b.y < b.r) { b.y = b.r; b.vy *= -.6; } if (b.y > b.H - b.r && b.vy > 0) { b.y = b.H - b.r; b.vy *= -.6; }
+    const sp = Math.min(.12, Math.hypot(b.vx, b.vy) * .02), ang = Math.atan2(b.vy, b.vx), wob = Math.sin(bt * 3 + b.ph) * .03;
+    b.el.style.transform = `translate(${b.x - b.r}px,${b.y - b.r}px) rotate(${ang}rad) scale(${1 + sp + wob},${1 - sp - wob}) rotate(${-ang}rad)`;
+  }
+  requestAnimationFrame(stepBubbles);
+}
+new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { makeBubbles(); stepBubbles(); o.disconnect(); } }), { threshold:.2 }).observe(bubEl);
+
+// D kinetic type
+document.getElementById('kt').innerHTML = skills.map(s => `<span class="w">${[...s.n].map((ch, i) => `<span class="l" style="animation-delay:${i * 35}ms">${ch}</span>`).join('')}</span>`).join('<span class="sep">/</span>');
+
+// E goo
+const goo = document.getElementById('goo'), blobsEl = goo.querySelector('.blobs'), labsEl = goo.querySelector('.labels');
+const gb = skills.slice(0, 10).map((s, i) => { const r = 34 + s.w * 9;
+  blobsEl.insertAdjacentHTML('beforeend', `<div class="blob ${i % 3 === 2 ? 'alt' : ''}" style="width:${r * 2}px;height:${r * 2}px"></div>`);
+  labsEl.insertAdjacentHTML('beforeend', `<div class="lab">${s.n}</div>`);
+  return { r, a:i / 10 * Math.PI * 2, sp:.002 + Math.random() * .004, orb:.18 + Math.random() * .22, ph:Math.random() * 6, x:0, y:0 }; });
+blobsEl.insertAdjacentHTML('beforeend', `<div class="blob" id="gcur" style="width:90px;height:90px"></div>`);
+const gcur = document.getElementById('gcur'); let gm = { x:-200, y:-200 }, gc = { x:-200, y:-200 };
+goo.addEventListener('mousemove', e => { const r = goo.getBoundingClientRect(); gm.x = e.clientX - r.left; gm.y = e.clientY - r.top; });
+goo.addEventListener('mouseleave', () => gm.x = gm.y = -200);
+let gt = 0;
+(function stepGoo() {
+  gt++; const W = goo.clientWidth, H = goo.clientHeight;
+  gb.forEach((b, i) => { b.a += b.sp; const tx = W / 2 + Math.cos(b.a) * W * b.orb + Math.sin(gt * .01 + b.ph) * 30, ty = H / 2 + Math.sin(b.a * 1.3) * H * b.orb * 1.1;
+    const dx = gm.x - b.x, dy = gm.y - b.y, d = Math.hypot(dx, dy); let px = 0, py = 0;
+    if (d < 160) { px = dx * .35 * (1 - d / 160); py = dy * .35 * (1 - d / 160); }
+    b.x += (tx + px - b.x) * .06; b.y += (ty + py - b.y) * .06;
+    blobsEl.children[i].style.transform = `translate(${b.x - b.r}px,${b.y - b.r}px)`;
+    labsEl.children[i].style.transform = `translate(${b.x}px,${b.y}px) translate(-50%,-50%)`; });
+  gc.x += (gm.x - gc.x) * .2; gc.y += (gm.y - gc.y) * .2; gcur.style.transform = `translate(${gc.x - 45}px,${gc.y - 45}px)`;
+  requestAnimationFrame(stepGoo);
+})();
+</script>
+</body>
+</html>

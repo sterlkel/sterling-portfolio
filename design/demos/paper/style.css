@@ -1,0 +1,12 @@
+/* Paper — editorial. A short flow hero, then the site's sections as a big typographic menu. Instrument Serif. */
+:root { --display:"Instrument Serif", Georgia, serif; --sans:"Instrument Sans", Inter, sans-serif; }
+.section-title, .cs-hero h1, .rpdf-bar h1, article.post h1, .els b { font-weight:400; letter-spacing:-.01em; }
+.section-title em, .hero h1 em { color:var(--accent); }
+.nav .brand { font:400 22px var(--display); }
+.hero { min-height:74svh; }
+.hero h1 { font-weight:400; font-size:clamp(52px,8.5vw,124px); letter-spacing:-.02em; opacity:0; transform:translateY(.3em); animation:rise 1s var(--ease) .1s forwards; }
+.sindex .t { font:400 clamp(44px,8vw,104px)/1 var(--display); letter-spacing:-.01em; }
+.sindex a:hover .t { font-style:italic; }
+.sindex .y { font-size:28px; transition:transform .4s var(--spring); } .sindex a:hover .y { transform:translateX(10px); color:var(--accent); }
+.wfeat .twoup h3 { font:400 30px var(--display); }
+.wlist .wl b { font-family:var(--display); font-size:24px; }

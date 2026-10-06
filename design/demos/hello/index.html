@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" data-demo="hello" data-default-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sterling Kelly · Hello</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="style.css">
+<script src="../shared/theme.js"></script>
+</head>
+<body>
+<header id="nav"></header>
+
+<section class="hero fade" id="top">
+  <canvas class="flow" id="flow"></canvas>
+  <div class="inner">
+    <div class="wave-hand">👋</div>
+    <h1 id="name">Hi, I'm Sterling.</h1>
+    <p class="sub">I build tools, start things, and write stories. Mostly in that order.</p>
+    <div class="cta"><a class="btn" href="blog.html">Read the blog</a><a class="btn ghost" href="work.html">See my work</a></div>
+  </div>
+  <div class="hint">click anywhere · hold still for a moment</div>
+</section>
+
+<main class="wrap home-below">
+  <p class="eyebrow">// elsewhere on the site</p>
+  <div id="els" style="margin-top:20px"></div>
+</main>
+
+<footer id="foot"></footer>
+
+<script src="../shared/data.js"></script>
+<script src="../shared/flow.js"></script>
+<script src="../shared/components.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+UI.nav($('nav'), { links: [['Writing', 'blog.html'], ['Work', 'work.html'], ['About', 'about.html'], ['Resume', 'resume.html'], ['Contact', 'contact.html']] });
+UI.splitWords($('name'));
+new FlowField($('flow'), { signature: true, shockwave: true, clickTarget: $('top') });
+UI.elsewhere($('els'));
+UI.footer($('foot'));
+UI.reveal();
+</script>
+</body>
+</html>

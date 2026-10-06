@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sketch 01 — Hero backgrounds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0b0d10; --fg:#e8e6e3; --muted:#8a8f98; --accent:#ff4f6d; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; height:100%; background:var(--bg); color:var(--fg); font-family:Inter,system-ui,sans-serif; }
+  canvas { position:fixed; inset:0; width:100%; height:100%; display:block; }
+  .hero { position:relative; z-index:1; height:100vh; display:flex; flex-direction:column; justify-content:center; padding:0 8vw; pointer-events:none; }
+  .eyebrow { font-family:"JetBrains Mono",monospace; color:var(--accent); font-size:14px; letter-spacing:.08em; }
+  h1 { font-size:clamp(48px,9vw,128px); line-height:.95; margin:.2em 0; font-weight:700; letter-spacing:-.03em; }
+  h1 span { display:inline-block; opacity:0; transform:translateY(40px); animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards; }
+  p.sub { font-size:clamp(18px,2vw,24px); color:var(--muted); max-width:36ch; opacity:0; animation:fade 1s .9s forwards; }
+  @keyframes rise { to { opacity:1; transform:none; } }
+  @keyframes fade { to { opacity:1; } }
+  .switcher { position:fixed; z-index:2; bottom:24px; left:50%; transform:translateX(-50%); display:flex; gap:6px; background:#ffffff10; border:1px solid #ffffff1a; padding:6px; border-radius:999px; backdrop-filter:blur(8px); flex-wrap:wrap; justify-content:center; max-width:calc(100% - 32px); }
+  .switcher button { font:500 13px Inter,sans-serif; color:var(--muted); background:none; border:0; padding:8px 14px; border-radius:999px; cursor:pointer; }
+  .switcher button.on { background:var(--fg); color:var(--bg); }
+  .note { position:fixed; z-index:2; top:20px; right:24px; font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--muted); max-width:300px; text-align:right; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<section class="hero">
+  <div class="eyebrow">// hi, my name is</div>
+  <h1><span>Sterling</span> <span style="animation-delay:.12s">Kelly.</span></h1>
+  <p class="sub">Full stack engineer, founder, and occasional novelist. I build things and write about it.</p>
+</section>
+
+<div class="note" id="note"></div>
+<nav class="switcher" id="sw">
+  <button data-k="constellation" class="on">A · Constellation</button>
+  <button data-k="grid">B · Dot grid ripple</button>
+  <button data-k="flow">C · Flow field</button>
+  <button data-k="aurora">D · Aurora</button>
+</nav>
+
+<script>
+const c = document.getElementById('c'), x = c.getContext('2d');
+const dpr = Math.min(devicePixelRatio || 1, 2);
+let W, H, mouse = { x: -9999, y: -9999 }, mode = 'constellation', state = {}, t0 = performance.now();
+const notes = {
+  constellation: 'Drifting nodes that link up near each other and lean toward your cursor.',
+  grid: 'A quiet dot grid that swells and brightens around the cursor. Click to send a ripple.',
+  flow: 'Particles trace a slowly shifting noise field and leave soft trails, like topographic ink.',
+  aurora: 'Slow, blurred color blobs drifting behind the text. Calm and ambient; the cursor nudges the light.'
+};
+
+function resize() {
+  W = innerWidth; H = innerHeight;
+  c.width = W * dpr; c.height = H * dpr;
+  x.setTransform(dpr, 0, 0, dpr, 0, 0);
+  init();
+}
+addEventListener('resize', resize);
+addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+addEventListener('mouseleave', () => { mouse.x = mouse.y = -9999; });
+addEventListener('click', e => { if (mode === 'grid') state.ripples.push({ x: e.clientX, y: e.clientY, r: 0 }); });
+
+// cheap smooth 2D noise
+const P = new Uint8Array(512); { const p = [...Array(256).keys()].sort(() => Math.random() - .5); for (let i = 0; i < 512; i++) P[i] = p[i & 255]; }
+const fade = t => t * t * t * (t * (t * 6 - 15) + 10), lerp = (a, b, t) => a + t * (b - a);
+function grad(h, x, y) { const v = h & 3; return ((v & 1) ? -x : x) + ((v & 2) ? -y : y); }
+function noise(xx, yy) {
+  const X = Math.floor(xx) & 255, Y = Math.floor(yy) & 255; xx -= Math.floor(xx); yy -= Math.floor(yy);
+  const u = fade(xx), v = fade(yy), a = P[X] + Y, b = P[X + 1] + Y;
+  return lerp(lerp(grad(P[a], xx, yy), grad(P[b], xx - 1, yy), u), lerp(grad(P[a + 1], xx, yy - 1), grad(P[b + 1], xx - 1, yy - 1), u), v);
+}
+
+function init() {
+  x.globalCompositeOperation = 'source-over';
+  x.fillStyle = '#0b0d10'; x.fillRect(0, 0, W, H);
+  if (mode === 'constellation') {
+    const n = Math.round(W * H / 14000);
+    state.pts = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .3, vy: (Math.random() - .5) * .3 }));
+  } else if (mode === 'grid') {
+    state.ripples = [];
+  } else if (mode === 'flow') {
+    state.pts = Array.from({ length: 900 }, () => ({ x: Math.random() * W, y: Math.random() * H, life: Math.random() * 200 }));
+  } else if (mode === 'aurora') {
+    state.blobs = [
+      { c: '255,79,109', r: .45, sx: .00011, sy: .00007, p: 0 },
+      { c: '90,120,255', r: .5, sx: .00008, sy: .00012, p: 2 },
+      { c: '40,200,170', r: .4, sx: .00013, sy: .00009, p: 4 },
+    ];
+  }
+}
+
+function frame(now) {
+  const t = now - t0;
+  if (mode === 'constellation') {
+    x.fillStyle = '#0b0d10'; x.fillRect(0, 0, W, H);
+    const pts = state.pts;
+    for (const p of pts) {
+      const dx = mouse.x - p.x, dy = mouse.y - p.y, d = Math.hypot(dx, dy);
+      if (d < 200) { p.vx += dx / d * .015; p.vy += dy / d * .015; }
+      p.vx *= .99; p.vy *= .99; p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1;
+    }
+    for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
+      const a = pts[i], b = pts[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (d < 130) { x.strokeStyle = `rgba(232,230,227,${(1 - d / 130) * .25})`; x.beginPath(); x.moveTo(a.x, a.y); x.lineTo(b.x, b.y); x.stroke(); }
+    }
+    for (const p of pts) {
+      const near = Math.hypot(mouse.x - p.x, mouse.y - p.y) < 150;
+      x.fillStyle = near ? '#ff4f6d' : 'rgba(232,230,227,.7)';
+      x.beginPath(); x.arc(p.x, p.y, near ? 2.2 : 1.4, 0, 7); x.fill();
+    }
+  } else if (mode === 'grid') {
+    x.fillStyle = '#0b0d10'; x.fillRect(0, 0, W, H);
+    const g = 28;
+    for (const r of state.ripples) r.r += 6;
+    state.ripples = state.ripples.filter(r => r.r < Math.max(W, H));
+    for (let gx = g / 2; gx < W; gx += g) for (let gy = g / 2; gy < H; gy += g) {
+      const d = Math.hypot(mouse.x - gx, mouse.y - gy);
+      let k = Math.max(0, 1 - d / 180);
+      for (const r of state.ripples) { const rd = Math.abs(Math.hypot(r.x - gx, r.y - gy) - r.r); if (rd < 30) k = Math.max(k, (1 - rd / 30) * (1 - r.r / Math.max(W, H))); }
+      const wave = .5 + .5 * Math.sin(gx * .01 + gy * .013 + t * .0008);
+      const off = k * 8, ang = Math.atan2(gy - mouse.y, gx - mouse.x);
+      x.fillStyle = k > .05 ? `rgba(255,79,109,${.3 + k * .7})` : `rgba(232,230,227,${.08 + wave * .1})`;
+      x.beginPath(); x.arc(gx + Math.cos(ang) * off, gy + Math.sin(ang) * off, 1 + k * 2.2, 0, 7); x.fill();
+    }
+  } else if (mode === 'flow') {
+    x.fillStyle = 'rgba(11,13,16,.05)'; x.fillRect(0, 0, W, H);
+    x.strokeStyle = 'rgba(232,230,227,.35)'; x.lineWidth = 1;
+    const z = t * .00005;
+    for (const p of state.pts) {
+      let a = noise(p.x * .0025 + z, p.y * .0025 - z) * Math.PI * 3;
+      const d = Math.hypot(mouse.x - p.x, mouse.y - p.y);
+      if (d < 160) a += Math.atan2(p.y - mouse.y, p.x - mouse.x) * (1 - d / 160);
+      const nx = p.x + Math.cos(a) * 1.4, ny = p.y + Math.sin(a) * 1.4;
+      x.strokeStyle = d < 160 ? 'rgba(255,79,109,.6)' : 'rgba(232,230,227,.3)';
+      x.beginPath(); x.moveTo(p.x, p.y); x.lineTo(nx, ny); x.stroke();
+      p.x = nx; p.y = ny; p.life--;
+      if (p.life < 0 || p.x < 0 || p.x > W || p.y < 0 || p.y > H) { p.x = Math.random() * W; p.y = Math.random() * H; p.life = 100 + Math.random() * 200; }
+    }
+  } else if (mode === 'aurora') {
+    x.globalCompositeOperation = 'source-over';
+    x.fillStyle = '#0b0d10'; x.fillRect(0, 0, W, H);
+    x.globalCompositeOperation = 'lighter';
+    const mx = mouse.x < 0 ? W / 2 : mouse.x, my = mouse.y < 0 ? H / 2 : mouse.y;
+    for (const b of state.blobs) {
+      const cx = W * (.5 + .35 * Math.sin(t * b.sx + b.p)) + (mx - W / 2) * .08;
+      const cy = H * (.5 + .3 * Math.cos(t * b.sy + b.p)) + (my - H / 2) * .08;
+      const R = Math.max(W, H) * b.r;
+      const gr = x.createRadialGradient(cx, cy, 0, cx, cy, R);
+      gr.addColorStop(0, `rgba(${b.c},.28)`); gr.addColorStop(1, `rgba(${b.c},0)`);
+      x.fillStyle = gr; x.fillRect(0, 0, W, H);
+    }
+    x.globalCompositeOperation = 'source-over';
+    // film grain
+    for (let i = 0; i < 1200; i++) { x.fillStyle = `rgba(255,255,255,${Math.random() * .04})`; x.fillRect(Math.random() * W, Math.random() * H, 1, 1); }
+  }
+  requestAnimationFrame(frame);
+}
+
+document.getElementById('sw').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#sw button').forEach(n => n.classList.toggle('on', n === b));
+  mode = b.dataset.k; document.getElementById('note').textContent = notes[mode]; init();
+});
+document.getElementById('note').textContent = notes[mode];
+resize(); requestAnimationFrame(frame);
+</script>
+</body>
+</html>

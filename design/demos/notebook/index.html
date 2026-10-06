@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" data-demo="notebook" data-default-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sterling Kelly · Notebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Fraunces:opsz,wght@9..144,400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="style.css">
+<script src="../shared/theme.js"></script>
+</head>
+<body>
+<header id="nav"></header>
+
+<main>
+  <section class="wrap intro">
+    <img class="ava" id="ava" alt="">
+    <div>
+      <h1>Hi, I'm Sterling. I write about <span class="ul">building software</span>, and sometimes about life.</h1>
+      <p>Full stack engineer, one-time founder, published novelist. <a href="about.html">More about me →</a></p>
+    </div>
+  </section>
+
+  <div id="strip"></div>
+
+  <section class="wrap" style="padding-top:40px">
+    <div id="mag"></div>
+  </section>
+
+  <section class="wrap">
+    <div id="c1"></div>
+    <div class="elsewhere">
+      <a class="els rv" href="work.html"><span class="eyebrow">work</span><b>Things I've made</b><span>sting-cli, a meal planner, an Apple Music manager, a nix config, a startup and a novel.</span><span class="arr">→</span></a>
+      <a class="els rv" href="about.html"><span class="eyebrow">about</span><b>Who's writing this</b><span>The short bio, where I've worked, and the keyboard of tools I use.</span><span class="arr">→</span></a>
+      <a class="els rv" href="resume.html"><span class="eyebrow">resume</span><b>The formal version</b><span>One page, printable, always up to date.</span><span class="arr">→</span></a>
+    </div>
+  </section>
+
+  <div id="w1" style="margin-top:96px"></div>
+  <section class="cta-band">
+    <div class="wrap"><h2>Want to talk about something I wrote?</h2><div class="row"><a class="btn" href="contact.html">Get in touch</a><a class="btn ghost" href="card.html">My card</a></div></div>
+  </section>
+</main>
+
+<footer id="foot"></footer>
+
+<script src="../shared/data.js"></script>
+<script src="../shared/flow.js"></script>
+<script src="../shared/components.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+UI.nav($('nav'), { links: [['Writing', 'index.html'], ['Work', 'work.html'], ['About', 'about.html'], ['Resume', 'resume.html'], ['Contact', 'contact.html']], current: 'Writing' });
+$('ava').src = SK.person.photo;
+$('strip').innerHTML = UI.flowStrip();
+$('c1').innerHTML = UI.chapter('→', 'Elsewhere on the site');
+$('w1').innerHTML = UI.wave('var(--fg)');
+UI.magazine($('mag'));
+UI.initDividers();
+UI.footer($('foot'));
+UI.reveal();
+</script>
+</body>
+</html>

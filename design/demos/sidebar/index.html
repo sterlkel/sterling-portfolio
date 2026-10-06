@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" data-demo="sidebar" data-default-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sterling Kelly · Sidebar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="style.css">
+<script src="../shared/theme.js"></script>
+</head>
+<body>
+<div class="sb-layout">
+  <aside id="nav"></aside>
+  <div class="sb-main">
+    <main class="home">
+      <p class="lead">I'm a software engineer who likes building tools that make everyday things a little less annoying. I co-founded a civic tech company out of Cornell, published a fantasy novel, and now I'm <a href="blog.html">writing again</a>.</p>
+
+      <h2 class="sub-h">Latest writing</h2>
+      <div id="latest"></div>
+      <a class="more" href="blog.html">All writing →</a>
+
+      <h2 class="sub-h">Selected work</h2>
+      <div id="sel"></div>
+      <a class="more" href="work.html">All work →</a>
+
+      <h2 class="sub-h">Contact</h2>
+      <div id="contact"></div>
+    </main>
+    <footer id="foot"></footer>
+  </div>
+</div>
+
+<script src="../shared/data.js"></script>
+<script src="../shared/flow.js"></script>
+<script src="../shared/components.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+UI.sidebar($('nav'), { links: [['Writing', 'blog.html'], ['Work', 'work.html'], ['About', 'about.html'], ['Resume', 'resume.html'], ['Contact', 'contact.html']] });
+UI.writingList($('latest'), { limit: 3, excerpts: true });
+UI.workRows($('sel'), { limit: 3 });
+UI.contactSimple($('contact'));
+UI.footer($('foot'));
+UI.reveal();
+</script>
+</body>
+</html>

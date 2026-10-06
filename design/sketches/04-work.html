@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sketch 04 — Work layouts</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#060a18; --fg:#dff7f3; --muted:#6f8fa0; --line:#1d2b3f; --accent:#7ef0dc; --hi:#be78ff; --card:#0c1428; }
+  :root[data-theme=light] { --bg:#f4f1ea; --fg:#1d1d22; --muted:#6b6860; --line:#d9d3c5; --accent:#c8283c; --hi:#c8283c; --card:#ece7dc; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font-family:Inter,system-ui,sans-serif; transition:background .3s,color .3s; }
+  a { color:inherit; text-decoration:none; }
+  .bar { position:sticky; top:0; z-index:10; display:flex; gap:8px; align-items:center; padding:12px 20px; background:color-mix(in srgb,var(--bg) 85%,transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); flex-wrap:wrap; }
+  .bar a, .bar button { font:500 13px Inter,sans-serif; color:var(--muted); padding:6px 12px; border-radius:999px; border:1px solid var(--line); background:none; cursor:pointer; }
+  .bar button { margin-left:auto; }
+  section.demo { padding:96px 8vw 140px; border-bottom:1px solid var(--line); }
+  .label { font:400 13px "JetBrains Mono",monospace; color:var(--accent); letter-spacing:.08em; }
+  h2 { font-size:clamp(32px,5vw,56px); margin:.2em 0 .1em; letter-spacing:-.02em; }
+  .desc { color:var(--muted); max-width:62ch; margin-bottom:56px; line-height:1.55; }
+  .tag { font:400 11px "JetBrains Mono",monospace; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); }
+
+  /* stand-in covers */
+  .cover { position:relative; aspect-ratio:16/10; border-radius:14px; overflow:hidden; background:var(--card); border:1px solid var(--line); }
+  .cover > .art { position:absolute; inset:0; transition:transform .7s cubic-bezier(.2,.7,.2,1); display:grid; place-items:center; }
+  .c-music .art { background:radial-gradient(circle at 30% 30%, #ff5f7e, #8a2be2 60%, #1a0b2e); }
+  .c-music .art::after { content:""; width:42%; aspect-ratio:1; border-radius:50%; background:repeating-radial-gradient(#111 0 2px,#1b1b1b 2px 4px); box-shadow:0 20px 40px #0008; outline:10px solid #0003; }
+  .c-meal .art { background:#f3e3c3; }
+  .c-meal .art::after { content:""; width:70%; height:60%; background:
+     linear-gradient(#0000 0 0) , repeating-linear-gradient(90deg,#e8cfa0 0 1px,transparent 1px 14.28%), repeating-linear-gradient(#e8cfa0 0 1px,transparent 1px 25%);
+     border:1px solid #d9b77a; border-radius:8px; box-shadow:inset 0 0 0 999px #fffaf0aa; }
+  .c-cli .art { background:#0d1117; font:400 clamp(10px,1.2vw,14px)/1.6 "JetBrains Mono",monospace; color:#7ee787; padding:10% 9%; place-items:start; text-align:left; }
+  .c-nix .art { background:linear-gradient(135deg,#1e2a4a,#3d5a9e); color:#9ec5ff; font:700 clamp(60px,10vw,120px) Inter; }
+  .c-swing .art { background:#fff; } .c-swing img { width:46%; }
+  .c-book .art { background:linear-gradient(160deg,#2a1d12,#5a3a1c); color:#f0dfb8; font:600 clamp(22px,3vw,40px) Newsreader,serif; letter-spacing:.04em; text-align:center; }
+  .c-book .art small { display:block; font:400 11px "JetBrains Mono",monospace; letter-spacing:.2em; opacity:.7; margin-top:10px; }
+
+  /* A — big two-up (jamesonnuss) */
+  .twoup { display:grid; grid-template-columns:repeat(2,1fr); gap:56px 40px; }
+  .twoup .card:hover .art { transform:scale(1.05); }
+  .twoup .card .cover::after { content:"View case study →"; position:absolute; left:16px; bottom:16px; font:500 13px Inter; padding:8px 14px; border-radius:999px; background:var(--fg); color:var(--bg); opacity:0; transform:translateY(8px); transition:all .35s; }
+  .twoup .card:hover .cover::after { opacity:1; transform:none; }
+  .twoup .meta { display:flex; justify-content:space-between; align-items:baseline; margin-top:16px; gap:12px; }
+  .twoup h3 { margin:0; font-size:22px; font-weight:600; }
+  .twoup p { margin:6px 0 0; color:var(--muted); }
+  .twoup .card:nth-child(even) { margin-top:80px; }
+  @media (max-width:760px){ .twoup{grid-template-columns:1fr} .twoup .card:nth-child(even){margin-top:0} }
+
+  /* B — filterable fluid grid (tamalsen) */
+  .filters { display:flex; gap:6px; margin-bottom:28px; flex-wrap:wrap; }
+  .filters button { font:500 13px Inter; color:var(--muted); background:none; border:1px solid var(--line); padding:7px 14px; border-radius:999px; cursor:pointer; }
+  .filters button.on { color:var(--bg); background:var(--fg); border-color:var(--fg); }
+  .filters button sup { font-size:10px; margin-left:3px; opacity:.7; }
+  .fluid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .fluid .card { transition:opacity .3s; }
+  .fluid .card.hide { display:none; }
+  .fluid .card:hover .art { transform:scale(1.06) rotate(-.6deg); }
+  .fluid h3 { margin:12px 0 2px; font-size:17px; }
+  @media (max-width:900px){ .fluid{grid-template-columns:repeat(2,1fr)} } @media (max-width:560px){ .fluid{grid-template-columns:1fr} }
+
+  /* C — index list with cursor-follow preview */
+  .index { border-top:1px solid var(--line); }
+  .index a { display:grid; grid-template-columns:48px 1fr auto auto; gap:24px; align-items:baseline; padding:26px 0; border-bottom:1px solid var(--line); transition:padding .35s, color .3s; }
+  .index a .n { font:400 13px "JetBrains Mono",monospace; color:var(--muted); }
+  .index a .t { font-size:clamp(24px,3.6vw,44px); font-weight:600; letter-spacing:-.02em; }
+  .index a .k { color:var(--muted); font-size:14px; }
+  .index a .y { font:400 13px "JetBrains Mono",monospace; color:var(--muted); }
+  .index a:hover { padding-left:18px; color:var(--accent); }
+  .index:hover a:not(:hover) { opacity:.4; }
+  #peek { position:fixed; z-index:20; width:320px; pointer-events:none; opacity:0; transform:translate(-50%,-50%) scale(.85) rotate(-3deg); transition:opacity .25s, transform .25s; }
+  #peek.on { opacity:1; transform:translate(-50%,-50%) scale(1) rotate(-3deg); }
+  @media (max-width:640px){ .index a{grid-template-columns:1fr auto} .index a .n,.index a .k{display:none} #peek{display:none} }
+</style>
+</head>
+<body>
+<nav class="bar">
+  <a href="#a">A · Big two-up</a><a href="#b">B · Fluid filter grid</a><a href="#c">C · Index + peek</a>
+  <button id="theme">☀︎ Ink / ☾ Abyss</button>
+</nav>
+
+<template id="covers">
+  <div class="cover c-music" data-k="music"><div class="art"></div></div>
+  <div class="cover c-meal" data-k="meal"><div class="art"></div></div>
+  <div class="cover c-cli" data-k="cli"><div class="art">$ sting notes today<br><span style="color:#8b949e">→ opened 2026-10-01.md</span><br>$ sting ai "summarize inbox"<br><span style="color:#8b949e">→ 3 threads need replies</span><br>$ ▍</div></div>
+  <div class="cover c-nix" data-k="nix"><div class="art">❄</div></div>
+  <div class="cover c-swing" data-k="swing"><div class="art"><img src="../../public/swingIcon1.png" alt=""></div></div>
+  <div class="cover c-book" data-k="book"><div class="art"><div>THE UNKNOWN<small>JATO LEE CHRONICLES · I</small></div></div></div>
+</template>
+
+<!-- A -->
+<section class="demo" id="a">
+  <div class="label">A · jamesonnuss / holdencasey</div>
+  <h2>Selected work</h2>
+  <p class="desc">Large covers two-up with a staggered offset, a title and one-line pitch underneath, and a pill that slides in on hover. Every card opens a case-study page. Scales by just adding rows.</p>
+  <div class="twoup" id="gA"></div>
+</section>
+
+<!-- B -->
+<section class="demo" id="b">
+  <div class="label">B · tamalsen "fluidity"</div>
+  <h2>Everything I've made</h2>
+  <p class="desc">Three-up grid with filter pills; cards glide to their new spots when you filter. Good once the list grows past ~8 and mixes apps, tools and writing.</p>
+  <div class="filters" id="filters"></div>
+  <div class="fluid" id="gB"></div>
+</section>
+
+<!-- C -->
+<section class="demo" id="c">
+  <div class="label">C · minimal / editorial</div>
+  <h2>Index</h2>
+  <p class="desc">Type-only list; hovering a row floats its cover beside the cursor. Feels minimal but still visual. Works for any number of items.</p>
+  <div class="index" id="gC"></div>
+</section>
+<div id="peek"></div>
+
+<script>
+const projects = [
+  { k:'music', t:'Apple Music Manager', p:'Tools to tame a sprawling music library.', type:'Apps', y:'2026' },
+  { k:'cli',   t:'sting-cli',           p:'A personal command line for notes, AI and automation.', type:'Tools', y:'2026' },
+  { k:'meal',  t:'Meal Planner',        p:'Plan the week, generate the grocery list.', type:'Apps', y:'2026' },
+  { k:'nix',   t:'nix config',          p:'My whole machine, declared and reproducible.', type:'Tools', y:'2026' },
+  { k:'swing', t:'Swing Campaign',      p:'A civic app showing who really represents you.', type:'Ventures', y:'2020' },
+  { k:'book',  t:'The Unknown',         p:'A published fantasy novel.', type:'Writing', y:'—' },
+];
+const cover = k => document.querySelector(`#covers`).content.querySelector(`[data-k=${k}]`).cloneNode(true);
+const root = document.documentElement;
+document.getElementById('theme').onclick = () => root.dataset.theme = root.dataset.theme === 'light' ? '' : 'light';
+
+// A
+const gA = document.getElementById('gA');
+projects.forEach(p => { const a = document.createElement('a'); a.href = '#'; a.className = 'card';
+  a.append(cover(p.k)); a.insertAdjacentHTML('beforeend', `<div class="meta"><h3>${p.t}</h3><span class="tag">${p.type}</span></div><p>${p.p}</p>`); gA.append(a); });
+
+// B with FLIP
+const gB = document.getElementById('gB'), filters = document.getElementById('filters');
+const types = ['All', ...new Set(projects.map(p => p.type))];
+types.forEach((t, i) => { const b = document.createElement('button'); b.textContent = t; if (!i) b.className = 'on';
+  b.insertAdjacentHTML('beforeend', `<sup>${t === 'All' ? projects.length : projects.filter(p => p.type === t).length}</sup>`); b.dataset.t = t; filters.append(b); });
+projects.forEach(p => { const a = document.createElement('a'); a.href = '#'; a.className = 'card'; a.dataset.type = p.type;
+  a.append(cover(p.k)); a.insertAdjacentHTML('beforeend', `<h3>${p.t}</h3><span class="tag">${p.type}</span>`); gB.append(a); });
+filters.onclick = e => { const b = e.target.closest('button'); if (!b) return;
+  [...filters.children].forEach(n => n.classList.toggle('on', n === b));
+  const cards = [...gB.children], first = new Map(cards.map(c => [c, c.getBoundingClientRect()]));
+  cards.forEach(c => c.classList.toggle('hide', b.dataset.t !== 'All' && c.dataset.type !== b.dataset.t));
+  cards.forEach(c => { if (c.classList.contains('hide')) return; const f = first.get(c), l = c.getBoundingClientRect();
+    if (f.width === 0) { c.animate([{ opacity:0, transform:'scale(.9)' }, { opacity:1, transform:'none' }], { duration:400, easing:'cubic-bezier(.2,.7,.2,1)' }); return; }
+    c.animate([{ transform:`translate(${f.left - l.left}px,${f.top - l.top}px)` }, { transform:'none' }], { duration:500, easing:'cubic-bezier(.2,.7,.2,1)' }); });
+};
+
+// C
+const gC = document.getElementById('gC'), peek = document.getElementById('peek');
+projects.forEach((p, i) => { const a = document.createElement('a'); a.href = '#'; a.dataset.k = p.k;
+  a.innerHTML = `<span class="n">0${i + 1}</span><span class="t">${p.t}</span><span class="k">${p.type}</span><span class="y">${p.y}</span>`; gC.append(a);
+  a.onmouseenter = () => { peek.replaceChildren(cover(p.k)); peek.classList.add('on'); };
+  a.onmouseleave = () => peek.classList.remove('on'); });
+let px = 0, py = 0, tx = 0, ty = 0;
+addEventListener('mousemove', e => { tx = e.clientX + 200; ty = e.clientY; });
+(function loop() { px += (tx - px) * .15; py += (ty - py) * .15; peek.style.left = px + 'px'; peek.style.top = py + 'px'; requestAnimationFrame(loop); })();
+</script>
+</body>
+</html>
