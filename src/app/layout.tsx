@@ -6,7 +6,7 @@ import { Mulish } from "next/font/google";
 import { mantineTheme, montserrat } from "@/theme";
 import "@mantine/core/styles.css";
 // this is what sets the styling for the whole website
-import "@/scss/custom.scss";
+import "../scss/custom.scss";
 
 const mulish = Mulish({
   subsets: ["latin"],

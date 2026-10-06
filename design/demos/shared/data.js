@@ -23,27 +23,21 @@
     ],
   };
 
-  // kind: role | founded | milestone | published
+  // kind: role | founded | milestone | published (published entries are hidden from the experience list)
   const timeline = [
     { kind: 'role', start: TBD('20XX'), end: 'Present', title: TBD('Current Title'), org: TBD('Current Company'),
-      text: 'Placeholder for the role held the last few years: what you own and the impact.',
-      chapter: { head: 'Where I am now.', body: 'Placeholder: a short first-person paragraph about the current role, what the work is and why it matters to you.' } },
+      text: 'Placeholder for the role held the last few years: what you own and the impact.' },
     { kind: 'role', start: '2021', end: TBD('20XX'), title: 'Full Stack Software Engineer', org: 'Bonterra',
-      text: 'C#, React and SQL on Mobile Messaging and Process Automation for the NGP VAN Action Platform. Led Redux refactors and shipped a payments integration on an expedited timeline.',
-      chapter: { head: 'Learning to build at scale.', body: 'After running my own company, I joined a large platform team: Mobile Messaging, Process Automation, and the craft of refactoring something many people depend on every day.' } },
+      text: 'C#, React and SQL on Mobile Messaging and Process Automation for the NGP VAN Action Platform. Led Redux refactors and shipped a payments integration on an expedited timeline.' },
     { kind: 'founded', start: '2020', end: '2022', title: 'Co-Founder & CEO', org: 'Swing Campaign',
-      text: 'Built an app that showed people who best represented them. React Native + Django, led design, ran user interviews.',
-      chapter: { head: 'Starting something.', body: 'Fresh out of Cornell, I co-founded an app to help people understand who actually represented them, and learned what it means to lead design, engineering and outreach at the same time.' } },
-    { kind: 'milestone', start: '2020', title: 'B.A. Information Science', org: 'Cornell University',
-      chapter: { head: 'Graduating into a pandemic.', body: 'Cornell gave me the vocabulary for how people and technology shape each other. I graduated in 2020 and started building almost immediately.' } },
+      text: 'Built an app that showed people who best represented them. React Native + Django, led design, ran user interviews.' },
+    { kind: 'milestone', start: '2020', title: 'B.A. Information Science', org: 'Cornell University' },
     { kind: 'role', start: '2019', end: '2019', title: 'Research Analyst', org: 'Cornell CCT Lab',
-      text: 'A Chrome extension that produced toxicity reports for Reddit threads, backed by research into which words start arguments.',
-      chapter: { head: 'Where it started.', body: 'Research into which words start arguments online, turned into a browser extension that measured toxicity in Reddit threads. My first taste of shipping something people could use.' } },
+      text: 'A Chrome extension that produced toxicity reports for Reddit threads, backed by research into which words start arguments.' },
     { kind: 'role', start: TBD('20XX'), end: TBD('20XX'), title: 'Full Stack Engineer Intern', org: 'Cobu (formerly Doorbell.me)',
       text: 'Built admin tooling the operations team asked for and talked to residents about what would make the app better.' },
     { kind: 'published', start: TBD('Year?'), title: 'The Unknown', org: 'Jato Lee Chronicles, Book One',
-      text: 'A published fantasy novel.',
-      chapter: { head: 'Before any of it, a book.', body: 'Long before I wrote software for a living, I wrote a fantasy novel and got it published. I still think about structure, pacing and character when I design products.' } },
+      text: 'A published fantasy novel.' },
   ];
 
   const projects = [
@@ -119,28 +113,5 @@
     { slug: 'swing-lessons', t: 'Lessons from co-founding a civic tech startup', d: '2025-11-02', m: 10, c: 'life', x: 'What Swing Campaign taught me about building for people.' },
   ];
 
-  // Resume bullets tagged with skills so the interactive resume can highlight them.
-  const resume = [
-    { org: TBD('Current Company'), title: TBD('Current Title'), dates: `${TBD('20XX')} – Present`, bullets: [
-      ['Placeholder bullet about the biggest thing you own today.', ['TypeScript', 'React']],
-      ['Placeholder bullet about measurable impact.', []] ] },
-    { org: 'Bonterra', title: 'Full Stack Software Engineer', dates: `Sep 2021 – ${TBD('20XX')}`, bullets: [
-      ['Developed features for the Mobile Messaging and Process Automation applications of the NGP VAN Action Platform CRM and API.', ['C#', 'React', 'SQL']],
-      ['Led refactors to streamline stateful data flow using Redux slices and selectors.', ['Redux', 'React', 'TypeScript']],
-      ['Wrote Selenium end-to-end tests simulating real user workflows for Mobile Messaging.', ['C#']],
-      ['Planned and shipped the onboarding piece of a new payments integration on an expedited timeline.', ['React', 'C#', 'SQL']] ] },
-    { org: 'Swing Campaign', title: 'Co-Founder & CEO', dates: 'Mar 2020 – Jan 2022', bullets: [
-      ['Founded a civic app that showed users which representatives best matched their views.', []],
-      ['Wrote most of the code with React Native and Django, and led the design team.', ['React', 'Python', 'Django']],
-      ['Ran user interviews and coordinated marketing, political outreach and dev teams.', []] ] },
-    { org: 'Cornell CCT Lab', title: 'Research Analyst', dates: 'Jun 2019 – Dec 2019', bullets: [
-      ['Built a Chrome extension that analyzes a Reddit thread and reports comment toxicity.', ['JavaScript']],
-      ['Researched which words most often lead to arguments and used the results to direct the algorithm.', ['Python']] ] },
-    { org: 'Cobu (formerly Doorbell.me)', title: 'Full Stack Engineer Intern', dates: TBD('dates'), bullets: [
-      ['Built admin application features requested by the operations team.', ['JavaScript']],
-      ['Interviewed residents about the app and analyzed company processes for scalability.', []] ] },
-  ];
-  const education = [['Cornell University', 'B.A. Information Science', '2020'], ['Advanced Math & Science Academy', 'High School Diploma', '2016']];
-
-  window.SK = { PUB, TBD, person, timeline, projects, caseStudy, skills, posts, resume, education };
+  window.SK = { PUB, TBD, person, timeline, projects, caseStudy, skills, posts };
 })();

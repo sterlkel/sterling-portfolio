@@ -1,6 +1,7 @@
 "use client";
 
-// Interactive pieces shared by both styling trials, so the comparison is only about styling.
+// Interactive pieces for the Portrait redesign (STI-342), ported from design/demos/shared/flow.js.
+// Not wired into any page yet; STI-343/STI-344 adopt them.
 import { Fragment, useEffect, useRef, type CSSProperties, type ReactNode, type RefObject } from "react";
 
 type FlowOptions = { density?: number; signature?: boolean; sigX?: number; sigY?: number; sigSize?: number; shockwave?: boolean };
