@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Five directions · Sterling Kelly redesign</title>
+<title>Portrait mock · Sterling Kelly redesign</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared/base.css">
 <script src="shared/theme.js"></script>
@@ -12,95 +12,40 @@
   .g-hero canvas { position:absolute; inset:0; width:100%; height:100%; }
   .g-hero div { position:relative; pointer-events:none; }
   .g-hero h1 { font:800 clamp(40px,7vw,88px)/1 var(--sans); letter-spacing:-.04em; margin:8px 0; }
-  .g-hero p { color:var(--muted); max-width:56ch; margin:0; }
+  .g-hero p { color:var(--muted); max-width:60ch; margin:0; }
   .tb { position:absolute; top:20px; right:20px; z-index:2; }
-  .demos { display:grid; gap:20px; padding:40px max(20px,5vw) 80px; }
-  .demo { display:grid; grid-template-columns:70px 1fr auto; gap:24px; align-items:start; padding:28px; border:1px solid var(--line); border-radius:22px; background:var(--card); transition:transform .4s var(--spring), border-color .3s; }
-  .demo:hover { transform:translateY(-4px); border-color:var(--accent); }
-  .demo .n { font:800 56px/1 var(--sans); color:transparent; -webkit-text-stroke:1.5px var(--accent); }
-  .demo h2 { margin:0 0 4px; font-size:28px; letter-spacing:-.02em; }
-  .demo .focus { font:400 12px var(--mono); color:var(--accent); letter-spacing:.08em; text-transform:uppercase; }
-  .demo p { color:var(--muted); margin:10px 0 14px; max-width:70ch; line-height:1.6; }
-  .demo ul { display:flex; flex-wrap:wrap; gap:6px; padding:0; margin:0; list-style:none; }
-  .demo li { font:400 12px var(--mono); padding:4px 10px; border:1px solid var(--line); border-radius:999px; color:var(--muted); }
-  .pages { display:flex; flex-direction:column; gap:6px; min-width:150px; }
-  .pages a { font:400 13px var(--mono); color:var(--muted); } .pages a:hover { color:var(--accent); }
-  .pages a.main { color:var(--fg); font-weight:700; font-size:15px; margin-bottom:4px; }
-  .notes { padding:0 max(20px,5vw) 80px; color:var(--muted); max-width:900px; line-height:1.7; }
-  .notes h3 { color:var(--fg); }
-  .round { padding:0 max(20px,5vw); font:400 13px var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:20px 0 0; }
-  .demos.r2 .demo { border-color:color-mix(in srgb, var(--accent) 40%, var(--line)); }
-  .demos.final .demo { border-width:2px; border-color:var(--accent); }
-  @media (max-width:760px){ .demo{grid-template-columns:1fr} }
+  .body { padding:40px max(20px,5vw) 80px; max-width:900px; line-height:1.7; color:var(--muted); }
+  .pages { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 40px; }
+  .pages a { font:400 14px var(--mono); padding:8px 14px; border:1px solid var(--line); border-radius:999px; color:var(--fg); transition:border-color .2s, transform .3s var(--spring); }
+  .pages a:hover { border-color:var(--accent); transform:translateY(-2px); }
+  .pages a.main { background:var(--accent); color:var(--on-accent); border-color:var(--accent); }
+  .body h3 { color:var(--fg); }
 </style>
 </head>
 <body>
 <button class="theme-btn tb" data-theme-toggle aria-label="Toggle theme"></button>
-<section class="g-hero"><canvas id="flow"></canvas><div><span class="eyebrow">sterling-portfolio · redesign</span><h1>The final mock.</h1><p>Two options built on Margin, with Hello's interactivity, a bigger face up front, a coming-soon writing view and an Index page. Rounds 1 and 2 are kept below for reference. Every demo has Abyss (dark) and Ink (light) themes; its toggle is remembered per demo.</p></div></section>
+<section class="g-hero"><canvas id="flow"></canvas><div><span class="eyebrow">sterling-portfolio · redesign</span><h1>Portrait mock.</h1><p>The chosen direction for the redesign, as static HTML. Tracked in Linear under STI-342.</p></div></section>
 
-<h2 class="round">Final mock</h2>
-<section class="demos r2 final" id="demosF"></section>
-<h2 class="round">Round 2</h2>
-<section class="demos r2" id="demos2"></section>
-<h2 class="round">Round 1</h2>
-<section class="demos" id="demos"></section>
-
-<section class="notes">
+<section class="body">
+  <div class="pages">
+    <a class="main" href="final-a/index.html">→ Homepage</a>
+    <a href="final-a/everything.html">Index (writing &amp; work)</a>
+    <a href="final-a/post.html">Post</a>
+    <a href="final-a/project.html?p=cli">Case study</a>
+    <a href="final-a/about.html">About</a>
+    <a href="final-a/resume.html">Résumé (PDF)</a>
+    <a href="final-a/contact.html">Contact</a>
+    <a href="final-a/card.html">Card</a>
+  </div>
   <h3>Coming-soon writing</h3>
-  <p>On the final mocks, a pill in the bottom-left corner switches the writing sections between <b>coming soon</b> (drafts on the desk) and <b>full blog</b>, so you can see both states.</p>
+  <p>A pill in the bottom-left corner switches the writing sections between <b>coming soon</b> and <b>full blog</b>, so both states can be checked.</p>
   <h3>Placeholders</h3>
-  <p>Dashed outlines mark things to fill in: current role, title and start date; Bonterra end date; Cobu dates; <i>The Unknown</i>'s publication year; location. The email (<code>hello@sterlingkelly.dev</code>) and booking link (<code>cal.com/sterlingkelly</code>) are stand-ins. Blog posts are invented examples from real projects.</p>
-  <h3>Shared everywhere</h3>
-  <p>Flow-field hero (lines part, click shockwave, SK appears when idle), business card at <code>card.html</code> (flip for QR, Save contact downloads a vCard), one full case study (sting-cli), native web résumé with print stylesheet (round 1) or the embedded PDF (round 2: update by replacing <code>public/resume.pdf</code>).</p>
+  <p>Dashed outlines mark content still to fill in (current role and dates, novel year, location). The email and booking link are stand-ins. Blog posts are invented examples. See STI-346.</p>
+  <h3>History</h3>
+  <p>The earlier sketches and the two exploration rounds were removed once Portrait was chosen. They remain in git history (commit <code>0d0999a</code>), and the reasoning is in <code>docs/plans/2026-10-01-site-redesign-design.md</code>.</p>
 </section>
 
 <script src="shared/flow.js"></script>
-<script>
-new FlowField(document.getElementById('flow'), { density: 900, signature: true, sigX: .8 });
-const demos = [
-  { id: 'abyss', name: 'Abyss', focus: 'Portfolio-first · scroll story', d: 'Full-screen flow-field hero, then a single scroll through about, a glowing timeline that draws itself, two-up work with case studies, bubble skills, latest writing and contact. Drawn-line and flow-strip dividers. Interactive résumé (click a skill to highlight where it was used).',
-    tags: ['flow hero + signature', 'drawn spine', 'two-up work', 'bubbles', 'drawn line + flow strip', 'magazine blog / TOC posts', 'interactive résumé', 'email + booking'],
-    pages: [['Homepage', 'index.html'], ['Blog', 'blog.html'], ['Post', 'post.html'], ['Case study', 'project.html?p=cli'], ['Résumé', 'resume.html'], ['Card', 'card.html']] },
-  { id: 'constellation', name: 'Constellation', focus: 'Playful portfolio', d: 'Flow field with constellation links near the cursor. Rounded, bouncy type (Bricolage Grotesque), soft waves between alternating sections, letters that hop on hover, the keycap keyboard, a conversational contact form, and a separate Story page told in chapters.',
-    tags: ['flow + constellation links', 'drawn spine + Story page', 'two-up work', 'keycaps', 'soft waves', 'magazine blog / TOC posts', 'conversational form'],
-    pages: [['Homepage', 'index.html'], ['Story', 'story.html'], ['Blog', 'blog.html'], ['Post', 'post.html'], ['Case study', 'project.html?p=cli'], ['Résumé', 'resume.html'], ['Card', 'card.html']] },
-  { id: 'field-notes', name: 'Field Notes', focus: 'Equal weight · writing + work', d: 'A shorter hero, then "Now": latest writing and selected work side by side. Numbered chapter rules divide the rest. Instrument Serif headlines. Life posts automatically switch to the literary layout; tech posts get TOC + sidenotes.',
-    tags: ['short flow hero', 'writing | work split', 'chapter rules', 'drawn spine', 'bubbles', 'life → literary posts', 'email + booking'],
-    pages: [['Homepage', 'index.html'], ['Blog', 'blog.html'], ['Tech post', 'post.html?slug=personal-cli'], ['Life post', 'post.html?slug=finishing-a-novel'], ['Case study', 'project.html?p=cli'], ['Résumé', 'resume.html'], ['Card', 'card.html']] },
-  { id: 'notebook', name: 'Notebook', focus: 'Blog-first · ink by default', d: 'The homepage is the blog: a one-line intro, a flow strip, then the magazine index with Tech/Life filters. Work, About and Résumé are their own pages. Fraunces headlines, light theme first, a wave into a dark call-to-action band.',
-    tags: ['magazine homepage', 'flow strip', 'chapter rule + soft wave', 'work page', 'about: compact spine + keycaps', 'TOC posts', 'email + booking'],
-    pages: [['Homepage', 'index.html'], ['Post', 'post.html'], ['Work', 'work.html'], ['About', 'about.html'], ['Résumé', 'resume.html'], ['Contact', 'contact.html'], ['Card', 'card.html']] },
-  { id: 'plain-text', name: 'Plain Text', focus: 'Minimalist · separate pages', d: 'tomweightman-simple. Name, two sentences, a faint flow strip, and a list of dated titles. Serif everywhere. Work is a typographic index with a floating preview; About has the minimal timeline and the bouncy marquee. Posts are pure reading.',
-    tags: ['flow strip only', 'plain list blog', 'literary posts', 'work index + peek', 'minimal timeline', 'bouncy marquee', 'email + booking'],
-    pages: [['Homepage', 'index.html'], ['Post', 'post.html?slug=finishing-a-novel'], ['Work', 'work.html'], ['About', 'about.html'], ['Résumé', 'resume.html'], ['Contact', 'contact.html'], ['Card', 'card.html']] },
-];
-document.getElementById('demos').innerHTML = demos.map((d, i) => `
-  <article class="demo"><span class="n">0${i + 1}</span>
-    <div><span class="focus">${d.focus}</span><h2>${d.name}</h2><p>${d.d}</p><ul>${d.tags.map(t => `<li>${t}</li>`).join('')}</ul></div>
-    <div class="pages">${d.pages.map(([l, h], j) => `<a class="${j ? '' : 'main'}" href="${d.id}/${h}">${j ? '' : '→ '}${l}</a>`).join('')}</div></article>`).join('');
-
-const pagesR2 = [['Homepage', 'index.html'], ['Writing', 'blog.html'], ['Post', 'post.html'], ['Work', 'work.html'], ['About', 'about.html'], ['Résumé (PDF)', 'resume.html'], ['Contact', 'contact.html'], ['Card', 'card.html']];
-const demos2 = [
-  { id: 'hello', name: 'Hello', focus: 'Your favorite landing, nothing else', d: "Constellation's big bold landing (wave, name, two buttons) over the flow field, fading cleanly into a single row of Elsewhere cards. Every other section is its own page. Work is a compact 3-up grid with filters; About has the keycaps.", tags: ['full flow hero', 'elsewhere cards', 'year-grouped writing', 'compact work grid', 'keycaps', 'PDF on paper'] },
-  { id: 'margin', name: 'Margin', focus: 'Notebook, intro-first', d: "Notebook's look, but the homepage leads with you, not the blog. Latest writing (titles + one-line excerpts, no thumbnails) beside selected work, then Elsewhere. Work page is a list with small thumbnails, so it never sprawls.", tags: ['intro + flow strip', 'writing | work', 'elsewhere', 'work rows', 'keycaps', 'PDF on a desk'] },
-  { id: 'index-card', name: 'Index Card', focus: 'Plain Text with a voice', d: "Plain Text's calm, plus the big bold name and two buttons you liked from round 1. Writing and work as two plain lists. Work page is the typographic index with floating previews; About uses the minimal timeline and the bouncy marquee.", tags: ['big name + buttons', 'flow strip', 'plain lists', 'work index + peek', 'bouncy marquee', 'PDF plain'] },
-  { id: 'paper', name: 'Paper', focus: 'Editorial menu', d: 'A short flow hero, then the whole site as five huge serif words. Hover one and a preview floats beside it. Work page shows two featured projects and an archive index for everything else.', tags: ['short flow hero', 'section index + previews', 'featured + archive work', 'keycaps', 'PDF on paper'] },
-  { id: 'sidebar', name: 'Sidebar', focus: 'Fixed panel, scrolling pages', d: 'Your name, nav and a contained flow field sit in a sticky left panel; every page scrolls beside it. The homepage is one paragraph, three posts, three projects and a simple contact. Collapses to a top panel on phones.', tags: ['sticky sidebar + flow', 'short home', 'writing w/ excerpts', 'work rows', 'keycaps', 'PDF plain'] },
-];
-document.getElementById('demos2').innerHTML = demos2.map((d, i) => `
-  <article class="demo"><span class="n">${String(i + 6).padStart(2, '0')}</span>
-    <div><span class="focus">${d.focus}</span><h2>${d.name}</h2><p>${d.d}</p><ul>${d.tags.map(t => `<li>${t}</li>`).join('')}</ul></div>
-    <div class="pages">${pagesR2.map(([l, h], j) => `<a class="${j ? '' : 'main'}" href="${d.id}/${h}">${j ? '' : '→ '}${l}</a>`).join('')}</div></article>`).join('');
-
-const pagesF = [['Homepage', 'index.html'], ['Writing', 'blog.html'], ['Index', 'everything.html'], ['Post', 'post.html'], ['Work', 'work.html'], ['About', 'about.html'], ['Résumé (PDF)', 'resume.html'], ['Contact', 'contact.html'], ['Card', 'card.html']];
-const demosF = [
-  { id: 'final-a', name: 'Portrait', pages: [['Homepage', 'index.html'], ['Index (writing & work)', 'everything.html'], ['Post', 'post.html'], ['Case study', 'project.html?p=cli'], ['About', 'about.html'], ['Résumé (PDF)', 'resume.html'], ['Contact', 'contact.html'], ['Card', 'card.html']], focus: 'Final A · chosen direction', d: "Hello's full-screen interactive flow field (shockwave, a small SK signature that inks in when you hold still, waving hand, rising headline, bouncy buttons) with a large tilting portrait beside the headline. Below: Margin's latest writing | selected work, then the one-line Elsewhere. Writing and work live on a single Index page; contact uses Notebook's email + channel cards. Dark by default.", tags: ['full flow hero', 'big tilt portrait', 'writing | work', 'coming-soon writing', 'Index page', 'one-line elsewhere', 'keycaps', 'PDF résumé'] },
-  { id: 'final-b', name: 'Margin+', focus: 'Final B · Margin, turned up', d: "Margin's calm page, but the portrait is big and playful (tilts, springs when clicked, offset ink shadow), the headline rises in with a highlighter sweep, and a taller interactive ink strip carries the shockwave and SK signature. Same writing | work and one-line Elsewhere. Light by default.", tags: ['big tilt portrait', 'interactive ink strip', 'writing | work', 'coming-soon writing', 'Index page', 'one-line elsewhere', 'keycaps', 'PDF résumé'] },
-];
-document.getElementById('demosF').innerHTML = demosF.map((d, i) => `
-  <article class="demo"><span class="n">${'AB'[i]}</span>
-    <div><span class="focus">${d.focus}</span><h2>${d.name}</h2><p>${d.d}</p><ul>${d.tags.map(t => `<li>${t}</li>`).join('')}</ul></div>
-    <div class="pages">${(d.pages || pagesF).map(([l, h], j) => `<a class="${j ? '' : 'main'}" href="${d.id}/${h}">${j ? '' : '→ '}${l}</a>`).join('')}</div></article>`).join('');
-</script>
+<script>new FlowField(document.getElementById('flow'), { density: 900, signature: true, sigX: .8 });</script>
 </body>
 </html>

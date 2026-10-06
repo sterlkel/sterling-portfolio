@@ -1,6 +1,6 @@
 # Site redesign: design decisions
 
-Static HTML demos live in `design/demos/` (open `design/demos/index.html`). Earlier explorations are in `design/sketches/`. Technology choices come after a demo is picked.
+The chosen mock, **Final A · Portrait**, lives in `design/demos/final-a/` (open `design/demos/index.html`). Implementation is tracked in Linear under STI-342. The component sketches and the exploration demos referenced below (rounds 1 and 2, Final B) were removed from the tree once Portrait was chosen; they remain in git history at commit `0d0999a`.
 
 ## Goals
 - Blog-forward enough to start writing now. Drafts private, published posts public, tagged **Tech** (most) or **Life**.
