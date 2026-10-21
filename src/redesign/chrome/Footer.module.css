@@ -1,0 +1,6 @@
+.foot {
+  padding: 48px var(--gutter); color: var(--muted); font-size: 14px; border-top: 1px solid var(--line);
+  display: flex; gap: 20px; flex-wrap: wrap; justify-content: space-between;
+}
+.foot a { transition: color .2s; }
+.foot a:hover { color: var(--accent); }
