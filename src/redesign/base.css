@@ -1,0 +1,39 @@
+/* Base styles shared by every redesign page. Component styles live in CSS modules. */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); line-height: 1.5;
+  overflow-x: hidden; -webkit-font-smoothing: antialiased; transition: background .35s, color .35s;
+}
+/* Pages without a full-bleed hero start below the fixed nav. */
+body:not(:has([data-hero])) { padding-top: var(--nav-h); }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+h1, h2, h3 { margin: 0; }
+
+.wrap { max-width: 1160px; margin: 0 auto; padding-inline: var(--gutter); }
+.narrow { max-width: 720px; margin: 0 auto; padding-inline: 24px; }
+.mono { font-family: var(--mono); }
+.eyebrow { font: 400 13px var(--mono); color: var(--accent); letter-spacing: .08em; }
+
+/* Buttons, with Hello's bouncy hover and press. */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; font: 500 15px var(--sans); padding: 12px 20px;
+  border-radius: var(--r); border: 1px solid var(--fg); background: var(--fg); color: var(--bg);
+  cursor: pointer; transition: transform .3s var(--spring);
+}
+.btn:hover { transform: translateY(-3px) rotate(-1.5deg) scale(1.04); }
+.btn:active { transform: scale(.94); transition-duration: .1s; }
+.btn.ghost { background: none; color: var(--fg); border-color: var(--line); }
+
+/* Reveal on scroll; the Reveal component adds .in once the element is visible. */
+.rv { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.rv.in { opacity: 1; transform: none; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rv { opacity: 1; transform: none; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
