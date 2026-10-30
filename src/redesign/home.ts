@@ -1,14 +1,11 @@
-// Homepage content from the approved Portrait mock.
-export const writingDrafts = [
-  { title: "Building a personal CLI I actually use", status: "editing", progress: 82 },
-  { title: "Declaring my whole Mac with nix-darwin", status: "drafting", progress: 55 },
-  { title: "On finishing a novel", status: "outlining", progress: 20 },
-] as const;
-
+// Homepage content. Add future projects here instead of editing the page component.
 export const selectedWork = [
-  { key: "cli", title: "sting-cli", pitch: "A personal command line for notes, AI and automation." },
-  { key: "music", title: "Apple Music Manager", pitch: "Tools to tame a sprawling music library." },
-  { key: "meal", title: "Meal Planner", pitch: "Plan the week, generate the grocery list." },
+  {
+    title: "Sterling Portfolio",
+    pitch: "A hand-built home for my work, writing and experiments.",
+    href: "/",
+    coverBackground: "linear-gradient(135deg, var(--accent), #8d78ff 55%, #171525)",
+  },
 ] as const;
 
 export const elsewhere = [
