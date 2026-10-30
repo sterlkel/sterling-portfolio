@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { elsewhere, selectedWork } from "@/redesign/home";
+import { elsewhere, selectedWork, writingDrafts } from "@/redesign/home";
 import { FlowCanvas, RiseWords, Tilt } from "@/redesign/interactive";
 import { Reveal } from "@/redesign/chrome/Reveal";
 import styles from "./page.module.css";
@@ -46,7 +46,8 @@ export default function HomePage() {
               I&apos;m a software engineer who builds <span className={styles.highlight}>small, useful tools</span> and writes about them. One-time founder, published novelist.
             </p>
             <div className={styles.cta}>
-              <a className="btn" href="#selected-work">See my work</a>
+              <a className="btn" href="#latest-writing">Read the blog</a>
+              <a className="btn ghost" href="#selected-work">See my work</a>
             </div>
           </div>
           <Tilt className={styles.face}>
@@ -59,19 +60,39 @@ export default function HomePage() {
       </section>
 
       <div className={styles.content}>
-        <Reveal className={styles.workReveal}>
-          <section id="selected-work" className={styles.work} aria-label="Selected work">
-            <div className={styles.colHead}>
-              <h2>Selected work</h2>
-              <Link href="/projects">all work →</Link>
-            </div>
-            {selectedWork.map((work) => (
-              <Link className={styles.row} href={work.href} key={work.title}>
-                <div className={styles.cover} style={{ background: work.coverBackground }} aria-hidden="true" />
-                <div><b>{work.title}</b><span>{work.pitch}</span></div>
-              </Link>
-            ))}
-          </section>
+        <Reveal className={styles.sectionsReveal}>
+          <div className={styles.two}>
+            <section id="latest-writing" aria-label="Latest writing">
+              <div className={styles.colHead}>
+                <h2>Latest writing</h2>
+                <a href="#latest-writing">all posts →</a>
+              </div>
+              <p className={styles.soonLede}>First posts are on the way<span className={styles.cursor} /></p>
+              <p className={styles.soonSub}>I&apos;m writing the first few now. Here&apos;s what&apos;s on the desk:</p>
+              {writingDrafts.map((draft) => (
+                <div className={styles.draft} key={draft.title}>
+                  <b>{draft.title}</b>
+                  <span className={styles.draftMeta}>
+                    <span className={draft.status === "editing" ? styles.statusHot : styles.status}>{draft.status}</span>
+                    <span className={styles.bar} role="progressbar" aria-label={`${draft.title} progress`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={draft.progress}><i style={{ width: `${draft.progress}%` }} /></span>
+                  </span>
+                </div>
+              ))}
+            </section>
+
+            <section id="selected-work" aria-label="Selected work">
+              <div className={styles.colHead}>
+                <h2>Selected work</h2>
+                <Link href="/projects">all work →</Link>
+              </div>
+              {selectedWork.map((work) => (
+                <Link className={styles.row} href={work.href} key={work.title}>
+                  <div className={styles.cover} style={{ background: work.coverBackground }} aria-hidden="true" />
+                  <div><b>{work.title}</b><span>{work.pitch}</span></div>
+                </Link>
+              ))}
+            </section>
+          </div>
         </Reveal>
 
         <p className={styles.elsewhere}>
