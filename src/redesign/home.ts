@@ -1,4 +1,10 @@
-// Homepage content. Add future projects here instead of editing the page component.
+// Homepage preview content. Add future posts and projects here instead of editing the page component.
+export const writingDrafts = [
+  { title: "Building a personal CLI I actually use", status: "editing", progress: 82 },
+  { title: "Declaring my whole Mac with nix-darwin", status: "drafting", progress: 55 },
+  { title: "On finishing a novel", status: "outlining", progress: 20 },
+] as const;
+
 export const selectedWork = [
   {
     title: "Sterling Portfolio",
