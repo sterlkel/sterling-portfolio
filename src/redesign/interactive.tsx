@@ -301,19 +301,39 @@ export function FlowCanvas({
 export function Tilt({ children, className, style, max = 12 }: { children: ReactNode; className?: string; style?: CSSProperties; max?: number }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const el = ref.current!;
-    let rx = 0, ry = 0, tx = 0, ty = 0, vx = 0, vy = 0, raf = 0;
+    const el = ref.current;
+    if (!el) return;
+
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let rx = 0, ry = 0, tx = 0, ty = 0, vx = 0, vy = 0;
+    let raf: number | undefined;
     const move = (e: MouseEvent) => { const r = el.getBoundingClientRect(); tx = -((e.clientY - r.top) / r.height - 0.5) * max; ty = ((e.clientX - r.left) / r.width - 0.5) * max; };
     const leave = () => { tx = ty = 0; };
     const click = () => { vx += 14; vy -= 10; };
-    el.addEventListener("mousemove", move); el.addEventListener("mouseleave", leave); el.addEventListener("click", click);
     const spring = () => {
       vx = (vx + (tx - rx) * 0.12) * 0.8; vy = (vy + (ty - ry) * 0.12) * 0.8; rx += vx; ry += vy;
       el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
       raf = requestAnimationFrame(spring);
     };
-    spring();
-    return () => { cancelAnimationFrame(raf); el.removeEventListener("mousemove", move); el.removeEventListener("mouseleave", leave); el.removeEventListener("click", click); };
+    const stop = () => {
+      if (raf !== undefined) cancelAnimationFrame(raf);
+      raf = undefined;
+      el.removeEventListener("mousemove", move); el.removeEventListener("mouseleave", leave); el.removeEventListener("click", click);
+      el.style.transform = "";
+    };
+    const start = () => {
+      if (raf !== undefined) return;
+      el.addEventListener("mousemove", move); el.addEventListener("mouseleave", leave); el.addEventListener("click", click);
+      spring();
+    };
+    const onMotionChange = (event: MediaQueryListEvent) => {
+      if (event.matches) stop();
+      else start();
+    };
+
+    if (!motionQuery.matches) start();
+    motionQuery.addEventListener("change", onMotionChange);
+    return () => { stop(); motionQuery.removeEventListener("change", onMotionChange); };
   }, [max]);
   return <div ref={ref} className={className} style={style}>{children}</div>;
 }
