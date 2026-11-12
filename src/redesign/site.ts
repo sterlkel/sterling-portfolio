@@ -4,6 +4,7 @@ export const siteUrl = "https://sterling-portfolio.vercel.app";
 
 export const person = {
   name: "Sterling Kelly",
+  title: "Full Stack Software Engineer",
   // TODO(STI-346): placeholders from the mock. Replace both with the real address and booking link before this ships.
   email: "hello@sterlingkelly.dev",
   booking: "https://cal.com/sterlingkelly",
@@ -11,7 +12,6 @@ export const person = {
   linkedin: "https://www.linkedin.com/in/sterling-kelly-2970241b0/",
 };
 
-// Card joins the Elsewhere list when its page lands (STI-351).
 export const navLinks = [
   { label: "Index", href: "/index" },
   { label: "About", href: "/about" },
@@ -29,4 +29,5 @@ export const elsewhere = [
   { label: "about", href: "/about" },
   { label: "résumé", href: "/resume" },
   { label: "contact", href: "/contact" },
+  { label: "card", href: "/card" },
 ];
