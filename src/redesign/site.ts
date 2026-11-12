@@ -12,13 +12,16 @@ export const person = {
 };
 
 // Card joins the Elsewhere list when its page lands (STI-351).
-// Resume points at the old page until STI-256 replaces it.
 export const navLinks = [
   { label: "Index", href: "/index" },
   { label: "About", href: "/about" },
   { label: "Resume", href: "/resume" },
   { label: "Contact", href: "/contact" },
 ];
+
+// The résumé is public/resume.pdf; replace that file to update it. The PDF carries no date of its own,
+// so bump this label when the file changes.
+export const resume = { file: "/resume.pdf", updated: "Jun 2024" };
 
 // The one-line "Elsewhere" list at the bottom of the homepage and Index.
 export const elsewhere = [

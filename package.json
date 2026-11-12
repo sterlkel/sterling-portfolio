@@ -16,7 +16,6 @@
     "@mantine/hooks": "^8.3.18",
     "@mantine/notifications": "^8.3.18",
     "@mui/icons-material": "^5.14.3",
-    "@mui/lab": "^5.0.0-alpha.160",
     "@mui/material": "^5.14.1",
     "@next/third-parties": "^14.2.3",
     "@tabler/icons-react": "^3.45.0",
@@ -39,7 +38,6 @@
     "react-icons": "^4.10.1",
     "react-simple-typewriter": "^5.0.1",
     "react-tilt": "^1.0.2",
-    "react-vertical-timeline-component": "^3.6.0",
     "rehype-highlight": "^7.0.2",
     "rehype-stringify": "^10.0.1",
     "remark-gfm": "^4.0.1",
@@ -51,7 +49,6 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.196",
-    "@types/react-vertical-timeline-component": "^3.3.3",
     "@typescript-eslint/parser": "^6.2.0",
     "lodash": "^4.17.21",
     "prettier": "^2.5.1",
