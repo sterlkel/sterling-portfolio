@@ -1,5 +1,7 @@
 // Site-wide identity and navigation for the Portrait redesign (STI-342).
 
+export const siteUrl = "https://sterling-portfolio.vercel.app";
+
 export const person = {
   name: "Sterling Kelly",
   github: "https://github.com/sterlkel",
