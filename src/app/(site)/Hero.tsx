@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRef, useState } from "react";
 import { FlowCanvas, RiseWords, Tilt } from "@/redesign/interactive";
 import styles from "./page.module.css";
@@ -48,9 +49,9 @@ export function Hero() {
           </div>
         </div>
         <Tilt className={styles.face}>
-          <div className={styles.faceImage}>
+          <Link className={styles.faceImage} href="/about" aria-label="About Sterling">
             <Image src="/Sterling.jpg" alt="Sterling Kelly" width={800} height={1000} priority sizes="(max-width: 820px) 280px, 420px" />
-          </div>
+          </Link>
         </Tilt>
       </div>
       <p className={styles.hint}>click anywhere · hold still for a moment</p>
