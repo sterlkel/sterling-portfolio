@@ -12,13 +12,6 @@ export type EducationType = {
   degree: string;
 };
 
-export type ContactFormData = {
-  name: string;
-  email: string;
-  message: string;
-};
-
-export type ContactFieldTypes = "message" | "email" | "name";
 export type ResumeRouteTypes = "exp" | "edu" | "skills";
 
 export type ProjectDataType = {

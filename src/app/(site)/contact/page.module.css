@@ -1,0 +1,20 @@
+/* Contact page, from design/demos/final-a/contact.html. */
+.email {
+  display: inline-flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 12px; padding: 0; border: 0; background: none; color: var(--fg);
+  font: 800 clamp(28px, 6vw, 72px)/1 var(--display); letter-spacing: -.03em; text-align: left; word-break: break-all; cursor: pointer; transition: color .2s;
+}
+.email:hover { color: var(--accent); }
+.pill { padding: 6px 12px; border: 1px solid var(--line); border-radius: var(--r-pill); color: var(--muted); font: 500 13px var(--mono); letter-spacing: 0; white-space: nowrap; transition: transform .4s var(--spring); }
+.copied .pill { border-color: var(--accent); background: var(--accent); color: var(--on-accent); transform: scale(1.15) rotate(-4deg); }
+.mailto { margin: 14px 0 0; color: var(--muted); font-size: 15px; }
+.mailto a { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.mailto a:hover { color: var(--accent); }
+
+.channels { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 44px; }
+.channel { display: flex; flex-direction: column; gap: 6px; padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); transition: transform .35s var(--spring), border-color .3s; }
+.channel:hover { border-color: var(--accent); transform: translateY(-5px) rotate(-.6deg); }
+.channel b { font-size: 17px; }
+.channel span { color: var(--muted); font-size: 14px; }
+.channel .action { margin-top: auto; padding-top: 10px; color: var(--accent); font-family: var(--mono); font-size: 13px; }
+.book { border-color: var(--accent); background: var(--accent); color: var(--on-accent); }
+.book span, .book .action { color: inherit; opacity: .8; }
