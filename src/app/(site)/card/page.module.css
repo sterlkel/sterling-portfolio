@@ -1,0 +1,29 @@
+/* Business card page, from design/demos/final-a/card.html. Phone-first. */
+.page { display: flex; flex-direction: column; align-items: center; gap: 28px; padding: 40px 20px 60px; }
+
+.card { width: min(360px, 100%); aspect-ratio: 3 / 4.1; padding: 0; border: 0; background: none; color: inherit; font: inherit; perspective: 1200px; cursor: pointer; }
+.flip { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .9s var(--spring); }
+.flipped .flip { transform: rotateY(180deg); }
+.face {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 28px; overflow: hidden;
+  border: 1px solid var(--line); border-radius: 26px; background: var(--card); box-shadow: 0 30px 60px -20px #0006; text-align: center;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+}
+.face > * { position: relative; }
+.face > .flow { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .6; }
+.back { background: var(--bg); transform: rotateY(180deg); }
+
+.avatar { width: 112px; height: 112px; border: 3px solid var(--accent); border-radius: 50%; object-fit: cover; }
+.name { margin: 18px 0 4px; font: 800 30px var(--display); letter-spacing: -.02em; }
+.role { color: var(--muted); }
+.mail { margin-top: 6px; color: var(--muted); font: 400 13px var(--mono); }
+.tap { margin-top: 22px; color: var(--muted); font: 400 12px var(--mono); }
+.qr { display: block; padding: 14px; border-radius: var(--r); background: #fff; }
+.qr svg { display: block; width: 180px; height: 180px; }
+
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+
+.links { display: flex; flex-direction: column; gap: 10px; width: min(420px, 100%); }
+.links a { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border: 1px solid var(--line); border-radius: var(--r); background: var(--card); font-weight: 500; transition: transform .35s var(--spring), border-color .2s; }
+.links a:hover { border-color: var(--accent); transform: scale(1.03); }
+.links span { flex-shrink: 0; color: var(--muted); font: 400 13px var(--mono); }

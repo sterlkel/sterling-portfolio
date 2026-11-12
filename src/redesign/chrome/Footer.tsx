@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { person } from "../site";
 import styles from "./Footer.module.css";
 
@@ -6,7 +7,7 @@ export function Footer() {
     <footer className={styles.foot}>
       <span>© {new Date().getFullYear()} {person.name}</span>
       <span>
-        <a href={person.github}>GitHub</a> · <a href={person.linkedin}>LinkedIn</a>
+        <a href={person.github}>GitHub</a> · <a href={person.linkedin}>LinkedIn</a> · <Link href="/card">Card</Link>
       </span>
     </footer>
   );
