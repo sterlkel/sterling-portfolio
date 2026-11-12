@@ -8,10 +8,11 @@ export const person = {
   linkedin: "https://www.linkedin.com/in/sterling-kelly-2970241b0/",
 };
 
-// About and Card join these lists when their pages land (STI-350, STI-351).
+// Card joins the Elsewhere list when its page lands (STI-351).
 // Resume and Contact point at the old pages until STI-256 and STI-255 replace them.
 export const navLinks = [
   { label: "Index", href: "/index" },
+  { label: "About", href: "/about" },
   { label: "Resume", href: "/resume" },
   { label: "Contact", href: "/contact" },
 ];
@@ -19,6 +20,7 @@ export const navLinks = [
 // The one-line "Elsewhere" list at the bottom of the homepage and Index.
 export const elsewhere = [
   { label: "index", href: "/index" },
+  { label: "about", href: "/about" },
   { label: "résumé", href: "/resume" },
   { label: "contact", href: "/contact" },
 ];
