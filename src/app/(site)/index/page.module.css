@@ -1,0 +1,18 @@
+/* Index page: writing beside work, from design/demos/final-a/everything.html. */
+.everything { display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; }
+.everything > section { scroll-margin-top: calc(var(--nav-h) + 24px); }
+
+/* Section heading: an accent rule with a small mono label at its end. */
+.chapter { display: flex; align-items: center; gap: 14px; padding: 12px 0 8px; color: var(--muted); font: 400 13px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.chapter span { flex: 1; height: 1px; background: var(--accent); }
+
+.work { margin-top: 18px; }
+.work a { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; font: 400 19px var(--serif); }
+.work small { padding-top: 6px; color: var(--muted); font: 400 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.work a:hover span { color: var(--accent); }
+
+.elsewhere { margin-top: 56px; }
+
+@media (max-width: 760px) {
+  .everything { grid-template-columns: 1fr; gap: 24px; }
+}

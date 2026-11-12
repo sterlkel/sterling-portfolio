@@ -37,3 +37,9 @@ h1, h2, h3 { margin: 0; }
   .rv { opacity: 1; transform: none; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Page furniture shared by the inner pages. */
+.pg { padding-top: 40px; padding-bottom: 110px; }
+.pg > .eyebrow { margin: 0; }
+.page-title { font: 700 clamp(32px, 5vw, 60px)/1.02 var(--display); letter-spacing: -.02em; margin: .15em 0 .3em; }
+.page-sub { color: var(--muted); font-size: 18px; margin: -6px 0 36px; max-width: 52ch; }
