@@ -1,0 +1,21 @@
+.cover { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid var(--line); border-radius: var(--r); background: var(--card); container-type: inline-size; }
+.art { position: absolute; inset: 0; display: grid; place-items: center; transition: transform .8s var(--ease); }
+
+/* Sizes use cqw (percent of the cover's width) so a cover looks the same as a thumbnail or full width. */
+.cli .art { place-items: start; padding: 9%; background: #0d1117; color: #7ee787; font: 400 clamp(6px, 2.2cqw, 16px)/1.6 var(--mono); text-align: left; }
+.cli .art span { color: #8b949e; }
+
+.music .art { background: radial-gradient(circle at 30% 30%, #ff5f7e, #8a2be2 60%, #1a0b2e); }
+.music .art::after { content: ""; width: 42%; aspect-ratio: 1; border-radius: 50%; background: repeating-radial-gradient(#111 0 2px, #1b1b1b 2px 4px); box-shadow: 0 20px 40px #0008; animation: spin 8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.meal .art { background: #f3e3c3; }
+.meal .art::after { content: ""; width: 70%; height: 60%; border: 1px solid #d9b77a; border-radius: 8px; background: repeating-linear-gradient(90deg, #d9b77a 0 1px, transparent 1px 14.28%), repeating-linear-gradient(#d9b77a 0 1px, transparent 1px 25%), #fffaf0; }
+
+.nix .art { background: linear-gradient(135deg, #1e2a4a, #3d5a9e); color: #9ec5ff; font: 700 22cqw var(--sans); }
+
+.swing .art { background: #fff; }
+.swing img { width: 44%; }
+
+.book .art { background: linear-gradient(160deg, #2a1d12, #5a3a1c); color: #f0dfb8; font: 600 6cqw var(--serif); letter-spacing: .04em; text-align: center; }
+.book small { display: block; margin-top: .8em; font: 400 max(6px, 1.8cqw) var(--mono); letter-spacing: .2em; opacity: .7; }
