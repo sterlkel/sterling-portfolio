@@ -1,0 +1,28 @@
+/* Case-study page, from design/demos/final-a/project.html. */
+.hero { padding: 16px 0 32px; }
+.hero h1 { margin: 12px 0; font: 800 clamp(44px, 8vw, 104px)/.95 var(--display); letter-spacing: -.04em; }
+.hero p { margin: 0; max-width: 40ch; color: var(--muted); font-size: 22px; }
+
+.meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; margin: 32px 0 56px; padding: 24px 0; border-block: 1px solid var(--line); }
+.meta dt { margin-bottom: 6px; color: var(--muted); font: 400 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.meta dd { margin: 0; }
+
+.body { display: grid; grid-template-columns: 220px 1fr; gap: 48px; padding: 32px 0; border-top: 1px solid var(--line); }
+.body h2 { margin: 6px 0; color: var(--accent); font: 400 13px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.body p { margin: 0 0 1em; max-width: 60ch; font-size: 20px; line-height: 1.7; }
+.body p:last-child { margin-bottom: 0; }
+.body code { padding: 2px 6px; border-radius: 5px; background: var(--card); font-family: var(--mono); font-size: .85em; }
+.body a { color: var(--accent); }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 56px 0; }
+.stats div { padding: 28px; border: 1px solid var(--line); border-radius: 20px; background: var(--card); }
+.stats b { display: block; color: var(--accent); font: 800 52px/1 var(--display); letter-spacing: -.03em; }
+
+.next { display: flex; align-items: center; justify-content: space-between; margin-top: 24px; padding: 40px 0; border-top: 1px solid var(--line); font-size: clamp(24px, 4vw, 40px); font-weight: 700; letter-spacing: -.02em; }
+.next :global(.eyebrow) { display: block; font-size: 12px; font-weight: 400; }
+.next:hover { color: var(--accent); }
+
+@media (max-width: 720px) {
+  .body { grid-template-columns: 1fr; gap: 8px; }
+  .stats { grid-template-columns: 1fr; }
+}
